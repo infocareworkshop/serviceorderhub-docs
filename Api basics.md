@@ -132,9 +132,3 @@ Just add `accessToken=YOUR_TOKEN` to GET params. For example:
 ### Other methods
 
 Other auth methods will be added soon.
-
-
-
-
-
--
