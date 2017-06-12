@@ -1,6 +1,6 @@
 # Service order API
 
-**Note** Mandatory parameters are marked with <sup> * </sup> sign.
+**Note** Mandatory parameters are marked with  *  sign.
 
 ## GET /api/v1/brands
 
