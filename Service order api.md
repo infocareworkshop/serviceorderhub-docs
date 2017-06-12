@@ -343,6 +343,7 @@ Get all info about created Case.
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
 | guid                   | GUID       | Case's GUID                             |
+
 ### Output:
 ```js
 {
