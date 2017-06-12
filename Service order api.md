@@ -1,8 +1,8 @@
 # Service order API
 
-**Note** Optional parameters are marked with **?** sign.
+**Note** Mandatory parameters are marked with <sup> * </sup> sign.
 
-## GET /sob-api/v1/brands
+## GET /api/v1/brands
 
 Get brands.
 ### Input:
@@ -22,7 +22,7 @@ Get brands.
   }
 ]
 ```
-## GET /sob-api/v1/service-types
+## GET /api/v1/service-types
 
 Get service types.
 ### Input:
@@ -52,7 +52,7 @@ Get service types.
 
 Field `properties` contains info about required fields
 
-## GET /sob-api/v1/product-types
+## GET /api/v1/product-types
 
 Get product types.
 ### Input:
@@ -79,12 +79,12 @@ Get product types.
       "requireImei": true
     }
   }
-]  
+]
 ```
 
 Field `properties` contains info about required fields.
 
-## GET /sob-api/v1/service-locations
+## GET /api/v1/service-locations
 
 Get service locations.
 ### Input:
@@ -105,10 +105,10 @@ Get service locations.
     "id": 1,
     "name": "Verkstadsreparation"
   }
-]  
+]
 ```
 
-## GET /sob-api/v1/accessory
+## GET /api/v1/accessory
 
 Get accessory.
 ### Input:
@@ -134,7 +134,7 @@ Get accessory.
 ]
 ```
 
-## GET /sob-api/v1/shipping-methods
+## GET /api/v1/shipping-methods
 
 Get allowed shipping methods.
 ### Input:
@@ -150,7 +150,7 @@ Get allowed shipping methods.
 [
   {
     "id": 3,
-    "name": "Post Nord Vaxjo Pallet",
+    "name": "PostNord Växjö Pallet",
     "properties": {
       "requirePickupDate": false,
       "goodsTypeList": null
@@ -158,7 +158,7 @@ Get allowed shipping methods.
   },
   {
     "id": 2,
-    "name": "Post Nord Vaxjo Parcel",
+    "name": "PostNord Växjö Parcel",
     "properties": {
       "requirePickupDate": false,
       "goodsTypeList": ['X', 'Y', 'Z'],
@@ -169,7 +169,7 @@ Get allowed shipping methods.
 
 Field `properties` contains info about required fields.
 
-## GET /sob-api/v1/shipping/pickup-dates
+## GET /api/v1/shipping/pickup-dates
 Get allowed pickup dates for this shipping methods.
 ### Input:
 | Name                   | Type       | Description                             |
@@ -189,7 +189,7 @@ Get allowed pickup dates for this shipping methods.
 ]
 ```
 
-## POST /sob-api/v1/case/validate
+## POST /api/v1/case/validate
 
 Validate Case. All parameters are same as in `case/create` endpoint. In case of validation errors status will be "ok" and debug info will be passed through `data` field.
 
@@ -222,7 +222,7 @@ When data is incorrect:
 }
 ```
 
-## POST /sob-api/v1/case/create
+## POST /api/v1/case/create
 
 Create a new Case.
 ### Input:
@@ -249,13 +249,59 @@ Create a new Case.
 ### Example:
 
 ```
-POST /sob-api/v1/case/create?accessToken=my_key HTTP/1.1
+POST /api/v1/case/create?accessToken=my_key HTTP/1.1
 HOST: 127.0.0.1:80
 accept: application/json
 content-length: 728
 content-type: application/json
 
-{"serviceType":4,"manufacturer":1012,"productType":1001,"location":3,"order":{"chain":"OtherSE"},"device":{"model":"0","accessory":{"1093":true,"1094":true,"1095":false,"1096":false,"2501":false},"otherAccessory":"desc","password":"1345","problemText":"Picture/sound problems / Bad picture. Is periodic or constant?: Periodic"},"customer":{"type":1,"organisationName":"test","organisationNumber":"testorg","mobile":"234234324","email":"test@test.com","address":"test","postalCode":"1234","city":"test"},"consumer":{"type":0,"firstName":"test","lastName":"test","mobile":"234234324","email":"test@test.com","address":"test","postalCode":"1145","city":"test"},"originatorType":"private","acceptConditions":true,"other":{"test":1}}
+{
+  "serviceType": 4,
+  "manufacturer": 1012,
+  "productType": 1001,
+  "location": 3,
+  "order": {
+    "chain": "OtherSE"
+  },
+  "device": {
+    "model": "0",
+    "accessory": {
+      "1093": true,
+      "1094": true,
+      "1095": false,
+      "1096": false,
+      "2501": false
+    },
+    "otherAccessory": "desc",
+    "password": "1345",
+    "problemText": "Picture/sound problems / Bad picture. Is periodic or constant?: Periodic"
+  },
+  "customer": {
+    "type": 1,
+    "organisationName": "test",
+    "organisationNumber": "testorg",
+    "mobile": "234234324",
+    "email": "test@test.com",
+    "address": "test",
+    "postalCode": "1234",
+    "city": "test"
+  },
+  "consumer": {
+    "type": 0,
+    "firstName": "test",
+    "lastName": "test",
+    "mobile": "234234324",
+    "email": "test@test.com",
+    "address": "test",
+    "postalCode": "1145",
+    "city": "test"
+  },
+  "originatorType": "private",
+  "acceptConditions": true,
+  "other": {
+    "test": 1
+  }
+}
 ```
 ### Output:
 ```js
@@ -273,7 +319,7 @@ content-type: application/json
 }
 ```
 
-## GET /sob-api/v1/shipping/label
+## GET /api/v1/shipping/label
 Get shipping label (Base64 encoded PDF file).
 ### Input:
 | Name                   | Type       | Description                             |
@@ -283,12 +329,11 @@ Get shipping label (Base64 encoded PDF file).
 *(Shown with wrapper object)*
 ```js
 {
-  "code": "ok",
   "data": "dataJVBERi0xLjQNCiXi48/TDQo..."
 }
 ```
 
-## GET /sob-api/v1/case
+## GET /api/v1/case
 
 Get all info about created Case.
 ### Input:

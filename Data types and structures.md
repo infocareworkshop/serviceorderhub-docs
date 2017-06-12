@@ -20,7 +20,7 @@ Contains volume of the package or size of the box.
 
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| volume                 | Number     | m³ ?                                    |
+| volume                 | Number     | m³                                      |
 
 OR
 
@@ -34,14 +34,14 @@ OR
 
 Contains info about service order.
 
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| chain?                 | String     | Special code of the chain               |
-| refNo?                 | String     | External ID, use any string (64 chars)  |
-| goodsType?             | String     | Data from `shipping-methods` goodsTypeList |
-| pickupDate?            | String     | Date from `pickup-dates`                |
-| emballage?             | Boolean    | Does customer wants to request emballage|
-| mail?                  | String     | ?                         |
+| Name                   | Type       | Description                                |
+| ---------------------- | ---------- | ------------------------------------------ |
+| chain                  | String     | Special code of the chain                  |
+| refNo                  | String     | External ID, use any string (64 chars)     |
+| goodsType              | String     | Data from `shipping-methods` goodsTypeList |
+| pickupDate             | String     | Date from `pickup-dates`                   |
+| packaging              | Boolean    | Does customer wants to request packing materials |
+| mail                   | String     | ?                                          |
 
 
 ### DeviceData
@@ -50,20 +50,20 @@ Contains info about the device.
 
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| model                  | String     | Device's model name (40 chars)          |
-| purchaseDate?          | Date       | When the device was purchased           |
-| imei?*                 | String     | Device's IMEI (20 chars)                |
-| serial?*               | String     | Device's Serial number (40 chars)       |
+| model<sup>*</sup>      | String     | Device's model name (40 chars)          |
+| purchaseDate           | Date       | When the device was purchased           |
+| imei<sup>*</sup>*      | String     | Device's IMEI (20 chars)                |
+| serial<sup>*</sup>*    | String     | Device's Serial number (40 chars)       |
 | insuranceCompany?*     | String     | Insurance company name (50 chars)       |
 | insuranceNumber?*      | String     | Insurance number                        |
-| accessory?             | Array      | List of accessory Ids                   |
-| otherAccessory?        | String     | Names of additional accessory           |
-| problemText            | String     | Problem description                     |
-| password?              | String     | Device's password if exists             |
-| weight?                | Number     | Device's weight (in kg)?                |
-| volume?                | Dimensions | Width, height, depth                    |
+| accessory              | Array      | List of accessory Ids                   |
+| otherAccessory         | String     | Names of additional accessory           |
+| problemText<sup>*</sup>| String     | Problem description                     |
+| password               | String     | Device's password if exists             |
+| weight                 | Number     | Device's weight (in kg)?                |
+| volume                 | Dimensions | Width, height, depth                    |
 
-\* These fields may become required in some conditions. 
+\* These fields may become mandatory in some conditions.
 
 ### ContactData
 
@@ -71,32 +71,19 @@ Contains info about person or company.
 
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| type                   | Int        | `0` - private, `1` - organization ?     |
-| firstName*             | String     | Person's first name (64 chars)          |
-| lastName*              | String     | Person's last name (64 chars)           |
+| type<sup>*</sup>       | Int        | `0` - private, `1` - organization ?     |
+| firstName<sup>*</sup>  | String     | Person's first name (64 chars)          |
+| lastName<sup>*</sup>   | String     | Person's last name (64 chars)           |
 | organisationName**     | String     | Org Name (64 chars)                     |
-| organisationNumber?**  | String     | VAT Number ? (64 chars)                 |
-| mobile                 | String     | Cell phone (19 chars)                   |
-| phone?                 | String     | Phone (64 chars)                        |
-| email                  | String     | Email (64 chars)                        |
-| address                | String     | Address (64 chars)                      |
-| addName?               | String     | Additional name (64 chars)              |
-| postalCode             | String     | Postal code (6 chars)                   |
-| city                   | String     | City (64 chars)                         |
+| organisationNumber**   | String     | VAT Number ? (64 chars)                 |
+| mobile<sup>*</sup>     | String     | Cell phone (19 chars)                   |
+| phone                  | String     | Phone (64 chars)                        |
+| email<sup>*</sup>      | String     | Email (64 chars)                        |
+| address<sup>*</sup>    | String     | Address (64 chars)                      |
+| addName                | String     | Additional name (64 chars)              |
+| postalCode<sup>*</sup> | String     | Postal code (6 chars)                   |
+| city<sup>*</sup>       | String     | City (64 chars)                         |
 
 \* Allowed only when `type = 0`
 
 \*\* Allowed only when `type = 1`
-
-
-
-
-
-
-
-
-
-
-
-
-
