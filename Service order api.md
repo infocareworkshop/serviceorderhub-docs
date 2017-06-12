@@ -240,7 +240,7 @@ Create a new Case.
 | shipping**             | Int        | Id from `shipping-methods`                      |
 | location*              | Int        | Id from `service-locations`                     |
 | order*                 | OrderData  | Order data                                      |
-| device*                | DeviceData | Device data                                     |
+| product*               | DeviceData | Device (product) data                           |
 | customer*              | ContactData| Info about user who books this order            |
 | consumer*              | ContactData| Info about end user                             |
 | pickupDst              | ContactData| Where shipment will be picked up                |
@@ -257,7 +257,7 @@ according to the business rules, but no shipping method id was sent.
 
 ```
 POST /api/v1/case/create?accessToken=my_key HTTP/1.1
-HOST: 127.0.0.1:80
+HOST: serviceorderhub.com
 accept: application/json
 content-length: 728
 content-type: application/json
