@@ -9,6 +9,7 @@ Get brands.
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
 | originatorType         | Originator | Originator type                         |
+
 ### Output:
 ```js
 [
@@ -61,6 +62,7 @@ Get product types.
 | originatorType         | Originator | Originator type                         |
 | serviceType            | Int        | Service type Id                         |
 | brand                  | Int        | Brand Id                                |
+
 ### Output:
 ```js
 [
@@ -94,6 +96,7 @@ Get service locations.
 | serviceType            | Int        | Service type Id                         |
 | brand                  | Int        | Brand Id                                |
 | productType            | Int        | Product type Id                         |
+
 ### Output:
 ```js
 [
