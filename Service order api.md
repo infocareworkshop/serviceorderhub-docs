@@ -31,6 +31,7 @@ Get service types.
 | ---------------------- | ---------- | --------------------------------------- |
 | originatorType         | Originator | Originator type                         |
 | brand                  | Int        | Brand Id                                |
+
 ### Output:
 ```js
 [
@@ -89,6 +90,7 @@ Field `properties` contains info about required fields.
 ## GET /api/v1/service-locations
 
 Get service locations.
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -140,6 +142,7 @@ Get accessory.
 ## GET /api/v1/shipping-methods
 
 Get allowed shipping methods.
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -328,6 +331,7 @@ Get shipping label (Base64 encoded PDF file).
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
 | guid                   | GUID       | Case's GUID                             |
+
 ### Output:
 *(Shown with wrapper object)*
 ```js

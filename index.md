@@ -78,8 +78,7 @@ When everything is ok response body will be like this:
 
 ```js
 {
-  "code": "ok", // Code is always "ok"
-  "data": [ // Here may be any payload data
+  "data": [ // Payload
     { "id": 1, name: "Something" },
     { "id": 2, name: "Something other" }
   ]
@@ -95,8 +94,7 @@ When an error is occurred response body will be like this:
   "code": "error", // Code is always "error"
   "error": { // errors ?
     "message": "Validation error"
-  },
-  "data": null // Delete data ?
+  }
 }
 ```
 
