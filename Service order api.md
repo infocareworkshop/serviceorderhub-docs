@@ -199,7 +199,7 @@ Get allowed pickup dates for this shipping methods.
 
 Validate Case. All parameters are same as in `case/create` endpoint. In case of validation errors status will be "ok" and debug info will be passed through `data` field.
 
-**Note** Currently we haven't a possibility to validate shipments and we can't guarantee that shipment can be created for Case passed this validation.
+**Note** Currently we don't have a possibility to validate shipments and we can't guarantee that shipment will be created for the Case passed this validation.
 
 ### Output:
 When data is correct:
