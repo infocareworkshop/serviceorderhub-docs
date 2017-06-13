@@ -44,26 +44,26 @@ Contains info about service order.
 | mail                   | String     | ?                                          |
 
 
-### DeviceData
+### ProductData
 
-Contains info about the device.
+Contains info about the product.
 
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| model*      | String     | Device's model name (40 chars)          |
-| purchaseDate           | Date       | When the device was purchased           |
-| imei**      | String     | Device's IMEI (20 chars)                |
-| serial**    | String     | Device's Serial number (40 chars)       |
+| model*      					 | String     | Product's model name (40 chars)         |
+| purchaseDate           | Date       | When the product was purchased          |
+| imei**      					 | String     | Product's IMEI (20 chars)           		|
+| serial**    					 | String     | Product's Serial number (40 chars)      |
 | insuranceCompany?*     | String     | Insurance company name (50 chars)       |
 | insuranceNumber?*      | String     | Insurance number                        |
 | accessory              | Array      | List of accessory Ids                   |
 | otherAccessory         | String     | Names of additional accessory           |
-| problemText*| String     | Problem description                     |
-| password               | String     | Device's password if exists             |
-| weight                 | Number     | Device's weight (in kg)?                |
+| problemText*					 | String   	| Problem description                     |
+| password               | String     | Product's password (if applicable)      |
+| weight                 | Number     | Product's weight (in kg)                |
 | volume                 | Dimensions | Width, height, depth                    |
 
-\* These fields may become mandatory in some conditions.
+\*\* These fields may become mandatory in some conditions.
 
 ### ContactData
 

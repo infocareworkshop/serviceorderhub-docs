@@ -232,23 +232,23 @@ When data is incorrect:
 
 Create a new Case.
 ### Input:
-| Name                   | Type       | Description                                     |
-| ---------------------- | ---------- | ----------------------------------------------- |
-| serviceType*           | Int        | Id from `service-types`                         |
-| manufacturer*          | Int        | Id from `brands`                                |
-| productType*           | Int        | Id from `product-types`                         |
-| shipping**             | Int        | Id from `shipping-methods`                      |
-| location*              | Int        | Id from `service-locations`                     |
-| order*                 | OrderData  | Order data                                      |
-| product*               | DeviceData | Device (product) data                           |
-| customer*              | ContactData| Info about user who books this order            |
-| consumer*              | ContactData| Info about end user                             |
-| pickupDst              | ContactData| Where shipment will be picked up                |
-| returnDst              | ContactData| Where shipment should be delivered after repair |
-| originatorType*        | Originator | Originator type                                 |
-| acceptConditions*      | Boolean    | Terms and condition acceptance. Should be `true`|
-| pickupDestination      | String     | `customer` or `custom`                          |
-| returnDestination      | String     | `customer` or `custom`                          |
+| Name                   | Type        | Description                                     |
+| ---------------------- | ----------- | ----------------------------------------------- |
+| serviceType*           | Int         | Id from `service-types`                         |
+| manufacturer*          | Int         | Id from `brands`                                |
+| productType*           | Int         | Id from `product-types`                         |
+| shipping**             | Int         | Id from `shipping-methods`                      |
+| location*              | Int         | Id from `service-locations`                     |
+| order*                 | OrderData   | Order data                                      |
+| product*               | ProductData | Product data                           				 |
+| customer*              | ContactData | Info about user who books this order            |
+| consumer*              | ContactData | Info about end user                             |
+| pickupDst              | ContactData | Where shipment will be picked up                |
+| returnDst              | ContactData | Where shipment should be delivered after repair |
+| originatorType*        | Originator  | Originator type                                 |
+| acceptConditions*      | Boolean     | Terms and condition acceptance. Should be `true`|
+| pickupDestination      | String      | `customer` or `custom`                          |
+| returnDestination      | String      | `customer` or `custom`                          |
 
 \*\* `shipping` can be assigned automatically by the Service Order Hub if shipping is required
 according to the business rules, but no shipping method id was sent.
@@ -270,7 +270,7 @@ content-type: application/json
   "order": {
     "chain": "OtherSE"
   },
-  "device": {
+  "product": {
     "model": "0",
     "accessory": {
       "1093": true,
@@ -359,7 +359,7 @@ Get all info about created Case.
   "workshopId": 2,
   "manufacturerId": 1006,
   "currentStatus": "rejected", // Repair status
-  "deviceData": { // DeviceData
+  "productData": { // ProductData
     "model": "test",
     "accessory": [],
     "problemText": "test",
