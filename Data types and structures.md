@@ -2,7 +2,7 @@
 
 There are some special data types used in our API.
 
-**Note** Optional parameters are marked with **?** sign.
+**Note** Mandatory parameters are marked with  *  sign.
 
 ### Date
 
@@ -41,7 +41,7 @@ Contains info about service order.
 | goodsType              | String     | Data from `shipping-methods` goodsTypeList |
 | pickupDate             | String     | Date from `pickup-dates`                   |
 | packaging              | Boolean    | Does customer wants to request packing materials |
-| mail                   | String     | ?                                          |
+| mail                   | String     | Used for some specific cases               |
 
 
 ### ProductData
@@ -54,8 +54,8 @@ Contains info about the product.
 | purchaseDate           | Date       | When the product was purchased          |
 | imei**      					 | String     | Product's IMEI (20 chars)           		|
 | serial**    					 | String     | Product's Serial number (40 chars)      |
-| insuranceCompany?*     | String     | Insurance company name (50 chars)       |
-| insuranceNumber?*      | String     | Insurance number                        |
+| insuranceCompany**     | String     | Insurance company name (50 chars)       |
+| insuranceNumber**      | String     | Insurance number                        |
 | accessory              | Array      | List of accessory Ids                   |
 | otherAccessory         | String     | Names of additional accessory           |
 | problemText*					 | String   	| Problem description                     |
@@ -69,20 +69,20 @@ Contains info about the product.
 
 Contains info about person or company.
 
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| type*       | Int        | `0` - private, `1` - organization ?     |
-| firstName*  | String     | Person's first name (64 chars)          |
-| lastName*   | String     | Person's last name (64 chars)           |
-| organisationName**     | String     | Org Name (64 chars)                     |
-| organisationNumber**   | String     | VAT Number ? (64 chars)                 |
-| mobile*     | String     | Cell phone (19 chars)                   |
-| phone                  | String     | Phone (64 chars)                        |
-| email*      | String     | Email (64 chars)                        |
-| address*    | String     | Address (64 chars)                      |
-| addName                | String     | Additional name (64 chars)              |
-| postalCode* | String     | Postal code (6 chars)                   |
-| city*       | String     | City (64 chars)                         |
+| Name                    | Type       | Description                             |
+| ----------------------- | ---------- | --------------------------------------- |
+| type*       						| Int        | `0` - private, `1` - organization 			 |
+| firstName*  						| String     | Person's first name (64 chars)          |
+| lastName*   						| String     | Person's last name (64 chars)           |
+| organizationName**      | String     | Org Name (64 chars)                     |
+| organizationNumber**    | String     | Organization Number (64 chars)          |
+| mobile*     						| String     | Cellphone (19 chars)                    |
+| phone                  	| String     | Landline phone (64 chars)               |
+| email*     							| String     | Email (64 chars)                        |
+| address*    						| String     | Address (64 chars)                      |
+| addName               	| String     | Additional name (c/o) (64 chars)        |
+| postalCode* 						| String     | Postal code (6 chars)                   |
+| city*       						| String     | City (64 chars)                         |
 
 \* Allowed only when `type = 0`
 
