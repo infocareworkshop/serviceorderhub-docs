@@ -285,8 +285,8 @@ content-type: application/json
   },
   "customer": {
     "type": 1,
-    "organisationName": "test",
-    "organisationNumber": "testorg",
+    "organizationName": "test",
+    "organizationNumber": "testorg",
     "mobile": "234234324",
     "email": "test@test.com",
     "address": "test",
@@ -358,7 +358,7 @@ Get all info about created Case.
   "partnerId": 1,
   "workshopId": 2,
   "manufacturerId": 1006,
-  "currentStatus": "rejected", // Repair status
+  "currentStatus": "rejected", // current status of the case
   "productData": { // ProductData
     "model": "test",
     "accessory": [],
@@ -375,8 +375,8 @@ Get all info about created Case.
     "name": null,
     "firstName": "test",
     "lastName": "test",
-    "organisationName": null,
-    "organisationNumber": null,
+    "organizationName": null,
+    "organizationNumber": null,
     "addName": null,
     "address": "testes",
     "postalCode": "2333",
@@ -389,8 +389,8 @@ Get all info about created Case.
     "entrance": null,
     "doorCode": null,
     "createdAt": "2017-04-06T13:02:36.888Z",
-    "updatedAt": "2017-04-06T13:02:36.888Z",//?
-    "deletedAt": null //?
+    "updatedAt": "2017-04-06T13:02:36.888Z",
+    "deletedAt": null
   },
   "sender": ..., // ContactData
   "receiver": ... // ContactData
