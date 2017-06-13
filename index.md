@@ -91,8 +91,8 @@ When an error is occurred response body will be like this:
 
 ```js
 {
-  "code": "error", // Code is always "error"
-  "error": { // errors ?
+  "code": "error", 	// Code is always "error"
+  "error": { 				// Exists only if there are any recognized reason of the error
     "message": "Validation error"
   }
 }
