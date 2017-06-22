@@ -8,7 +8,10 @@ Get brands.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| originatorType         | Originator | Originator type                         |
+| originatorType\*       | Originator | Originator type                         |
+| serviceType            | Int        | Service type Id                         |
+| brand                  | Int        | Brand Id                                |
+| productType            | Int        | Product type Id                         |
 
 ### Output:
 ```js
@@ -29,8 +32,10 @@ Get service types.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| originatorType         | Originator | Originator type                         |
+| originatorType\*       | Originator | Originator type                         |
+| serviceType            | Int        | Service type Id                         |
 | brand                  | Int        | Brand Id                                |
+| productType            | Int        | Product type Id                         |
 
 ### Output:
 ```js
@@ -60,9 +65,9 @@ Get product types.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| originatorType         | Originator | Originator type                         |
-| serviceType            | Int        | Service type Id                         |
-| brand                  | Int        | Brand Id                                |
+| originatorType\*       | Originator | Originator type                         |
+| serviceType\*          | Int        | Service type Id                         |
+| brand\*                | Int        | Brand Id                                |
 
 ### Output:
 ```js
@@ -94,10 +99,10 @@ Get service locations.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| originatorType         | Originator | Originator type                         |
-| serviceType            | Int        | Service type Id                         |
-| brand                  | Int        | Brand Id                                |
-| productType            | Int        | Product type Id                         |
+| originatorType\*       | Originator | Originator type                         |
+| serviceType\*          | Int        | Service type Id                         |
+| brand\*                | Int        | Brand Id                                |
+| productType\*          | Int        | Product type Id                         |
 
 ### Output:
 ```js
@@ -119,7 +124,7 @@ Get accessory.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| productType            | Int        | Product type Id                         |
+| productType\*          | Int        | Product type Id                         |
 
 ### Output:
 ```js
