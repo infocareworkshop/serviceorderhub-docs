@@ -353,7 +353,7 @@ Get all info about created Case.
 ```js
 {
   "id": 7676,
-  "country": null,
+  "country": "SE",
   "guid": "c0167135-2b0f-471b-81d6-c06d91cfb063",
   "partnerId": 1,
   "workshopId": 2,
@@ -369,9 +369,8 @@ Get all info about created Case.
   "serviceLocationId": 1,
   "productTypeId": 1004,
   "createdAt": "2017-04-06T13:02:36.506Z",
-  "customer": { // ContactData (without type?)
-    "id": 29968,
-    "accountId": null,
+  "sender": { // ContactData (without type?)
+    "id": 29969,
     "name": null,
     "firstName": "test",
     "lastName": "test",
@@ -384,15 +383,54 @@ Get all info about created Case.
     "countryCode": "se",
     "phone": null,
     "mobile": "23432432234",
-    "email": "teses@rewt.tre",
+    "email": "teses@test.com",
     "floor": null,
     "entrance": null,
     "doorCode": null,
-    "createdAt": "2017-04-06T13:02:36.888Z",
-    "updatedAt": "2017-04-06T13:02:36.888Z",
-    "deletedAt": null
+    "createdAt": "2017-04-06T13:02:36.998Z"
   },
-  "sender": ..., // ContactData
-  "receiver": ... // ContactData
+  "receiver": ..., // ContactData
+  "pickupDst": ..., // ContactData
+  "returnDst": ..., // ContactData
+  "serviceType": {
+    "id": 1,
+    "name": "Garanti",
+    "properties": {
+      "requirePurchaseDate": true
+    }
+  },
+  "productType": {
+    "id": 1004,
+    "name": "Notebook",
+    "properties": {
+      "requireSerial": true
+    }
+  },
+  "manufacturer": {
+    "id": 1006,
+    "name": "Acer"
+  },
+  "serviceLocation": {
+    "id": 1,
+    "name": "Verkstadsreparation"
+  },
+  "serviceProvider": {
+    "id": 2,
+    "name": "TV Repair workshop"
+  },
+  "servicePartner": {
+    "id": 1,
+    "name": "InfoCare Workshop"
+  },
+  "freightTrackings": [
+    {
+      "id": 3,
+      "caseId": 7676,
+      "colliNumber": "00370726200178686586",
+      "code": "XMLSVK6",
+      "textStatus": "Transportinstruktion",
+      "eventDateTime": "2017-04-06T13:04:00.000Z"
+    }
+  ]
 }
 ```
