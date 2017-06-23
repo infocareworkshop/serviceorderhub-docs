@@ -322,9 +322,22 @@ content-type: application/json
   "guid": "69b0e17f-eeb9-4834-b809-60b015054c0d", // Case's GUID
   "integrations": { // All additional data stored here
     "shipping": { // Shipping data
-      "shpCSID": 11949535,
-      "colliNumber": "00370726200502318503",
+      "packageNumber": "00370726200502318503",
       "shipmentNumber": 0,
+      "senderAddress": {
+        "name": "testorg",
+        "address": "test",
+        "postalCode": "1234",
+        "city": "test",
+        "country": "SE"
+      },
+      "receiverAddress": {
+        "name": "Workshop name",
+        "address": "some address",
+        "postalCode": "5678",
+        "city": "Some city",
+        "country": "SE"
+      },
       "result": true
     }
   }
@@ -369,6 +382,29 @@ Get all info about created Case.
     "accessory": [],
     "problemText": "test",
     "purchaseDate": "2017-04-01"
+  },
+  "orderData": {
+    "shipmentData": {
+      "packageNumber": "00370726201095743185",
+      "shipmentNumber": 0,
+      "senderAddress": {
+        "city": "test",
+        "name": "test",
+        "address": "test",
+        "country": "SE",
+        "postalCode": "1234"
+      },
+      "receiverAddress": {
+        "name": "Workshop name",
+        "address": "some address",
+        "postalCode": "5678",
+        "city": "Some city",
+        "country": "SE"
+      },
+    },
+    "originatorType": "private",
+    "pickupDestination": "customer",
+    "returnDestination": "customer"
   },
   "serviceTypeId": 1,
   "serviceLocationId": 1,
