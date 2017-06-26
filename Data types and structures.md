@@ -12,13 +12,13 @@ There are some special data types used in our API.
 
 ### Originator
 
-Describes what kind of user performs service order. Must be either `private`, `registered` or `helpdesk`.
+Describes what kind of user initiates the service order. Must be either `private`, `registered` or `helpdesk`.
 
-`private` - the case originator is a person or an organization which doesn’t have any contracts or other ties with the partner;
-`registered` - an organizational unit within the partner;
-`helpdesk` - partner's centralized helpdesk which gathers support request from all organizational units.
+`private` - the case originator is a person or an organization which doesn’t have any contracts or other ties with the partner;<br>
+`registered` - an organizational unit within the partner;<br>
+`helpdesk` - partner's centralized helpdesk which gathers support request from all organizational units and places orders on behalf of them.
 
-The business rules may be different depending on the originatorType.
+The business rules may be different depending on the originator.
 
 ### Dimensions
 
