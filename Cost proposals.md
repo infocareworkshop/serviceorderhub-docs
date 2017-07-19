@@ -12,11 +12,11 @@ Get all cost proposals attached to specific *Case*.
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
 | guid\*                 | Guid       | Guid of the case                        |
-
+| active                 | Boolean    | Get proposals allowed for approve only  |
 
 ### Example:
 ```
-/api/v1/cost-proposals?accessToken=key&guid=3ebad3cc-61d3-479a-bd92-510e8774ce5a
+/api/v1/cost-proposals?accessToken=key&guid=3ebad3cc-61d3-479a-bd92-510e8774ce5a&active=true
 ```
 
 ### Output:
