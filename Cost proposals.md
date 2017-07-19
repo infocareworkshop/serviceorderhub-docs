@@ -24,11 +24,12 @@ Get all cost proposals attached to specific *Case*.
 [
   {
     "id": 2,
-    "externalId": 4,
+    "externalId": ["123456", "test"],
     "name": "repair",
     "priceNet": "200.00",
     "currency": "SEK",
     "dateValidUntil": null,
+    "isActive": true,
     "dateAccepted": null,
     "approverName": null,
     "details": [
