@@ -81,7 +81,7 @@ Approve *Cost Proposal*.
 ### Output:
 ```js
 {
-  result: true
+  data: { /* Cost Proposal */}
 }
 ```
 
@@ -98,11 +98,12 @@ Add or modify multiple *Cost Proposals*.
 [
   {
     "guid": "3ebad3cc-61d3-479a-bd92-510e8774ce5a", // Case's guid
-    "externalId": 213214, // Any integer
+    "externalId": ["123456", "test"], // Array of strings
     "name": "Scrap", // Type of work, pair externalId and name must be unique for Service provider
     "priceNet": 1860.5, // Price (optional)
     "currency": "SEK", // Currency, 3 capital letters (optional)
     "timeStamp": "2017-07-12 13:14:13.037", // date created (optional)
+    "isActive": true, // Can we approve this Cost Proposal 
     "dateAccepted": "2017-07-14 13:14:13.037", // when this Cost proposal was been accepted (optional)
     "approverName": "John Smith" // Who performed approve (optional)
     "details": [ // Optional array of details
@@ -122,7 +123,7 @@ Add or modify multiple *Cost Proposals*.
 ### Output:
 ```js
 {
-  result: true
+  data: [/* List of created Cost Proposals */]
 }
 ```
 
