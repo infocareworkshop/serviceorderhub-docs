@@ -273,7 +273,7 @@ content-type: application/json
   "productType": 1001,
   "location": 3,
   "order": {
-    "chain": "OtherSE"
+    "infocareSesamOriginator": "OtherSE"
   },
   "product": {
     "model": "0",
