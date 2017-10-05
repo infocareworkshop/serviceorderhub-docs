@@ -476,7 +476,7 @@ Get all info about created Case.
 }
 ```
 
-## POST /api/v1/cases
+## POST /api/v1/search-cases
 
 Get list of cases 
 ### Input (JSON body):
