@@ -503,7 +503,7 @@ You can also use special keys `$lt` and `$gt` for "<" and ">" conditions
 
 *Allowed keys for querying:*
 
-id, guid, partnerId, serviceProviderId, manufacturerId, currentStatus, productData.*, orderData.*,
+id, guid, partnerId, serviceProviderId, manufacturerId, currentStatus, productData.\*, orderData.\*,
 serviceTypeId, serviceLocationId, productTypeId, createdAt
 
 All Partner and Service provider specific data is stored in `orderData.partnerSpecific.<urlSlug>`
@@ -517,7 +517,7 @@ Service providers can view all data.
 ```
 {
   "data": [
-    { Case1 },
+    { Case 1 },
     { Case 2 },
     ...
   ],
