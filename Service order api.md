@@ -475,3 +475,55 @@ Get all info about created Case.
   ]
 }
 ```
+
+## POST /api/v1/cases
+
+Get list of cases 
+### Input (JSON body):
+| Name                   | Type        | Description                                     |
+| ---------------------- | ----------- | ----------------------------------------------- |
+| filters                | Object      | Search query                                    |
+| pagination             | Object      | Pagination settings                             |
+| pagination.offset      | Int         | Default = 0                                     |
+| pagination.limit       | Int         | Default = 10, max = 100                         |
+
+### Example:
+```
+{
+  "filters": { "orderData": { "partnerSpecific": { "caperio": { "sysId": 3112312312 }}}}
+}
+```
+
+You can also use special keys `$lt` and `$gt` for "<" and ">" conditions
+```
+{
+  "filters": { "createdAt": { "$gt": "2017-01-01" }}
+}
+```
+
+*Allowed keys for querying:*
+
+id, guid, partnerId, serviceProviderId, manufacturerId, currentStatus, productData.*, orderData.*,
+serviceTypeId, serviceLocationId, productTypeId, createdAt
+
+All Partner and Service provider specific data is stored in `orderData.partnerSpecific.<urlSlug>`
+and `orderData.providerSpecific.<urlSlug>` objects.
+
+Service partners can view only partnerSpecific data with their urlSlug.
+
+Service providers can view all data.
+
+### Output
+```
+{
+  "data": [
+    { Case1 },
+    { Case 2 },
+    ...
+  ],
+  "pagination": {
+    "offset": 0,
+    "count": 194
+  }
+}   
+```
