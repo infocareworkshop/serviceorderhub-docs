@@ -6,23 +6,27 @@
 
 Get brands.
 ### Input:
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| originatorType\*       | Originator | Originator type                         |
-| serviceType            | Int        | Service type Id                         |
-| brand                  | Int        | Brand Id                                |
-| productType            | Int        | Product type Id                         |
+| Name                   | Type            | Description                             |
+| ---------------------- | --------------- | --------------------------------------- |
+| originatorType\*       | Originator      | Originator type                         |
+| bookingType\*          | BookingType     |                                         |
+| serviceType            | Int             | Service type Id                         |
+| brand                  | Int&#124;String | Brand Id or alias                       |
+| productType            | Int&#124;String | Product type Id or alias                |
+| clientPostalCode       | String          |                                         |
 
 ### Output:
 ```js
 [
   {
     "id": 1006,
-    "name": "Acer"
+    "name": "Acer",
+    "externalData": null
   },
   {
     "id": 1012,
-    "name": "LG"
+    "name": "LG",
+    "externalData": null
   }
 ]
 ```
@@ -30,12 +34,14 @@ Get brands.
 
 Get service types.
 ### Input:
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| originatorType\*       | Originator | Originator type                         |
-| serviceType            | Int        | Service type Id                         |
-| brand                  | Int        | Brand Id                                |
-| productType            | Int        | Product type Id                         |
+| Name                   | Type            | Description                             |
+| ---------------------- | --------------- | --------------------------------------- |
+| originatorType\*       | Originator      | Originator type                         |
+| bookingType\*          | BookingType     |                                         |
+| serviceType            | Int             | Service type Id                         |
+| brand                  | Int&#124;String | Brand Id or alias                       |
+| productType            | Int&#124;String | Product type Id or alias                |
+| clientPostalCode       | String          |                                         |
 
 ### Output:
 ```js
@@ -45,14 +51,16 @@ Get service types.
     "name": "Garanti",
     "properties": {
       "requirePurchaseDate": true
-    }
+    },
+    "externalData": null
   },
   {
     "id": 2,
     "name": "Försäkringsreparation",
     "properties": {
       "requireInsuranceNumber": true
-    }
+    },
+    "externalData": null
   }
 ]
 ```
@@ -63,11 +71,14 @@ Field `properties` contains info about required fields
 
 Get product types.
 ### Input:
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| originatorType\*       | Originator | Originator type                         |
-| serviceType\*          | Int        | Service type Id                         |
-| brand\*                | Int        | Brand Id                                |
+| Name                   | Type            | Description                             |
+| ---------------------- | --------------- | --------------------------------------- |
+| originatorType\*       | Originator      | Originator type                         |
+| bookingType\*          | BookingType     |                                         |
+| serviceType\*          | Int             | Service type Id                         |
+| brand\*                | Int&#124;String | Brand Id or alias                       |
+| productType            | Int&#124;String | Product type Id or alias                |
+| clientPostalCode       | String          |                                         |
 
 ### Output:
 ```js
@@ -76,8 +87,10 @@ Get product types.
     "id": 1009,
     "name": "All-in-one desktop",
     "properties": {
-      "requireSerial": true
-    }
+      "requireSerial": true,
+      "withLocations": true
+    },
+    "externalData": null
   },
   {
     "id": 1004,
@@ -85,7 +98,8 @@ Get product types.
     "properties": {
       "requireSerial": true,
       "requireImei": true
-    }
+    },
+    "externalData": null
   }
 ]
 ```
@@ -97,23 +111,27 @@ Field `properties` contains info about required fields.
 Get service locations.
 
 ### Input:
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| originatorType\*       | Originator | Originator type                         |
-| serviceType\*          | Int        | Service type Id                         |
-| brand\*                | Int        | Brand Id                                |
-| productType\*          | Int        | Product type Id                         |
+| Name                   | Type            | Description                             |
+| ---------------------- | --------------- | --------------------------------------- |
+| originatorType\*       | Originator      | Originator type                         |
+| bookingType\*          | BookingType     |                                         |
+| serviceType\*          | Int             | Service type Id                         |
+| brand\*                | Int&#124;String | Brand Id or alias                       |
+| productType\*          | Int&#124;String | Product type Id or alias                |
+| clientPostalCode       | String          |                                         |
 
 ### Output:
 ```js
 [
   {
     "id": 2,
-    "name": "På plats reparation"
+    "name": "På plats reparation",
+    "externalData": null
   },
   {
     "id": 1,
-    "name": "Verkstadsreparation"
+    "name": "Verkstadsreparation",
+    "externalData": null
   }
 ]
 ```
@@ -149,12 +167,14 @@ Get accessory.
 Get allowed shipping methods.
 
 ### Input:
-| Name                   | Type       | Description                             |
-| ---------------------- | ---------- | --------------------------------------- |
-| originatorType         | Originator | Originator type                         |
-| serviceType            | Int        | Service type Id                         |
-| brand                  | Int        | Brand Id                                |
-| productType            | Int        | Product type Id                         |
+| Name                   | Type            | Description                             |
+| ---------------------- | --------------- | --------------------------------------- |
+| originatorType\*       | Originator      | Originator type                         |
+| serviceType\*          | Int             | Service type Id                         |
+| brand\*                | Int&#124;String | Brand Id or alias                       |
+| productType\*          | Int&#124;String | Product type Id or alias                |
+| clientPostalCode       | String          |                                         |
+| serviceLocation\*      | Int             | Service location Id                     |
 
 ### Output:
 ```js
@@ -185,8 +205,8 @@ Get allowed pickup dates for this shipping methods.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
-| shippingMethod         | Int        | `id` from `shipping-methods` endpoint   |
-| postalCode             | String     | Postal code (3-10) chars                |
+| shippingMethod\*       | Int        | `id` from `shipping-methods` endpoint   |
+| postalCode\*           | String     | Postal code (3-10) chars                |
 
 ### Output:
 ```js
@@ -237,26 +257,37 @@ When data is incorrect:
 
 Create a new Case.
 ### Input:
-| Name                   | Type        | Description                                     |
-| ---------------------- | ----------- | ----------------------------------------------- |
-| serviceType*           | Int         | Id from `service-types`                         |
-| manufacturer*          | Int         | Id from `brands`                                |
-| productType*           | Int         | Id from `product-types`                         |
-| shipping**             | Int         | Id from `shipping-methods`                      |
-| location*              | Int         | Id from `service-locations`                     |
-| order*                 | OrderData   | Order data                                      |
-| product*               | ProductData | Product data                           				 |
-| customer*              | ContactData | Info about user who books this order            |
-| consumer*              | ContactData | Info about end user                             |
-| pickupDst              | ContactData | Where shipment will be picked up                |
-| returnDst              | ContactData | Where shipment should be delivered after repair |
-| originatorType*        | Originator  | Originator type                                 |
-| acceptConditions*      | Boolean     | Terms and condition acceptance. Should be `true`|
-| pickupDestination      | String      | `customer` or `custom`                          |
-| returnDestination      | String      | `customer` or `custom`                          |
+| Name                          | Type        | Description                                       |
+| ----------------------------- | ----------- | ------------------------------------------------- |
+| serviceType\*                 | Int         | Id from `service-types`                           |
+| manufacturer\*                | Int         | Id from `brands`                                  |
+| productType\*                 | Int         | Id from `product-types`                           |
+| shipping<sup>1</sup>          | Int         | Id from `shipping-methods`                        |
+| location\*                    | Int         | Id from `service-locations`                       |
+| order\*                       | OrderData   | Order data                                        |
+| product\*                     | ProductData | Product data                                      |
+| pickupDestination<sup>2</sup> | String      | `consumer` or `customCompany` or `customPrivate`  |
+| returnDestination<sup>2</sup> | String      | `consumer` or `customCompany` or `customPrivate`  |
+| clientPostalCode\*            | String      |                                                   |
+| customer\*                    | ContactData | Info about user who books this order              |
+| consumer<sup>3</sup>          | ContactData | Info about end user                               |
+| pickupDst<sup>4</sup>         | ContactData | Where shipment will be picked up                  |
+| returnDst<sup>5</sup>         | ContactData | Where shipment should be delivered after repair   |
+| originatorType\*              | Originator  | Originator type                                   |
+| bookingType\*                 | BookingType | Booking type                                      |
+| acceptConditions*             | Boolean     | Terms and condition acceptance. Should be `true`  |
 
-\*\* `shipping` can be assigned automatically by the Service Order Hub if shipping is required
+
+<sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required
 according to the business rules, but no shipping method id was sent.
+
+<sup>2</sup> Enabled when originatorType = `helpdesk`
+
+<sup>3</sup> Enabled when bookingType ≠ `privateToPrivate`
+
+<sup>4</sup> Enabled when pickupDestination ≠ `consumer`
+
+<sup>4</sup> Enabled when returnDestination ≠ `consumer`
 
 ### Example:
 
@@ -289,7 +320,6 @@ content-type: application/json
     "problemText": "Picture/sound problems / Bad picture. Is periodic or constant?: Periodic"
   },
   "customer": {
-    "type": 1,
     "organizationName": "test",
     "organizationNumber": "testorg",
     "mobile": "234234324",
@@ -299,7 +329,6 @@ content-type: application/json
     "city": "test"
   },
   "consumer": {
-    "type": 0,
     "firstName": "test",
     "lastName": "test",
     "mobile": "234234324",
@@ -309,6 +338,8 @@ content-type: application/json
     "city": "test"
   },
   "originatorType": "private",
+  "bookingType": "companyToPrivate",
+  "clientPostalCode": "1145",
   "acceptConditions": true,
   "other": {
     "test": 1
@@ -316,6 +347,8 @@ content-type: application/json
 }
 ```
 ### Output:
+
+# TODO: fix me
 ```js
 {
   "id": 7707, // Case's Id
@@ -368,6 +401,7 @@ Get all info about created Case.
 | guid                   | GUID       | Case's GUID                             |
 
 ### Output:
+# TODO: fix me
 ```js
 {
   "id": 7676,

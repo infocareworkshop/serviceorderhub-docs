@@ -20,6 +20,17 @@ Describes what kind of user initiates the service order. Must be either `private
 
 The business rules may be different depending on the originator.
 
+### Booking types
+
+Possible values: 
+
+`companyToCompany`
+
+`companyToPrivate`
+
+`privateToPrivate` - for non helpdesk originators
+
+
 ### Dimensions
 
 Contains volume of the package or size of the box.
@@ -77,11 +88,10 @@ Contains info about person or company.
 
 | Name                    | Type       | Description                             |
 | ----------------------- | ---------- | --------------------------------------- |
-| type*       						| Int        | `0` - private, `1` - organization 			 |
-| firstName*  						| String     | Person's first name (64 chars)          |
-| lastName*   						| String     | Person's last name (64 chars)           |
-| organizationName**      | String     | Org Name (64 chars)                     |
-| organizationNumber**    | String     | Organization Number (64 chars)          |
+| firstName*<sup>1</sup>  | String     | Person's first name (64 chars)          |
+| lastName*<sup>1</sup>| String     | Person's last name (64 chars)           |
+| organizationName*<sup>2</sup>| String     | Org Name (64 chars)                     |
+| organizationNumber<sup>2</sup>| String     | Organization Number (64 chars)          |
 | mobile*     						| String     | Cellphone (19 chars)                    |
 | phone                  	| String     | Landline phone (64 chars)               |
 | email*     							| String     | Email (64 chars)                        |
@@ -90,6 +100,6 @@ Contains info about person or company.
 | postalCode* 						| String     | Postal code (6 chars)                   |
 | city*       						| String     | City (64 chars)                         |
 
-\* Allowed only when `type = 0`
+<sup>1</sup> Allowed only when user is a private person
 
-\*\* Allowed only when `type = 1`
+<sup>2</sup> Allowed only when user is a company
