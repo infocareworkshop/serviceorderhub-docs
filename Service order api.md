@@ -2,16 +2,16 @@
 
 **Note** Mandatory parameters are marked with  *  sign.
 
-## GET /api/v1/brands
+## GET /api/v1/manufacturers
 
-Get brands.
+Get manufacturers (brands).
 ### Input:
 | Name                   | Type            | Description                             |
 | ---------------------- | --------------- | --------------------------------------- |
 | originatorType\*       | Originator      | Originator type                         |
 | bookingType\*          | BookingType     |                                         |
 | serviceType            | Int             | Service type Id                         |
-| brand                  | Int&#124;String | Brand Id or alias                       |
+| manufacturer           | Int&#124;String | Manufacturer Id or alias                |
 | productType            | Int&#124;String | Product type Id or alias                |
 | clientPostalCode       | String          |                                         |
 
@@ -39,7 +39,7 @@ Get service types.
 | originatorType\*       | Originator      | Originator type                         |
 | bookingType\*          | BookingType     |                                         |
 | serviceType            | Int             | Service type Id                         |
-| brand                  | Int&#124;String | Brand Id or alias                       |
+| manufacturer           | Int&#124;String | Manufacturer Id or alias                |
 | productType            | Int&#124;String | Product type Id or alias                |
 | clientPostalCode       | String          |                                         |
 
@@ -76,7 +76,7 @@ Get product types.
 | originatorType\*       | Originator      | Originator type                         |
 | bookingType\*          | BookingType     |                                         |
 | serviceType\*          | Int             | Service type Id                         |
-| brand\*                | Int&#124;String | Brand Id or alias                       |
+| manufacturer\*         | Int&#124;String | Manufacturer Id or alias                |
 | productType            | Int&#124;String | Product type Id or alias                |
 | clientPostalCode       | String          |                                         |
 
@@ -116,7 +116,7 @@ Get service locations.
 | originatorType\*       | Originator      | Originator type                         |
 | bookingType\*          | BookingType     |                                         |
 | serviceType\*          | Int             | Service type Id                         |
-| brand\*                | Int&#124;String | Brand Id or alias                       |
+| manufacturer\*         | Int&#124;String | Manufacturer Id or alias                |
 | productType\*          | Int&#124;String | Product type Id or alias                |
 | clientPostalCode       | String          |                                         |
 
@@ -171,7 +171,7 @@ Get allowed shipping methods.
 | ---------------------- | --------------- | --------------------------------------- |
 | originatorType\*       | Originator      | Originator type                         |
 | serviceType\*          | Int             | Service type Id                         |
-| brand\*                | Int&#124;String | Brand Id or alias                       |
+| manufacturer\*         | Int&#124;String | Manufacturer Id or alias                |
 | productType\*          | Int&#124;String | Product type Id or alias                |
 | clientPostalCode       | String          |                                         |
 | serviceLocation\*      | Int             | Service location Id                     |
@@ -257,25 +257,25 @@ When data is incorrect:
 
 Create a new Case.
 ### Input:
-| Name                          | Type        | Description                                       |
-| ----------------------------- | ----------- | ------------------------------------------------- |
-| serviceType\*                 | Int         | Id from `service-types`                           |
-| manufacturer\*                | Int         | Id from `brands`                                  |
-| productType\*                 | Int         | Id from `product-types`                           |
-| shipping<sup>1</sup>          | Int         | Id from `shipping-methods`                        |
-| location\*                    | Int         | Id from `service-locations`                       |
-| order\*                       | OrderData   | Order data                                        |
-| product\*                     | ProductData | Product data                                      |
-| pickupDestination<sup>2</sup> | String      | `consumer` or `customCompany` or `customPrivate`  |
-| returnDestination<sup>2</sup> | String      | `consumer` or `customCompany` or `customPrivate`  |
-| clientPostalCode\*            | String      |                                                   |
-| customer\*                    | ContactData | Info about user who books this order              |
-| consumer<sup>3</sup>          | ContactData | Info about end user                               |
-| pickupDst<sup>4</sup>         | ContactData | Where shipment will be picked up                  |
-| returnDst<sup>5</sup>         | ContactData | Where shipment should be delivered after repair   |
-| originatorType\*              | Originator  | Originator type                                   |
-| bookingType\*                 | BookingType | Booking type                                      |
-| acceptConditions*             | Boolean     | Terms and condition acceptance. Should be `true`  |
+| Name                          | Type            | Description                                       |
+| ----------------------------- | --------------- | ------------------------------------------------- |
+| serviceType\*                 | Int             | Id from `service-types`                           |
+| manufacturer\*                | Int&#124;String | Id or alias from `manufacturers`                  |
+| productType\*                 | Int&#124;String | Id or alias from `product-types`                  |
+| shipping<sup>1</sup>          | Int             | Id from `shipping-methods`                        |
+| location\*                    | Int             | Id from `service-locations`                       |
+| order\*                       | OrderData       | Order data                                        |
+| product\*                     | ProductData     | Product data                                      |
+| pickupDestination<sup>2</sup> | String          | `consumer` or `customCompany` or `customPrivate`  |
+| returnDestination<sup>2</sup> | String          | `consumer` or `customCompany` or `customPrivate`  |
+| clientPostalCode\*            | String          |                                                   |
+| customer\*                    | ContactData     | Info about user who books this order              |
+| consumer<sup>3</sup>          | ContactData     | Info about end user                               |
+| pickupDst<sup>4</sup>         | ContactData     | Where shipment will be picked up                  |
+| returnDst<sup>5</sup>         | ContactData     | Where shipment should be delivered after repair   |
+| originatorType\*              | Originator      | Originator type                                   |
+| bookingType\*                 | BookingType     | Booking type                                      |
+| acceptConditions*             | Boolean         | Terms and condition acceptance. Should be `true`  |
 
 
 <sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required
@@ -287,7 +287,7 @@ according to the business rules, but no shipping method id was sent.
 
 <sup>4</sup> Enabled when pickupDestination ≠ `consumer`
 
-<sup>4</sup> Enabled when returnDestination ≠ `consumer`
+<sup>5</sup> Enabled when returnDestination ≠ `consumer`
 
 ### Example:
 
@@ -348,32 +348,10 @@ content-type: application/json
 ```
 ### Output:
 
-# TODO: fix me
 ```js
 {
   "id": 7707, // Case's Id
-  "guid": "69b0e17f-eeb9-4834-b809-60b015054c0d", // Case's GUID
-  "integrations": { // All additional data stored here
-    "shipping": { // Shipping data
-      "packageNumber": "00370726200502318503",
-      "shipmentNumber": 0,
-      "senderAddress": {
-        "name": "testorg",
-        "address": "test",
-        "postalCode": "1234",
-        "city": "test",
-        "country": "SE"
-      },
-      "receiverAddress": {
-        "name": "Workshop name",
-        "address": "some address",
-        "postalCode": "5678",
-        "city": "Some city",
-        "country": "SE"
-      },
-      "result": true
-    }
-  }
+  "guid": "69b0e17f-eeb9-4834-b809-60b015054c0d" // Case's GUID
 }
 ```
 
@@ -401,14 +379,14 @@ Get all info about created Case.
 | guid                   | GUID       | Case's GUID                             |
 
 ### Output:
-# TODO: fix me
+
 ```js
 {
   "id": 7676,
   "country": "SE",
   "guid": "c0167135-2b0f-471b-81d6-c06d91cfb063",
   "partnerId": 1,
-  "workshopId": 2,
+  "serviceProviderId": 2,
   "manufacturerId": 1006,
   "currentStatus": "rejected", // current status of the case
   "productData": { // ProductData
@@ -419,6 +397,9 @@ Get all info about created Case.
   },
   "orderData": {
     "shipmentData": {
+      "guid": "517e4502-c0f9-409c-94bc-8d3a0eb1b2f6",
+      "service": "senderella",
+      "serviceId": "1000",
       "packageNumber": "00370726201095743185",
       "shipmentNumber": 0,
       "senderAddress": {
@@ -436,9 +417,12 @@ Get all info about created Case.
         "country": "SE"
       },
     },
+    "bookingType": "companyToPrivate",
     "originatorType": "private",
+    "clientPostalCode": "2333",
     "pickupDestination": "customer",
-    "returnDestination": "customer"
+    "returnDestination": "customer",
+    "integrationsFinished": true
   },
   "serviceTypeId": 1,
   "serviceLocationId": 1,
@@ -472,22 +456,26 @@ Get all info about created Case.
     "name": "Garanti",
     "properties": {
       "requirePurchaseDate": true
-    }
+    },
+    "externalData": null
   },
   "productType": {
     "id": 1004,
     "name": "Notebook",
     "properties": {
       "requireSerial": true
-    }
+    },
+    "externalData": null
   },
   "manufacturer": {
     "id": 1006,
-    "name": "Acer"
+    "name": "Acer",
+    "externalData": null
   },
   "serviceLocation": {
     "id": 1,
-    "name": "Verkstadsreparation"
+    "name": "Verkstadsreparation",
+    "externalData": null
   },
   "serviceProvider": {
     "id": 2,
