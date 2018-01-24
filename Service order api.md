@@ -276,6 +276,7 @@ Create a new Case.
 | originatorType\*              | Originator      | Originator type                                   |
 | bookingType\*                 | BookingType     | Booking type                                      |
 | acceptConditions*             | Boolean         | Terms and condition acceptance. Should be `true`  |
+| noPassword                    | Boolean         | Make `product.password` optional                  |
 
 
 <sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required
