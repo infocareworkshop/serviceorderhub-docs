@@ -22,13 +22,13 @@ The business rules may be different depending on the originator.
 
 ### Booking types
 
-Possible values: 
+Possible values:
 
-`companyToCompany`
+`companyToCompany` - when one company makes a transaction with another
 
-`companyToPrivate`
+`companyToPrivate` -  when a company makes a transaction with a private person
 
-`privateToPrivate` - for non helpdesk originators
+`privateToPrivate` - when a private person makes a transaction for them self of with another private person
 
 
 ### Dimensions
