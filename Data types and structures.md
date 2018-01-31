@@ -99,6 +99,7 @@ Contains info about person or company.
 | addName               	| String     | Additional name (c/o) (64 chars)        |
 | postalCode* 						| String     | Postal code (6 chars)                   |
 | city*       						| String     | City (64 chars)                         |
+| countryCode       	    | String     | Country code (2 capital letters)        |
 
 <sup>1</sup> Allowed only when user is a private person
 
