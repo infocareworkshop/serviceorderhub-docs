@@ -59,6 +59,7 @@ Contains info about service order.
 | pickupDate             | String     | Date from `pickup-dates`                   |
 | packaging              | Boolean    | Does customer wants to request packing materials |
 | mail                   | String     | Used for some specific cases               |
+| consents               | Object     | List of consents                           |
 
 
 ### ProductData
