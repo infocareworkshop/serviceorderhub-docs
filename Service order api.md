@@ -550,3 +550,37 @@ Service providers can view all data.
   }
 }   
 ```
+
+## POST /api/v1/case/update
+
+Modify Case.
+### Input:
+| Name                          | Type            | Description                                       |
+| ----------------------------- | --------------- | ------------------------------------------------- |
+| guid\*                        | GUID            | Guid of the Case                                  |
+| orderData                     | Object          | Modified fields                                   |
+| productData                   | Object          | Modified fields                                   |
+| customer                      | Object          | Modified fields                                   |
+| consumer                      | Object          | Modified fields                                   |
+| pickupDst                     | Object          | Modified fields                                   |
+| returnDst                     | Object          | Modified fields                                   |
+
+### Example:
+
+```js
+{
+  "guid": "d2379b74-d9b0-40cd-92e7-d1f48f398f43",
+  "orderData": {
+    "infocareSesamOriginator": "Microsoft",
+    "consents": ["hello", "world"]
+  }
+}
+```
+
+### Output:
+
+```js
+{
+  "result": true
+}
+```
