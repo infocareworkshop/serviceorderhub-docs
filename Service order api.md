@@ -373,7 +373,7 @@ Get shipping label (Base64 encoded PDF file).
 
 ## GET /api/v1/case
 
-Get all info about created Case.
+Get all info about a certain Case.
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -501,7 +501,7 @@ Get all info about created Case.
 
 ## POST /api/v1/search-cases
 
-Get list of cases 
+Get list of cases
 ### Input (JSON body):
 | Name                   | Type        | Description                                     |
 | ---------------------- | ----------- | ----------------------------------------------- |
@@ -513,7 +513,7 @@ Get list of cases
 ### Example:
 ```
 {
-  "filters": { "orderData": { "partnerSpecific": { "caperio": { "sysId": 3112312312 }}}}
+  "filters": { "orderData": { "partnerSpecific": { "partnerName": { "internalReference": 3112312312 }}}}
 }
 ```
 
@@ -548,8 +548,21 @@ Service providers can view all data.
     "offset": 0,
     "count": 194
   }
-}   
+}
 ```
+
+## POST /api/v1/case/accept
+
+Endpoint for the service provider to confirm that the case was accepted for repair and imported to their production system
+### Input (JSON body):
+| Name                   | Type       | Description                             |
+| ---------------------- | ---------- | --------------------------------------- |
+| guid                   | GUID       | Case's GUID                             |
+
+## POST /api/v1/unexported-cases
+Get a list of cases unaccepted by the Service Provider.
+
+The request has the same body structure, parameters and output as [POST /api/v1/search-cases](#post-apiv1search-cases)
 
 ## POST /api/v1/case/update
 
