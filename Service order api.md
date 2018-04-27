@@ -559,6 +559,24 @@ Endpoint for the service provider to confirm that the case was accepted for repa
 | ---------------------- | ---------- | --------------------------------------- |
 | guid                   | GUID       | Case's GUID                             |
 
+### Example:
+
+```js
+{
+  "guid": "c0167135-2b0f-471b-81d6-c06d91cfb063"
+}
+```
+
+### Output:
+
+```js
+{
+    "data": {
+        "result": true
+    }
+}
+```
+
 ## POST /api/v1/unexported-cases
 Get a list of cases unaccepted by the Service Provider.
 
