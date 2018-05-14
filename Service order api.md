@@ -567,6 +567,23 @@ Endpoint for the service provider to confirm that the case was accepted for repa
 }
 ```
 
+## POST /api/v1/case/cancel
+
+Endpoint for the service provider to notify Hub that import was canceled.
+### Input (JSON body):
+| Name                   | Type       | Description                             |
+| ---------------------- | ---------- | --------------------------------------- |
+| guid                   | GUID       | Case's GUID                             |
+| reason                 | String     | Why this case was rejected (Optional)   |
+
+### Example:
+
+```js
+{
+  "guid": "c0167135-2b0f-471b-81d6-c06d91cfb063"
+}
+```
+
 ### Output:
 
 ```js
