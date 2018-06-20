@@ -28,7 +28,7 @@ Possible values:
 
 `companyToPrivate` -  when a company makes a transaction with a private person
 
-`privateToPrivate` - when a private person makes a transaction for them self of with another private person
+`privateToPrivate` - when a private person makes a transaction for themself or with another private person
 
 
 ### Dimensions
