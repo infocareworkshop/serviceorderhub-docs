@@ -5,6 +5,7 @@
 ## GET /api/v1/manufacturers
 
 Get manufacturers (brands).
+
 ### Input:
 | Name                   | Type            | Description                             |
 | ---------------------- | --------------- | --------------------------------------- |
@@ -33,6 +34,7 @@ Get manufacturers (brands).
 ## GET /api/v1/service-types
 
 Get service types.
+
 ### Input:
 | Name                   | Type            | Description                             |
 | ---------------------- | --------------- | --------------------------------------- |
@@ -70,6 +72,7 @@ Field `properties` contains info about required fields
 ## GET /api/v1/product-types
 
 Get product types.
+
 ### Input:
 | Name                   | Type            | Description                             |
 | ---------------------- | --------------- | --------------------------------------- |
@@ -139,6 +142,7 @@ Get service locations.
 ## GET /api/v1/accessory
 
 Get accessory.
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -202,6 +206,7 @@ Field `properties` contains info about required fields.
 
 ## GET /api/v1/shipping/pickup-dates
 Get allowed pickup dates for this shipping methods.
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -358,6 +363,7 @@ content-type: application/json
 
 ## GET /api/v1/shipping/label
 Get shipping label (Base64 encoded PDF file).
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -374,6 +380,7 @@ Get shipping label (Base64 encoded PDF file).
 ## GET /api/v1/case
 
 Get all info about a certain Case.
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
@@ -602,6 +609,7 @@ The request has the same body structure, parameters and output as [POST /api/v1/
 ## POST /api/v1/case/update
 
 Modify Case.
+
 ### Input:
 | Name                          | Type            | Description                                       |
 | ----------------------------- | --------------- | ------------------------------------------------- |

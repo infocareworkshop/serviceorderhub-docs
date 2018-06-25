@@ -9,11 +9,18 @@ Service providers can create or update cost proposals for cases.
 GET /api/v1/cost-proposals
 --------------------------
 
-Get all cost proposals attached to specific *Case*. ### Input: \| Name
-\| Type \| Description \| \| ---------------------- \| ---------- \|
---------------------------------------- \| \| guid\* \| Guid \| Guid of
-the case \| \| active \| Boolean \| Get proposals allowed for approve
-only \|
+Get all cost proposals attached to specific *Case*.
+
+Input:
+~~~~~~
+
++----------+-----------+------------------------------------------+
+| Name     | Type      | Description                              |
++==========+===========+==========================================+
+| guid\*   | Guid      | Guid of the case                         |
++----------+-----------+------------------------------------------+
+| active   | Boolean   | Get proposals allowed for approve only   |
++----------+-----------+------------------------------------------+
 
 Example:
 ~~~~~~~~
@@ -89,7 +96,7 @@ Example:
     /api/v1/cost-proposals/approve?accessToken=key&id=2
 
     {
-     "approverName": "John Smith" 
+     "approverName": "John Smith"
     }
 
 Output:
@@ -123,7 +130,7 @@ Example:
         "priceNet": 1860.5, // Price (optional)
         "currency": "SEK", // Currency, 3 capital letters (optional)
         "timeStamp": "2017-07-12 13:14:13.037", // date created (optional)
-        "isActive": true, // Can we approve this Cost Proposal 
+        "isActive": true, // Can we approve this Cost Proposal
         "dateAccepted": "2017-07-14 13:14:13.037", // when this Cost proposal was been accepted (optional)
         "approverName": "John Smith" // Who performed approve (optional)
         "details": [ // Optional array of details

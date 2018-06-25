@@ -6,13 +6,26 @@ Service order API
 GET /api/v1/manufacturers
 -------------------------
 
-Get manufacturers (brands). ### Input: \| Name \| Type \| Description \|
-\| ---------------------- \| --------------- \|
---------------------------------------- \| \| originatorType\* \|
-Originator \| Originator type \| \| bookingType\* \| BookingType \| \|
-\| serviceType \| Int \| Service type Id \| \| manufacturer \|
-Int\|String \| Manufacturer Id or alias \| \| productType \| Int\|String
-\| Product type Id or alias \| \| clientPostalCode \| String \| \|
+Get manufacturers (brands).
+
+Input:
+~~~~~~
+
++--------------------+---------------+----------------------------+
+| Name               | Type          | Description                |
++====================+===============+============================+
+| originatorType\*   | Originator    | Originator type            |
++--------------------+---------------+----------------------------+
+| bookingType\*      | BookingType   |                            |
++--------------------+---------------+----------------------------+
+| serviceType        | Int           | Service type Id            |
++--------------------+---------------+----------------------------+
+| manufacturer       | Int\|String   | Manufacturer Id or alias   |
++--------------------+---------------+----------------------------+
+| productType        | Int\|String   | Product type Id or alias   |
++--------------------+---------------+----------------------------+
+| clientPostalCode   | String        |                            |
++--------------------+---------------+----------------------------+
 
 Output:
 ~~~~~~~
@@ -35,13 +48,26 @@ Output:
 GET /api/v1/service-types
 -------------------------
 
-Get service types. ### Input: \| Name \| Type \| Description \| \|
----------------------- \| --------------- \|
---------------------------------------- \| \| originatorType\* \|
-Originator \| Originator type \| \| bookingType\* \| BookingType \| \|
-\| serviceType \| Int \| Service type Id \| \| manufacturer \|
-Int\|String \| Manufacturer Id or alias \| \| productType \| Int\|String
-\| Product type Id or alias \| \| clientPostalCode \| String \| \|
+Get service types.
+
+Input:
+~~~~~~
+
++--------------------+---------------+----------------------------+
+| Name               | Type          | Description                |
++====================+===============+============================+
+| originatorType\*   | Originator    | Originator type            |
++--------------------+---------------+----------------------------+
+| bookingType\*      | BookingType   |                            |
++--------------------+---------------+----------------------------+
+| serviceType        | Int           | Service type Id            |
++--------------------+---------------+----------------------------+
+| manufacturer       | Int\|String   | Manufacturer Id or alias   |
++--------------------+---------------+----------------------------+
+| productType        | Int\|String   | Product type Id or alias   |
++--------------------+---------------+----------------------------+
+| clientPostalCode   | String        |                            |
++--------------------+---------------+----------------------------+
 
 Output:
 ~~~~~~~
@@ -72,13 +98,26 @@ Field ``properties`` contains info about required fields
 GET /api/v1/product-types
 -------------------------
 
-Get product types. ### Input: \| Name \| Type \| Description \| \|
----------------------- \| --------------- \|
---------------------------------------- \| \| originatorType\* \|
-Originator \| Originator type \| \| bookingType\* \| BookingType \| \|
-\| serviceType\* \| Int \| Service type Id \| \| manufacturer\* \|
-Int\|String \| Manufacturer Id or alias \| \| productType \| Int\|String
-\| Product type Id or alias \| \| clientPostalCode \| String \| \|
+Get product types.
+
+Input:
+~~~~~~
+
++--------------------+---------------+----------------------------+
+| Name               | Type          | Description                |
++====================+===============+============================+
+| originatorType\*   | Originator    | Originator type            |
++--------------------+---------------+----------------------------+
+| bookingType\*      | BookingType   |                            |
++--------------------+---------------+----------------------------+
+| serviceType\*      | Int           | Service type Id            |
++--------------------+---------------+----------------------------+
+| manufacturer\*     | Int\|String   | Manufacturer Id or alias   |
++--------------------+---------------+----------------------------+
+| productType        | Int\|String   | Product type Id or alias   |
++--------------------+---------------+----------------------------+
+| clientPostalCode   | String        |                            |
++--------------------+---------------+----------------------------+
 
 Output:
 ~~~~~~~
@@ -153,10 +192,16 @@ Output:
 GET /api/v1/accessory
 ---------------------
 
-Get accessory. ### Input: \| Name \| Type \| Description \| \|
----------------------- \| ---------- \|
---------------------------------------- \| \| productType\* \| Int \|
-Product type Id \|
+Get accessory.
+
+Input:
+~~~~~~
+
++-----------------+--------+-------------------+
+| Name            | Type   | Description       |
++=================+========+===================+
+| productType\*   | Int    | Product type Id   |
++-----------------+--------+-------------------+
 
 Output:
 ~~~~~~~
@@ -231,11 +276,18 @@ Field ``properties`` contains info about required fields.
 GET /api/v1/shipping/pickup-dates
 ---------------------------------
 
-Get allowed pickup dates for this shipping methods. ### Input: \| Name
-\| Type \| Description \| \| ---------------------- \| ---------- \|
---------------------------------------- \| \| shippingMethod\* \| Int \|
-``id`` from ``shipping-methods`` endpoint \| \| postalCode\* \| String
-\| Postal code (3-10) chars \|
+Get allowed pickup dates for this shipping methods.
+
+Input:
+~~~~~~
+
++--------------------+----------+---------------------------------------------+
+| Name               | Type     | Description                                 |
++====================+==========+=============================================+
+| shippingMethod\*   | Int      | ``id`` from ``shipping-methods`` endpoint   |
++--------------------+----------+---------------------------------------------+
+| postalCode\*       | String   | Postal code (3-10) chars                    |
++--------------------+----------+---------------------------------------------+
 
 Output:
 ~~~~~~~
@@ -402,10 +454,16 @@ Output:
 GET /api/v1/shipping/label
 --------------------------
 
-Get shipping label (Base64 encoded PDF file). ### Input: \| Name \| Type
-\| Description \| \| ---------------------- \| ---------- \|
---------------------------------------- \| \| guid \| GUID \| Case's
-GUID \|
+Get shipping label (Base64 encoded PDF file).
+
+Input:
+~~~~~~
+
++--------+--------+---------------+
+| Name   | Type   | Description   |
++========+========+===============+
+| guid   | GUID   | Case's GUID   |
++--------+--------+---------------+
 
 Output:
 ~~~~~~~
@@ -421,10 +479,16 @@ Output:
 GET /api/v1/case
 ----------------
 
-Get all info about a certain Case. ### Input: \| Name \| Type \|
-Description \| \| ---------------------- \| ---------- \|
---------------------------------------- \| \| guid \| GUID \| Case's
-GUID \|
+Get all info about a certain Case.
+
+Input:
+~~~~~~
+
++--------+--------+---------------+
+| Name   | Type   | Description   |
++========+========+===============+
+| guid   | GUID   | Case's GUID   |
++--------+--------+---------------+
 
 Output:
 ~~~~~~~
@@ -664,14 +728,28 @@ The request has the same body structure, parameters and output as `POST
 POST /api/v1/case/update
 ------------------------
 
-Modify Case. ### Input: \| Name \| Type \| Description \| \|
------------------------------ \| --------------- \|
-------------------------------------------------- \| \| guid\* \| GUID
-\| Guid of the Case \| \| orderData \| Object \| Modified fields \| \|
-productData \| Object \| Modified fields \| \| customer \| Object \|
-Modified fields \| \| consumer \| Object \| Modified fields \| \|
-pickupDst \| Object \| Modified fields \| \| returnDst \| Object \|
-Modified fields \|
+Modify Case.
+
+Input:
+~~~~~~
+
++---------------+----------+--------------------+
+| Name          | Type     | Description        |
++===============+==========+====================+
+| guid\*        | GUID     | Guid of the Case   |
++---------------+----------+--------------------+
+| orderData     | Object   | Modified fields    |
++---------------+----------+--------------------+
+| productData   | Object   | Modified fields    |
++---------------+----------+--------------------+
+| customer      | Object   | Modified fields    |
++---------------+----------+--------------------+
+| consumer      | Object   | Modified fields    |
++---------------+----------+--------------------+
+| pickupDst     | Object   | Modified fields    |
++---------------+----------+--------------------+
+| returnDst     | Object   | Modified fields    |
++---------------+----------+--------------------+
 
 Example:
 ~~~~~~~~

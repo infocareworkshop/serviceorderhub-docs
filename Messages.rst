@@ -45,10 +45,16 @@ Output:
 GET /api/v1/case-messages
 -------------------------
 
-Get all messages attached to specific *Case*. ### Input: \| Name \| Type
-\| Description \| \| ---------------------- \| ---------- \|
---------------------------------------- \| \| guid\* \| Guid \| Guid of
-the case \|
+Get all messages attached to specific *Case*.
+
+Input:
+~~~~~~
+
++----------+--------+--------------------+
+| Name     | Type   | Description        |
++==========+========+====================+
+| guid\*   | Guid   | Guid of the case   |
++----------+--------+--------------------+
 
 Example:
 ~~~~~~~~

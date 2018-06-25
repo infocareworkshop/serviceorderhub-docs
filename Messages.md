@@ -40,6 +40,7 @@ Add a new message to specific *Case*.
 ## GET /api/v1/case-messages
 
 Get all messages attached to specific *Case*.
+
 ### Input:
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
