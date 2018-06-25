@@ -2,7 +2,6 @@
    :maxdepth: 2
    :hidden:
 
-   index
    Data types and structures
    Service order api
    Cost proposals
