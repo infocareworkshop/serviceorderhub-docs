@@ -9,11 +9,20 @@ Service provider and exported to their internal systems.
 POST /api/v1/case-messages/create
 ---------------------------------
 
-Add a new message to specific *Case*. ### Input (request body): \| Name
-\| Type \| Description \| \| ---------------------- \| ---------- \|
---------------------------------------- \| \| guid\* \| Guid \| Guid of
-the case \| \| content \| String \| Message text \| \| messageType\* \|
-String(32) \| Message type (always ``serviceComment``) \|
+Add a new message to specific *Case*.
+
+Input (request body):
+~~~~~~~~~~~~~~~~~~~~~
+
++-----------------+--------------+--------------------------------------------+
+| Name            | Type         | Description                                |
++=================+==============+============================================+
+| guid\*          | Guid         | Guid of the case                           |
++-----------------+--------------+--------------------------------------------+
+| content         | String       | Message text                               |
++-----------------+--------------+--------------------------------------------+
+| messageType\*   | String(32)   | Message type (always ``serviceComment``)   |
++-----------------+--------------+--------------------------------------------+
 
 Example payload:
 ~~~~~~~~~~~~~~~~

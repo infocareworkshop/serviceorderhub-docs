@@ -7,6 +7,7 @@ Service partners can attach messages to cases that can be viewed by Service prov
 ## POST /api/v1/case-messages/create
 
 Add a new message to specific *Case*.
+
 ### Input (request body):
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |
