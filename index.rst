@@ -1,7 +1,8 @@
 .. toctree::
    :maxdepth: 2
+   :hidden:
 
-   Data types and stuctures
+   Data types and structures
    Service order api
    Cost proposals
    Messages
