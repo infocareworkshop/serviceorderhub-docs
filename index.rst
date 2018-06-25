@@ -1,3 +1,12 @@
+.. toctree::
+:glob:
+:maxdepth: 2
+
+Data types and stuctures
+Service order api
+Cost proposals
+Messages
+
 API basics
 ==========
 
