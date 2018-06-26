@@ -87,20 +87,20 @@ Contains info about the product.
 
 Contains info about person or company.
 
-| Name                           | Type       | Description                             |
-| ------------------------------ | ---------- | --------------------------------------- |
-| firstName*<sup>1</sup>         | String     | Person's first name (64 chars)          |
-| lastName*<sup>1</sup>          | String     | Person's last name (64 chars)           |
-| organizationName*<sup>2</sup>  | String     | Org Name (64 chars)                     |
-| organizationNumber<sup>2</sup> | String     | Organization Number (64 chars)          |
-| mobile*     						       | String     | Cellphone (19 chars)                    |
-| phone                  	 			 | String     | Landline phone (64 chars)               |
-| email*     							       | String     | Email (64 chars)                        |
-| address*    						       | String     | Address (64 chars)                      |
-| addName               	       | String     | Additional name (c/o) (64 chars)        |
-| postalCode* 						       | String     | Postal code (6 chars)                   |
-| city*       						       | String     | City (64 chars)                         |
-| countryCode       	           | String     | Country code (2 capital letters)        |
+| Name                            | Type       | Description                             |
+| ------------------------------- | ---------- | --------------------------------------- |
+| firstName*<sup>1</sup>          | String     | Person's first name (64 chars)          |
+| lastName*<sup>1</sup>           | String     | Person's last name (64 chars)           |
+| organizationName*<sup>2</sup>   | String     | Org Name (64 chars)                     |
+| organizationNumber*<sup>2</sup> | String     | Organization Number (64 chars)          |
+| mobile*     						        | String     | Cellphone (19 chars)                    |
+| phone                  	 			  | String     | Landline phone (64 chars)               |
+| email*     							        | String     | Email (64 chars)                        |
+| address*    						        | String     | Address (64 chars)                      |
+| addName               	        | String     | Additional name (c/o) (64 chars)        |
+| postalCode* 						        | String     | Postal code (6 chars)                   |
+| city*       						        | String     | City (64 chars)                         |
+| countryCode       	            | String     | Country code (2 capital letters)        |
 
 <sup>1</sup> Allowed only when user is a private person
 
