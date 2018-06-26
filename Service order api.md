@@ -261,6 +261,7 @@ When data is incorrect:
 ## POST /api/v1/case/create
 
 Create a new Case.
+
 ### Input:
 | Name                          | Type            | Description                                       |
 | ----------------------------- | --------------- | ------------------------------------------------- |
@@ -509,6 +510,7 @@ Get all info about a certain Case.
 ## POST /api/v1/search-cases
 
 Get list of cases
+
 ### Input (JSON body):
 | Name                   | Type        | Description                                     |
 | ---------------------- | ----------- | ----------------------------------------------- |
@@ -576,7 +578,8 @@ Endpoint for the service provider to confirm that the case was accepted for repa
 
 ## POST /api/v1/case/cancel
 
-Endpoint for the service provider to notify Hub that import was canceled.
+Endpoint for the service provider to notify ServiceOrderHub that the case import was canceled and the provider revokes the acceptance to handle the service case.
+
 ### Input (JSON body):
 | Name                   | Type       | Description                             |
 | ---------------------- | ---------- | --------------------------------------- |

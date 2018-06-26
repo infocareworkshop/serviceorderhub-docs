@@ -349,26 +349,50 @@ When data is incorrect:
 POST /api/v1/case/create
 ------------------------
 
-Create a new Case. ### Input: \| Name \| Type \| Description \| \|
------------------------------ \| --------------- \|
-------------------------------------------------- \| \| serviceType\* \|
-Int \| Id from ``service-types`` \| \| manufacturer\* \| Int\|String \|
-Id or alias from ``manufacturers`` \| \| productType\* \| Int\|String \|
-Id or alias from ``product-types`` \| \| shipping1 \| Int \| Id from
-``shipping-methods`` \| \| location\* \| Int \| Id from
-``service-locations`` \| \| order\* \| OrderData \| Order data \| \|
-product\* \| ProductData \| Product data \| \| pickupDestination2 \|
-String \| ``consumer`` or ``customCompany`` or ``customPrivate`` \| \|
-returnDestination2 \| String \| ``consumer`` or ``customCompany`` or
-``customPrivate`` \| \| clientPostalCode\* \| String \| \| \| customer\*
-\| ContactData \| Info about user who books this order \| \| consumer3
-\| ContactData \| Info about end user \| \| pickupDst4 \| ContactData \|
-Where shipment will be picked up \| \| returnDst5 \| ContactData \|
-Where shipment should be delivered after repair \| \| originatorType\*
-\| Originator \| Originator type \| \| bookingType\* \| BookingType \|
-Booking type \| \| acceptConditions\* \| Boolean \| Terms and condition
-acceptance. Should be ``true`` \| \| noPassword \| Boolean \| Make
-``product.password`` optional \|
+Create a new Case.
+
+Input:
+~~~~~~
+
++----------------------+---------------+----------------------------------------------------------+
+| Name                 | Type          | Description                                              |
++======================+===============+==========================================================+
+| serviceType\*        | Int           | Id from ``service-types``                                |
++----------------------+---------------+----------------------------------------------------------+
+| manufacturer\*       | Int\|String   | Id or alias from ``manufacturers``                       |
++----------------------+---------------+----------------------------------------------------------+
+| productType\*        | Int\|String   | Id or alias from ``product-types``                       |
++----------------------+---------------+----------------------------------------------------------+
+| shipping1            | Int           | Id from ``shipping-methods``                             |
++----------------------+---------------+----------------------------------------------------------+
+| location\*           | Int           | Id from ``service-locations``                            |
++----------------------+---------------+----------------------------------------------------------+
+| order\*              | OrderData     | Order data                                               |
++----------------------+---------------+----------------------------------------------------------+
+| product\*            | ProductData   | Product data                                             |
++----------------------+---------------+----------------------------------------------------------+
+| pickupDestination2   | String        | ``consumer`` or ``customCompany`` or ``customPrivate``   |
++----------------------+---------------+----------------------------------------------------------+
+| returnDestination2   | String        | ``consumer`` or ``customCompany`` or ``customPrivate``   |
++----------------------+---------------+----------------------------------------------------------+
+| clientPostalCode\*   | String        |                                                          |
++----------------------+---------------+----------------------------------------------------------+
+| customer\*           | ContactData   | Info about user who books this order                     |
++----------------------+---------------+----------------------------------------------------------+
+| consumer3            | ContactData   | Info about end user                                      |
++----------------------+---------------+----------------------------------------------------------+
+| pickupDst4           | ContactData   | Where shipment will be picked up                         |
++----------------------+---------------+----------------------------------------------------------+
+| returnDst5           | ContactData   | Where shipment should be delivered after repair          |
++----------------------+---------------+----------------------------------------------------------+
+| originatorType\*     | Originator    | Originator type                                          |
++----------------------+---------------+----------------------------------------------------------+
+| bookingType\*        | BookingType   | Booking type                                             |
++----------------------+---------------+----------------------------------------------------------+
+| acceptConditions\*   | Boolean       | Terms and condition acceptance. Should be ``true``       |
++----------------------+---------------+----------------------------------------------------------+
+| noPassword           | Boolean       | Make ``product.password`` optional                       |
++----------------------+---------------+----------------------------------------------------------+
 
 1 ``shipping`` can be assigned automatically by the Service Order Hub if
 shipping is required according to the business rules, but no shipping
@@ -614,12 +638,22 @@ Output:
 POST /api/v1/search-cases
 -------------------------
 
-Get list of cases ### Input (JSON body): \| Name \| Type \| Description
-\| \| ---------------------- \| ----------- \|
------------------------------------------------ \| \| filters \| Object
-\| Search query \| \| pagination \| Object \| Pagination settings \| \|
-pagination.offset \| Int \| Default = 0 \| \| pagination.limit \| Int \|
-Default = 10, max = 100 \|
+Get list of cases
+
+Input (JSON body):
+~~~~~~~~~~~~~~~~~~
+
++---------------------+----------+---------------------------+
+| Name                | Type     | Description               |
++=====================+==========+===========================+
+| filters             | Object   | Search query              |
++---------------------+----------+---------------------------+
+| pagination          | Object   | Pagination settings       |
++---------------------+----------+---------------------------+
+| pagination.offset   | Int      | Default = 0               |
++---------------------+----------+---------------------------+
+| pagination.limit    | Int      | Default = 10, max = 100   |
++---------------------+----------+---------------------------+
 
 Example:
 ~~~~~~~~
@@ -691,11 +725,20 @@ Example:
 POST /api/v1/case/cancel
 ------------------------
 
-Endpoint for the service provider to notify Hub that import was
-canceled. ### Input (JSON body): \| Name \| Type \| Description \| \|
----------------------- \| ---------- \|
---------------------------------------- \| \| guid \| GUID \| Case's
-GUID \| \| reason \| String \| Why this case was rejected (Optional) \|
+Endpoint for the service provider to notify ServiceOrderHub that the
+case import was canceled and the provider revokes the acceptance to
+handle the service case.
+
+Input (JSON body):
+~~~~~~~~~~~~~~~~~~
+
++----------+----------+-----------------------------------------+
+| Name     | Type     | Description                             |
++==========+==========+=========================================+
+| guid     | GUID     | Case's GUID                             |
++----------+----------+-----------------------------------------+
+| reason   | String   | Why this case was rejected (Optional)   |
++----------+----------+-----------------------------------------+
 
 Example:
 ~~~~~~~~
