@@ -3,48 +3,6 @@ Service order API
 
 **Note** Mandatory parameters are marked with \* sign.
 
-POST /api/v1/case/send-completed-email
---------------------------------------
-
-Resend final email to customers.
-
-Input:
-~~~~~
-
-+--------------------+---------------+----------------------------+
-| Name               | Type          | Description                |
-+====================+===============+============================+
-| guid\*             | GUID          | Guid of the case           |
-+--------------------+---------------+----------------------------+
-| email              | String        | Receiver's email           |
-+--------------------+---------------+----------------------------+
-
-Example:
-~~~~~~~~
-
-.. code:: js
-
-    {
-      "guid": "d647067f-20d4-4ac3-891e-a4549e727bee",
-      "email": "test@example.com"
-    }
-
-Output:
-~~~~~~~
-
-.. code:: js
-
-    {
-      "data": {
-         "result": true // Or string with an information message
-      }
-    }
-    
-If ``email`` is empty then fields of the case will be used.
-
-If email cant't be sent then a string with message will be returned in ``result`` field (Sometimes emails are disabled in settings).
-
-
 GET /api/v1/manufacturers
 -------------------------
 
@@ -858,3 +816,44 @@ Output:
       "result": true
     }
 
+
+POST /api/v1/case/send-completed-email
+--------------------------------------
+
+Resend final email to customers.
+
+Input:
+~~~~~
+
++--------------------+---------------+----------------------------+
+| Name               | Type          | Description                |
++====================+===============+============================+
+| guid\*             | GUID          | Guid of the case           |
++--------------------+---------------+----------------------------+
+| email              | String        | Receiver's email           |
++--------------------+---------------+----------------------------+
+
+Example:
+~~~~~~~~
+
+.. code:: js
+
+    {
+      "guid": "d647067f-20d4-4ac3-891e-a4549e727bee",
+      "email": "test@example.com"
+    }
+
+Output:
+~~~~~~~
+
+.. code:: js
+
+    {
+      "data": {
+         "result": true // Or string with an information message
+      }
+    }
+    
+If ``email`` is empty then fields of the case will be used.
+
+If email cant't be sent then a string with message will be returned in ``result`` field (Sometimes emails are disabled in settings).
