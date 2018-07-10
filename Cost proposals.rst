@@ -4,6 +4,17 @@ Cost proposal API
 This part of API allows partners to get cost proposals and approve them.
 Service providers can create or update cost proposals for cases.
 
+**Cost proposal concept:**
+
+Cost proposals in the Service Order Hub can have two states, either they are approved or not. There is no such state as "rejected". Instead it can be many cost proposals with "id" as a unique key. If the partner doesn't want to approve a certian cost proposal they should contact the provider using the messages endpoints of this API, so the provider may issue another one.
+
+One case can have four cost proposals with different ids and names, e.g. two cost proposals with name "repair", one with name "return", and one with name "scrap". Cost proposals' names can help to group cost proposals on service partner's. Those names are different depending on service provider. 
+
+Two cost proposals with the name "repair" can appear when the service provider issued another cost proposal for repair maybe because the previous was not correct or acceptet. It's easy to sort them by date since they have timestamps. The Service Order Hub stores and returns all cost proposals ever created for the case. The service partner can accept only one cost proposal. If a case already has an accepted cost proposal and the partner accepts another, the previous cost proposal loses the flag "accepted". Please note that once a cost proposal is accepted it may be a legal reason for invoicing of the corresponding amount to the service partner even if the partner changed their mind and asked for another cost proposal. These conditions are a subject of direct negotiations between service partner and service provider.
+
+It's also not neccessary that every case can contain all possible cost proposals. It can contain only two or even one, e.g. one cost proposal with name "repair". 
+
+
 **Note** Mandatory parameters are marked with \* sign.
 
 GET /api/v1/cost-proposals
