@@ -695,8 +695,7 @@ Output
     {
       "data": [
         { Case 1 },
-        { Case 2 },
-        ...
+        { Case 2 }
       ],
       "pagination": {
         "offset": 0,
