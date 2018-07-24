@@ -690,7 +690,7 @@ Service providers can view all data.
 Output
 ~~~~~~
 
-::
+.. code-block:: json
 
     {
       "data": [
