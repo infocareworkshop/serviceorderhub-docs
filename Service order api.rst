@@ -708,10 +708,17 @@ POST /api/v1/case/accept
 ------------------------
 
 Endpoint for the service provider to confirm that the case was accepted
-for repair and imported to their production system ### Input (JSON
-body): \| Name \| Type \| Description \| \| ---------------------- \|
----------- \| --------------------------------------- \| \| guid \| GUID
-\| Case's GUID \|
+for repair and imported to their production system 
+
+Input (JSON body):
+~~~~~~~~~~~~~~~~~~
+
++----------+----------+-----------------------------------------+
+| Name     | Type     | Description                             |
++==========+==========+=========================================+
+| guid     | GUID     | Case's GUID                             |
++----------+----------+-----------------------------------------+
+
 
 Example:
 ~~~~~~~~
