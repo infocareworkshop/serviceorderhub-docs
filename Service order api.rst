@@ -439,8 +439,9 @@ Example:
         "problemText": "Picture/sound problems / Bad picture. Is periodic or constant?: Periodic"
       },
       "customer": {
-        "organizationName": "test",
-        "organizationNumber": "testorg",
+        "type": 1,
+        "organizationName": "Test LTD",
+        "organizationNumber": "64236482764",
         "mobile": "234234324",
         "email": "test@test.com",
         "address": "test",
@@ -448,8 +449,9 @@ Example:
         "city": "test"
       },
       "consumer": {
-        "firstName": "test",
-        "lastName": "test",
+        "type": 0,
+        "firstName": "John",
+        "lastName": "Doe",
         "mobile": "234234324",
         "email": "test@test.com",
         "address": "test",
