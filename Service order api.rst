@@ -354,57 +354,58 @@ Create a new Case.
 Input:
 ~~~~~~
 
-+----------------------+---------------+----------------------------------------------------------+
-| Name                 | Type          | Description                                              |
-+======================+===============+==========================================================+
-| serviceType\*        | Int           | Id from ``service-types``                                |
-+----------------------+---------------+----------------------------------------------------------+
-| manufacturer\*       | Int\|String   | Id or alias from ``manufacturers``                       |
-+----------------------+---------------+----------------------------------------------------------+
-| productType\*        | Int\|String   | Id or alias from ``product-types``                       |
-+----------------------+---------------+----------------------------------------------------------+
-| shipping1            | Int           | Id from ``shipping-methods``                             |
-+----------------------+---------------+----------------------------------------------------------+
-| location\*           | Int           | Id from ``service-locations``                            |
-+----------------------+---------------+----------------------------------------------------------+
-| order\*              | OrderData     | Order data                                               |
-+----------------------+---------------+----------------------------------------------------------+
-| product\*            | ProductData   | Product data                                             |
-+----------------------+---------------+----------------------------------------------------------+
-| pickupDestination2   | String        | ``consumer`` or ``customCompany`` or ``customPrivate``   |
-+----------------------+---------------+----------------------------------------------------------+
-| returnDestination2   | String        | ``consumer`` or ``customCompany`` or ``customPrivate``   |
-+----------------------+---------------+----------------------------------------------------------+
-| clientPostalCode\*   | String        |                                                          |
-+----------------------+---------------+----------------------------------------------------------+
-| customer\*           | ContactData   | Info about user who books this order                     |
-+----------------------+---------------+----------------------------------------------------------+
-| consumer3            | ContactData   | Info about end user                                      |
-+----------------------+---------------+----------------------------------------------------------+
-| pickupDst4           | ContactData   | Where shipment will be picked up                         |
-+----------------------+---------------+----------------------------------------------------------+
-| returnDst5           | ContactData   | Where shipment should be delivered after repair          |
-+----------------------+---------------+----------------------------------------------------------+
-| originatorType\*     | Originator    | Originator type                                          |
-+----------------------+---------------+----------------------------------------------------------+
-| bookingType\*        | BookingType   | Booking type                                             |
-+----------------------+---------------+----------------------------------------------------------+
-| acceptConditions\*   | Boolean       | Terms and condition acceptance. Should be ``true``       |
-+----------------------+---------------+----------------------------------------------------------+
-| noPassword           | Boolean       | Make ``product.password`` optional                       |
-+----------------------+---------------+----------------------------------------------------------+
++-----------------------------+---------------+----------------------------------------------------------+
+| Name                        | Type          | Description                                              |
++=============================+===============+==========================================================+
+| serviceType\*               | Int           | Id from ``service-types``                                |
++-----------------------------+---------------+----------------------------------------------------------+
+| manufacturer\*              | Int\|String   | Id or alias from ``manufacturers``                       |
++-----------------------------+---------------+----------------------------------------------------------+
+| productType\*               | Int\|String   | Id or alias from ``product-types``                       |
++-----------------------------+---------------+----------------------------------------------------------+
+| shipping\ :sup:`1`          | Int           | Id from ``shipping-methods``                             |
++-----------------------------+---------------+----------------------------------------------------------+
+| location\*                  | Int           | Id from ``service-locations``                            |
++-----------------------------+---------------+----------------------------------------------------------+
+| order\*                     | OrderData     | Order data                                               |
++-----------------------------+---------------+----------------------------------------------------------+
+| product\*                   | ProductData   | Product data                                             |
++-----------------------------+---------------+----------------------------------------------------------+
+| pickupDestination\ :sup:`2` | String        | ``consumer`` or ``customCompany`` or ``customPrivate``   |
++-----------------------------+---------------+----------------------------------------------------------+
+| returnDestination\ :sup:`2` | String        | ``consumer`` or ``customCompany`` or ``customPrivate``   |
++-----------------------------+---------------+----------------------------------------------------------+
+| clientPostalCode\*          | String        |                                                          |
++-----------------------------+---------------+----------------------------------------------------------+
+| customer\*                  | ContactData   | Info about user who books this order                     |
++-----------------------------+---------------+----------------------------------------------------------+
+| consumer\ :sup:`3`          | ContactData   | Info about end user                                      |
++-----------------------------+---------------+----------------------------------------------------------+
+| pickupDst\ :sup:`4`         | ContactData   | Where shipment will be picked up or sent from            |
++-----------------------------+---------------+----------------------------------------------------------+
+| returnDst\ :sup:`5`         | ContactData   | Where shipment should be delivered after repair          |
++-----------------------------+---------------+----------------------------------------------------------+
+| originatorType\*            | Originator    | Originator type                                          |
++-----------------------------+---------------+----------------------------------------------------------+
+| bookingType\*               | BookingType   | Booking type                                             |
++-----------------------------+---------------+----------------------------------------------------------+
+| acceptConditions\*          | Boolean       | Terms and condition acceptance. Should be ``true``       |
++-----------------------------+---------------+----------------------------------------------------------+
+| noPassword                  | Boolean       | Make ``product.password`` optional                       |
++-----------------------------+---------------+----------------------------------------------------------+
 
-1 ``shipping`` can be assigned automatically by the Service Order Hub if
+
+\ :sup:`1` ``shipping`` can be assigned automatically by the Service Order Hub if
 shipping is required according to the business rules, but no shipping
 method id was sent.
 
-2 Enabled when originatorType = ``helpdesk``
+\ :sup:`2` Enabled when originatorType = ``helpdesk``
 
-3 Enabled when bookingType ≠ ``privateToPrivate``
+\ :sup:`3` Enabled when bookingType ≠ ``privateToPrivate``
 
-4 Enabled when pickupDestination ≠ ``consumer``
+\ :sup:`4` Enabled when pickupDestination ≠ ``consumer``
 
-5 Enabled when returnDestination ≠ ``consumer``
+\ :sup:`5` Enabled when returnDestination ≠ ``consumer``
 
 Example:
 ~~~~~~~~
