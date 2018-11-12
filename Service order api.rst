@@ -403,9 +403,9 @@ method id was sent.
 
 \ :sup:`3` Enabled when bookingType ≠ ``privateToPrivate``
 
-\ :sup:`4` Enabled when pickupDestination ≠ ``consumer``
+\ :sup:`4` Enabled when pickupDestination ≠ ``consumer``. If pickupDestination is not sent, we use ``pickupDestination: "consumer"`` by default
 
-\ :sup:`5` Enabled when returnDestination ≠ ``consumer``
+\ :sup:`5` Enabled when returnDestination ≠ ``consumer``. If returnDestination is not sent, we use ``returnDestination: "consumer"`` by default
 
 Example:
 ~~~~~~~~
