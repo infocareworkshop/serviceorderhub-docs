@@ -271,7 +271,9 @@ Output:
       }
     ]
 
-Field ``properties`` contains info about required fields.
+If ``requirePickupDate`` of the ``properties`` object is not ``false``, the parameter ``order.pickupDate`` becomes mandatory for case/create and case/validate endpoints!
+
+If ``goodsTypeList` `of the ``properties`` object is not ``null``, the parameter ``order.goodsType`` becomes mandatory for case/create and case/validate endpoints!
 
 GET /api/v1/shipping/pickup-dates
 ---------------------------------

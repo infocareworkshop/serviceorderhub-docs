@@ -68,23 +68,26 @@ OrderData
 
 Contains info about service order.
 
-+--------------+-----------+----------------------------------------------------+
-| Name         | Type      | Description                                        |
-+==============+===========+====================================================+
-| chain        | String    | Special code of the chain                          |
-+--------------+-----------+----------------------------------------------------+
-| refNo        | String    | External ID, use any string (64 chars)             |
-+--------------+-----------+----------------------------------------------------+
-| goodsType    | String    | Data from ``shipping-methods`` goodsTypeList       |
-+--------------+-----------+----------------------------------------------------+
-| pickupDate   | String    | Date from ``pickup-dates``                         |
-+--------------+-----------+----------------------------------------------------+
-| packaging    | Boolean   | Does customer wants to request packing materials   |
-+--------------+-----------+----------------------------------------------------+
-| mail         | String    | Used for some specific cases                       |
-+--------------+-----------+----------------------------------------------------+
-| consents     | Object    | List of consents                                   |
-+--------------+-----------+----------------------------------------------------+
++---------------------+-----------+----------------------------------------------------+
+| Name                | Type      | Description                                        |
++=====================+===========+====================================================+
+| chain               | String    | Special code of the chain                          |
++---------------------+-----------+----------------------------------------------------+
+| refNo               | String    | External ID, use any string (64 chars)             |
++---------------------+-----------+----------------------------------------------------+
+| goodsType\ :sup:`1` | String    | Data from ``shipping-methods`` goodsTypeList       |
++---------------------+-----------+----------------------------------------------------+
+| pickupDate\ :sup:`2`| String    | Date from ``pickup-dates``                         |
++---------------------+-----------+----------------------------------------------------+
+| packaging           | Boolean   | Does customer wants to request packing materials   |
++---------------------+-----------+----------------------------------------------------+
+| mail                | String    | Used for some specific cases                       |
++---------------------+-----------+----------------------------------------------------+
+| consents            | Object    | List of consents                                   |
++---------------------+-----------+----------------------------------------------------+
+
+\ :sup:`1` ``goodsType`` is mandatory only if the corresponding shipping method has ``properties.requirePickupDate: true``. Check the API ref for ``/api/v1/shipping-methods`` for more detailes.
+\ :sup:`2` ``pickupDate`` is mandatory only if the corresponding shipping method has **not** ``null`` for ``properties.goodsTypeList``. Check the API ref for ``/api/v1/shipping-methods`` for more detailes.
 
 ProductData
 ~~~~~~~~~~~
