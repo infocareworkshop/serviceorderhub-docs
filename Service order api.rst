@@ -897,8 +897,8 @@ Input:
 
 All parameters are optional by default, but when provided data is not enough the system will throw an error.
 
-Output:
-~~~~~~~
+Output for valid case (status code 200):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: js
 
@@ -946,3 +946,32 @@ Output:
         }
       }
     }
+
+Output when there is no suitable competence to process the case (status code 404):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: js
+
+    {
+      "error": {
+        "message": "Can't process this case"
+      },
+      "data": null
+    }
+    
+Outut when data is not enough (status code 400):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: js
+
+    {
+      "error": "Not enough data",
+      "data": {
+        "paramsNeeded": [
+          "manufacturer",
+          "serviceType"
+        ]
+      }
+    }
+    
+    
