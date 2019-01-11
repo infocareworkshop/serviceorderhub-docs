@@ -894,6 +894,8 @@ Input:
 +--------------------+---------------+----------------------------+
 | clientPostalCode   | String        |                            |
 +--------------------+---------------+----------------------------+
+| serviceLocation    | Int           | Serivce location Id        |
++--------------------+---------------+----------------------------+
 
 All parameters are optional by default, but when provided data is not enough the system will throw an error.
 
