@@ -1,4 +1,4 @@
-Service order API
+Service provider API
 =================
 
 **Note** Mandatory parameters are marked with \* sign.
