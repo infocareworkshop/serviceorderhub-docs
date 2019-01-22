@@ -6,6 +6,7 @@
    Service order api
    Cost proposals
    Messages
+   Service provider API
 
 API basics
 ==========
