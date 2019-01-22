@@ -26,7 +26,7 @@ Example:
 
   {
     "guid": "a7180ff9-7c6e-4d0e-b756-16b49531382f",
-    "key": "ass" 
+    "key": "final" 
   }
   
 Output:
@@ -39,7 +39,7 @@ Output:
       "id": 98, // Status Id
       "caseId": 7927, // Case Id
       "guid": "a7180ff9-7c6e-4d0e-b756-16b49531382f", // Case guid
-      "key": "ass",
+      "key": "final",
       "createdAt": "2019-01-22T11:29:38.258Z",
       "updatedAt": "2019-01-22T11:29:38.258Z"
     }
