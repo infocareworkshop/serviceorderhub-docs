@@ -16,6 +16,23 @@ The Service Order Hub stores and returns all cost proposals ever created for the
 
 It's also not neccessary that every case can contain all possible cost proposals. It can contain three, two, ten or only one, e.g. one cost proposal with name "repair".
 
+Details
+~~~~~~~~~~~~~~~~~~~~~~
+
+Cost proposals can contain an array with details for storing cost specification. The parameter ``type`` is a free text parameter, but it has some recommended values.
+
++------------+------------------------------------------+
+| type       | Description                              |
++============+==========================================+
+| labor      | Costs related to labor                   |
++------------+------------------------------------------+
+| shipping   | Costs related to shipping                |
++------------+------------------------------------------+
+| sparePart  | Costs related to spare parts             |
++------------+------------------------------------------+
+| deductible | Costs related to insurance deductibles   |
++------------+------------------------------------------+
+
 --------------------------
 
 **Note** Mandatory parameters are marked with \* sign.
@@ -53,7 +70,7 @@ Output:
         "id": 2,
         "externalId": ["123456", "test"],
         "name": "repair",
-        "priceNet": "200.00",
+        "priceNet": "600.00",
         "currency": "SEK",
         "dateValidUntil": null,
         "isActive": true,
@@ -62,11 +79,18 @@ Output:
         "details": [
           {
             "line": 1,
-            "text": "shipping",
-            "type": null,
-            "priceNet": 100,
-            "quantity": 0
+            "text": "XGHF12 LCD Screen",
+            "type": sparePart,
+            "priceNet": 500,
+            "quantity": 1
           },
+          {
+            "line": 2,
+            "text": "",
+            "type": shipping,
+            "priceNet": 100,
+            "quantity": 1
+          }
         ]
       },
       {
@@ -142,18 +166,18 @@ Example:
         "externalId": ["123456", "test"], // Array of strings
         "name": "Scrap", // Type of work, pair externalId and name must be unique for Service provider
         "priceNet": 1860.5, // Price (optional)
-        "currency": "SEK", // Currency, 3 capital letters (optional)
+        "currency": "SEK", // Currency in ISO 4217 (3 capital letters) (optional)
         "timeStamp": "2017-07-12 13:14:13.037", // date created (optional)
-        "isActive": true, // Can we approve this Cost Proposal
-        "dateAccepted": "2017-07-14 13:14:13.037", // when this Cost proposal was been accepted (optional)
-        "approverName": "John Smith" // Who performed approve (optional)
-        "details": [ // Optional array of details
+        "isActive": true, // Can this Cost Proposal be approved?
+        "dateAccepted": "2017-07-14 13:14:13.037", // when this Cost proposal was accepted (optional)
+        "approverName": "John Smith" // Who performed approval (optional)
+        "details": [ // Optional array of details (specification)
           {
             "line": 1, // Counter from 1
-            "text": "shipping", // Type of work (text)
-            "type": null, // Type of work (id)
+            "text": "Two-way delivery", // Text description
+            "type": shipping, // Type of line
             "priceNet": 100, // Price
-            "quantity": 0 // Quantity
+            "quantity": 1 // Quantity
           },
           ...
         ]
