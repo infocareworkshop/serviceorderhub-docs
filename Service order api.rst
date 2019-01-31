@@ -305,6 +305,39 @@ Output:
       "2017-06-22T00:00:00.000Z"
     ]
 
+GET /api/v1/shipping/pickup-dates-extended
+---------------------------------
+
+Get allowed pickup dates with eventual comments for each date. Usually it includes info about pick up time
+
+Input:
+~~~~~~
+
++--------------------+----------+---------------------------------------------+
+| Name               | Type     | Description                                 |
++====================+==========+=============================================+
+| shippingMethod\*   | Int      | ``id`` from ``shipping-methods`` endpoint   |
++--------------------+----------+---------------------------------------------+
+| postalCode\*       | String   | Postal code (3-10) chars                    |
++--------------------+----------+---------------------------------------------+
+
+Output:
+~~~~~~~
+
+.. code:: js
+
+    {
+      "data": [
+        {
+          "date": "2019-02-01",
+          "comment": "Mondays/Tuesdays between 12-16, Thursdays/Wednesdays/Fridays between 8-12"
+        },
+        {
+          "date": "2019-02-04",
+          "comment": "Mondays/Tuesdays between 12-16, Thursdays/Wednesdays/Fridays between 8-12"
+        }
+    }   
+
 POST /api/v1/case/validate
 --------------------------
 
