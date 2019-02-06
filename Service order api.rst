@@ -459,7 +459,12 @@ Example:
       "productType": 1001,
       "location": 3,
       "order": {
-        "infocareSesamOriginator": "OtherSE"
+        "infocareSesamOriginator": "OtherSE",
+        "partnerSpecific": {
+          "testPartner": {
+            "testParam1": "text"
+          }
+        }
       },
       "product": {
         "model": "0",
@@ -721,9 +726,9 @@ All Partner and Service provider specific data is stored in
 ``orderData.partnerSpecific.<urlSlug>`` and
 ``orderData.providerSpecific.<urlSlug>`` objects.
 
-Service partners can view only partnerSpecific data with their urlSlug.
+Service partners can view only partnerSpecific data they own.
 
-Service providers can view all data.
+Service providers can view all data from all service partners whose cases they "own".
 
 Output
 ~~~~~~
