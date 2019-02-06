@@ -115,8 +115,8 @@ Contains info about service order.
 
     "providerSpecific": {
         "nordicService": {
-            "testParam1": 1,
-            "testParam2": "FREETEXT123",
+            "anotherTestParam": 1,
+            "veryDifferentTestParam": "FREE TEXT 09876554321",
         }
     }
 
