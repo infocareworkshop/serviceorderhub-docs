@@ -68,27 +68,27 @@ OrderData
 
 Contains info about service order.
 
-+---------------------------+-----------+----------------------------------------------------+
-| Name                      | Type      | Description                                        |
-+===========================+===========+====================================================+
-| chain                     | String    | Special code of the chain                          |
-+---------------------------+-----------+----------------------------------------------------+
-| refNo                     | String    | External ID, use any string (64 chars)             |
-+---------------------------+-----------+----------------------------------------------------+
-| goodsType\ :sup:`1`       | String    | Data from ``shipping-methods`` goodsTypeList       |
-+---------------------------+-----------+----------------------------------------------------+
-| pickupDate\ :sup:`2`      | String    | Date from ``pickup-dates``                         |
-+---------------------------+-----------+----------------------------------------------------+
-| partnerSpecific\ :sup:`3` | Object    | Custom parameters specific for a certain partner   |
-+---------------------------+-----------+----------------------------------------------------+
-| providerSpecific\ :sup:`4`| Object    | Same as partnerSpecific but for service provider  |
-+---------------------------+-----------+----------------------------------------------------+
-| packaging                 | Boolean   | Does customer wants to request packing materials   |
-+---------------------------+-----------+----------------------------------------------------+
-| mail                      | String    | Used for some specific cases                       |
-+---------------------------+-----------+----------------------------------------------------+
-| consents                  | Object    | List of consents                                   |
-+---------------------------+-----------+----------------------------------------------------+
++----------------------------+-----------+----------------------------------------------------+
+| Name                       | Type      | Description                                        |
++============================+===========+====================================================+
+| chain                      | String    | Special code of the chain                          |
++----------------------------+-----------+----------------------------------------------------+
+| refNo                      | String    | External ID, use any string (64 chars)             |
++----------------------------+-----------+----------------------------------------------------+
+| goodsType\ :sup:`1`        | String    | Data from ``shipping-methods`` goodsTypeList       |
++----------------------------+-----------+----------------------------------------------------+
+| pickupDate\ :sup:`2`       | String    | Date from ``pickup-dates``                         |
++----------------------------+-----------+----------------------------------------------------+
+| partnerSpecific\ :sup:`3`  | Object    | Custom parameters specific for a certain partner   |
++----------------------------+-----------+----------------------------------------------------+
+| providerSpecific\ :sup:`4` | Object    | Same as partnerSpecific but for service provider   |
++----------------------------+-----------+----------------------------------------------------+
+| packaging                  | Boolean   | Does customer wants to request packing materials   |
++----------------------------+-----------+----------------------------------------------------+
+| mail                       | String    | Used for some specific cases                       |
++----------------------------+-----------+----------------------------------------------------+
+| consents                   | Object    | List of consents                                   |
++----------------------------+-----------+----------------------------------------------------+
 
 \ :sup:`1` ``goodsType`` is mandatory only if the corresponding shipping method has ``properties.requirePickupDate: true``. Check the API ref for ``/api/v1/shipping-methods`` for more detailes.
 
