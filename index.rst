@@ -106,8 +106,8 @@ future*
 JSON
 ~~~~
 
-Each response is wrapped with object contained ``code`` and ``data``
-fields. Payload is stored inside ``data`` field. When everything is ok
+Each response is wrapped with object contained ``data``
+field. Payload is stored inside ``data`` field. When everything is ok
 response body will be like this:
 
 .. code:: js
