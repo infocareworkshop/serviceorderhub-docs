@@ -16,8 +16,7 @@ The Service Order Hub stores and returns all cost proposals ever created for the
 
 It's also not neccessary that every case can contain all possible cost proposals. It can contain three, two, ten or only one, e.g. one cost proposal with name "repair".
 
-Details
-~~~~~~~
+**Details**
 
 Cost proposals can contain an array with details for storing cost specification. The parameter ``type`` is a free text parameter, but it has some recommended values.
 
