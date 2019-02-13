@@ -103,7 +103,7 @@ Contains info about service order.
     "partnerSpecific": {
         "superStoreScandinavia": {
             "testParam1": 350,
-            "testParam2": "FREETEXT123",
+            "anotherTestParam2": "FREETEXT123",
         }
     }
 
