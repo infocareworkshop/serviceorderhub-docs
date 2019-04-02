@@ -1014,4 +1014,63 @@ Outut when data is not enough (status code 400):
       }
     }
     
-    
+POST /api/v1/case/files
+-------------------
+
+Add files to case. Accepts guid and array of file objects.
+
+Input:
+~~~~~
+
++--------------------+---------------+----------------------------+
+| Name               | Type          | Description                |
++====================+===============+============================+
+| guid\*             | GUID          | Guid of the case           |
++--------------------+---------------+----------------------------+
+| files              | Array         | File objects to save       |
++--------------------+---------------+----------------------------+
+
+File object:
+~~~~~~~~~~~
+
++--------------------+---------------+----------------------------+
+| Name               | Type          | Description                |
++====================+===============+============================+
+| name\*             | String        | Name of the file with extension |
++--------------------+---------------+----------------------------+
+| url                | String        | URL                        |
++--------------------+---------------+----------------------------+
+| data               | String        | Base64 encoded content     |
++--------------------+---------------+----------------------------+
+
+Fields *url* and *data* are mutually exclusive.
+
+Example:
+~~~~~~~~
+
+.. code:: js
+
+    {
+        "guid": "e3df4d74-f559-4e65-b57d-37b5360fb46d", // 
+        "files": {
+            {
+                 "name": "cat.jpg",
+                 "url": "http://example.com/cat-image"
+            },
+            {
+                "name": "doge.jpg",
+                "data": "base64 encoded content"
+            }
+        }
+    }
+
+Output:
+~~~~~~~
+
+.. code:: js
+
+    {
+      "data": {
+         "result": true
+      }
+    }
