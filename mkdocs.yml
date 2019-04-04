@@ -1,5 +1,4 @@
 theme: readthedocs
 site_name: serviceorderhub
-markdown_extensions:
-    - toc:
-        baselevel: 2
+html_theme_options:
+    - navigation_depth: 1
