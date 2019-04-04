@@ -1,4 +1,4 @@
-# API basics
+Title: API basics
 
 ## Naming convention
 

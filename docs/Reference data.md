@@ -1,4 +1,4 @@
-# Reference data
+Title: Reference data
 
 ## GET /api/v1/manufacturers
 

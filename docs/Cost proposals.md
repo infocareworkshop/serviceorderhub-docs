@@ -1,4 +1,4 @@
-# Cost proposal API
+Title: Cost proposal API
 
 
 This part of API allows partners to get cost proposals and approve them.

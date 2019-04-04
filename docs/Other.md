@@ -1,4 +1,4 @@
-# Other
+Title: Other
 
 **Note** Mandatory parameters are marked with \* sign.
 

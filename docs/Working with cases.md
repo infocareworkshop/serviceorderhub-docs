@@ -1,4 +1,4 @@
-# Working with cases
+Title: Working with cases
 
 ## GET /api/v1/case
 
