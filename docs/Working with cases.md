@@ -276,8 +276,7 @@ Provider
 
 Get a list of cases unaccepted by the Service Provider.
 
-The request has the same body structure, parameters and output as `POST
-/api/v2/search-cases <#post-apiv2search-cases>`__
+The request has the same body structure, parameters and output as [/api/v2/search-cases](Working with cases.md#post-apiv2search-cases)
 
 ### Access
 
