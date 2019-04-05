@@ -1,19 +1,23 @@
-Title: Other
+# Other
 
 **Note** Mandatory parameters are marked with \* sign.
 
-## POST /api/v1/case/send-completed-email
+## POST /api/v2/case/send-completed-email
 
 Resend final email to customers.
 
-### Input:
+### Access
+
+Partner
+
+### Input
 
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
 | guid\*             | GUID          | Guid of the case           |
 | email              | String        | Receiver's email           |
 
-### Example:
+### Example
 
 ```
 {
@@ -22,7 +26,7 @@ Resend final email to customers.
 }
 ```
 
-### Output:
+### Output
 
 ```
 {
@@ -36,12 +40,16 @@ If `email` is empty then fields of the case will be used.
 
 If email cant't be sent then a string with message will be returned in `result` field (Sometimes emails are disabled in settings).
 
-## GET /api/v1/routing
+## GET /api/v2/routing
 
 Determine which workshop will be used to process a case with specific parameters. 
 This method also returns competence data.
 
-### Input:
+### Access
+
+Partner
+
+### Input
 
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
@@ -55,7 +63,7 @@ This method also returns competence data.
 
 All parameters are optional by default, but when provided data is not enough the system will throw an error.
 
-### Output for valid case (status code 200):
+### Output for valid case (status code 200)
 
 ```
 {
@@ -104,7 +112,7 @@ All parameters are optional by default, but when provided data is not enough the
 }
 ```
 
-### Output when there is no suitable competence to process the case (status code 404):
+### Output when there is no suitable competence to process the case (status code 404)
 
 ```
 {
@@ -115,7 +123,7 @@ All parameters are optional by default, but when provided data is not enough the
 }
 ```
     
-### Outut when data is not enough (status code 400):
+### Outut when data is not enough (status code 400)
 
 ```
 {

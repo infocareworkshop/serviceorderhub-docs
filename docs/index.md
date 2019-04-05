@@ -1,4 +1,4 @@
-Title: API basics
+# API basics
 
 ## Naming convention
 
@@ -9,14 +9,21 @@ All endpoints are named with following schema:
 `https://serviceorderhub.com/api/version/action` or
 `https://serviceorderhub.com/api/version/entity/action`
 
-Currently only `v1` is a valid `version`. Words inside path string
-must be separated with `-` sign.
+Currently `v1` and `v2` are valid `version`. Words inside path string
+must be separated with `-` sign. By default all endpoints of previous versions are
+allowed in next.  
 
 ## Input
 
 ### Charset
 
 Only `utf-8` charset is supported.
+
+### Content type
+
+Set `Content-Type` header to `application/json` if you want to pass JSON data in your request.
+
+`Content-Type: application/json`
 
 ### Encoding
 
@@ -31,7 +38,7 @@ All parameters inside query string are notation indifferent. You can use
 either `camelCase`, `snake_case` or even `kebab-case`. Any of
 these notations are valid. Next in this document only camelCase will be
 used. Any unrecognized parameters (not described in this document) will
-throw validation error and `401` status code.
+throw validation error and `400` status code.
 
 For GET requests parameters should be passed with GET parameters inside
 query string.
@@ -130,6 +137,15 @@ There are some different ways to add your access token to request:
 You can pass your access key using **X-Hub-Api-Token** header.
 
 `X-Hub-Api-Token: YOUR_TOKEN`
+
+### X-Service-Provider header
+
+Usually one user is assigned to one service provider.
+But in real life service provider can be located in multiple countries or be a mediator. This leads to creating many service providers and users respectively.
+To allow single user to represent multiple providers we have option named "*Allow all service providers*".
+Users with this option enabled can specify service provider id they want to represent using this header.
+
+`X-Service-Provider: 1`
 
 ### accessToken with GET parameters
 

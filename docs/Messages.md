@@ -5,11 +5,15 @@ Service provider and exported to their internal systems.
 
 **Note** Mandatory parameters are marked with \* sign.
 
-## POST /api/v1/case-messages/create
+## POST /api/v2/case-messages/create
 
 Add a new message to specific *Case*.
 
-### Input (request body):
+### Access
+
+Partner, Provider
+
+### Input (request body)
 
 
 | Name            | Type         | Description                                |
@@ -18,7 +22,7 @@ Add a new message to specific *Case*.
 | content         | String       | Message text                               |
 | messageType\*   | String(32)   | Message type (always `serviceComment`)     |
 
-### Example payload:
+### Example
 
 ```
 {
@@ -28,7 +32,7 @@ Add a new message to specific *Case*.
 }
 ```
 
-### Output:
+### Output
 
 ```
 {
@@ -43,9 +47,13 @@ Add a new message to specific *Case*.
 }
 ```
 
-## GET /api/v1/case-messages
+## GET /api/v2/case-messages
 
 Get all messages attached to specific *Case*.
+
+### Access
+
+Partner, Provider
 
 ### Input:
 
@@ -56,10 +64,10 @@ Get all messages attached to specific *Case*.
 ### Example:
 
 ```
-/api/v1/case-messages?accessToken=my_key&guid=1e0abcb7-b94c-4072-a9c0-37072a1ef015
+/api/v2/case-messages?accessToken=my_key&guid=1e0abcb7-b94c-4072-a9c0-37072a1ef015
 ```
 
-### Output:
+### Output
 
 ```
 [

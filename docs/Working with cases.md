@@ -1,17 +1,24 @@
-Title: Working with cases
+# Working with cases
 
-## GET /api/v1/case
+## GET /api/v2/case
 
 Get all info about a certain Case.
 
-### Input:
+### Access
+
+Partner, Provider
+
+### Input
 
 | Name   | Type   | Description   |
 |--------|--------|---------------|
-| guid   | GUID   | Case's GUID   |
+| guid\* | GUID   | Case's GUID   |
+| includeRequests | Number  | 1   |
 
+If you want to see all requests to external systems performed for this case you can pass
+`includeRequests` parameter. Requests will be stored in `externalRequests` field.
 
-### Output:
+### Output
 
 ```
 {
@@ -131,11 +138,15 @@ Get all info about a certain Case.
 }
 ```
 
-## POST /api/v1/search-cases
+## POST /api/v2/search-cases
 
 Get list of cases
 
-### Input (JSON body):
+### Access
+
+Partner, Provider
+
+### Input
 
 | Name                | Type     | Description               |
 |---------------------|----------|---------------------------|
@@ -145,7 +156,7 @@ Get list of cases
 | pagination.limit    | Int      | Default - 10, max - 100   |
 
 
-### Example:
+### Example
 
 ```
 {
@@ -203,18 +214,22 @@ Service providers can view all data from all service partners whose cases they "
 }
 ```
 
-## POST /api/v1/case/accept
+## POST /api/v2/case/accept
 
 Endpoint for the service provider to confirm that the case was accepted
-for repair and imported to their production system 
+for repair and imported to their production system.
 
-### Input (JSON body):
+### Access
+
+Provider
+
+### Input
 
 | Name     | Type     | Description                             |
 |----------|----------|-----------------------------------------|
-| guid     | GUID     | Case's GUID                             |
+| guid\*   | GUID     | Case's GUID                             |
 
-### Example:
+### Example
 
 ```
 {
@@ -222,20 +237,24 @@ for repair and imported to their production system
 }
 ```
 
-## POST /api/v1/case/cancel
+## POST /api/v2/case/cancel
 
 Endpoint for the service provider to notify ServiceOrderHub that the
 case import was canceled and the provider revokes the acceptance to
 handle the service case.
 
-### Input (JSON body):
+### Access
+
+Provider
+
+### Input
 
 | Name     | Type     | Description                             |
 |----------|----------|-----------------------------------------|
-| guid     | GUID     | Case's GUID                             |
+| guid\*   | GUID     | Case's GUID                             |
 | reason   | String   | Why this case was rejected (Optional)   |
 
-### Example:
+### Example
 
 ```
 {
@@ -243,7 +262,7 @@ handle the service case.
 }
 ```
 
-### Output:
+### Output
 
 ```
 {
@@ -253,18 +272,236 @@ handle the service case.
 }
 ```
 
-## POST /api/v1/unexported-cases
+## POST /api/v2/unexported-cases
 
 Get a list of cases unaccepted by the Service Provider.
 
 The request has the same body structure, parameters and output as `POST
-/api/v1/search-cases <#post-apiv1search-cases>`__
+/api/v2/search-cases <#post-apiv2search-cases>`__
 
-## POST /api/v1/case/update
+### Access
+
+Provider
+
+
+## GET /api/v2/case/export
+
+Get case with all additional info 
+
+### Access
+
+Provider
+
+### Output
+
+```
+{
+  "consumer": null,
+  "country": "SE",
+  "createdAt": "2017-08-01T16:01:29.918Z",
+  "currentStatus": null,
+  "customer": {
+    "addName": null,
+    "address": "test, 123",
+    "city": "Testcity",
+    "countryCode": "SE",
+    "createdAt": "2017-08-01T16:01:30.045Z",
+    "doorCode": null,
+    "email": "test@example.com",
+    "entrance": null,
+    "firstName": "Test",
+    "floor": null,
+    "id": 30367,
+    "lastName": "Test",
+    "mobile": "1234567890",
+    "name": null,
+    "organizationName": null,
+    "organizationNumber": null,
+    "phone": null,
+    "postalCode": "1234"
+  },
+  "externalData": {
+    "alternatives": [
+      {
+        "departmentId": 1,
+        "providerSpecificData": 123
+      }
+    ],
+    "departmentId": 1,
+    "providerSpecificData": 123
+  },
+  "guid": "6a38f75a-0426-4451-be7e-761c3fafa159",
+  "id": 7783,
+  "manufacturer": {
+    "externalData": "Acer info",
+    "id": 1006,
+    "name": "Acer"
+  },
+  "manufacturerId": 1006,
+  "orderData": {
+    "activityNumber": "2567774",
+    "files": [
+      {
+        "name": "1.jpg",
+        "url": "https://example.com/1.jpg"
+      },
+      {
+        "name": "2.jpg",
+        "url": "https://example.com/2.jpg"
+      }
+    ],
+    "infocareSesamOriginator": "Originator",
+    "myVeryCustomData": 150,
+    "originatorType": "private",
+    "pickupDestination": "customer",
+    "refNo": "testref",
+    "returnDestination": "customer",
+    "serviceProviderExportStatus": true,
+    "shipmentData": {
+      "guid": "8b5939d6-b8f2-40f0-a874-96b52f9fbe0a",
+      "packageNumber": "00370716483417486489",
+      "receiverAddress": {
+        "address": "Teststreet, 42",
+        "city": "Testcity",
+        "countryCode": "SE",
+        "email": "test@example.com",
+        "mobilePhoneNumber": null,
+        "name": "Workshop",
+        "phoneNumber": "1234567890",
+        "postalCode": "123 45"
+      },
+      "senderAddress": {
+        "address": "test, 123",
+        "city": "Testcity",
+        "countryCode": "SE",
+        "email": "test@example.com",
+        "mobilePhoneNumber": "1234567890",
+        "name": "Test Test",
+        "phoneNumber": "1234567890",
+        "postalCode": "1234"
+      },
+      "service": "senderella",
+      "serviceId": "1000",
+      "shipmentNumber": 0
+    }
+  },
+  "partnerId": 1,
+  "pickupDst": null,
+  "productData": {
+    "accessory": [
+      "1099",
+      "1107"
+    ],
+    "accessoryNames": [
+      "Strömadapter",
+      "Mus"
+    ],
+    "model": "abc-123",
+    "otherAccessory": "something other",
+    "problem": "1001.dd6f843a-e985-7fc5-d41d-17d37d6e0bb8",
+    "problemDetails": {
+      "261b0f00-5426-d92d-ec3d-c1d59c08c83e": "XP"
+    },
+    "purchaseDate": "2017-08-01"
+  },
+  "productType": {
+    "externalData": null,
+    "id": 1009,
+    "name": "All-in-one desktop",
+    "properties": {
+      "allowPassword": true,
+      "requireSerial": true
+    }
+  },
+  "productTypeId": 1009,
+  "receiver": {
+    "addName": null,
+    "address": "test, 123",
+    "city": "Testcity",
+    "countryCode": "SE",
+    "createdAt": "2017-08-01T16:01:30.284Z",
+    "doorCode": null,
+    "email": "test@example.com",
+    "entrance": null,
+    "firstName": "Test",
+    "floor": null,
+    "id": 30369,
+    "lastName": "Test",
+    "mobile": "1234567890",
+    "name": null,
+    "organizationName": null,
+    "organizationNumber": null,
+    "phone": null,
+    "postalCode": "1234"
+  },
+  "returnDst": null,
+  "sender": {
+    "addName": null,
+    "address": "test, 123",
+    "city": "Testcity",
+    "countryCode": "SE",
+    "createdAt": "2017-08-01T16:01:30.167Z",
+    "doorCode": null,
+    "email": "test@example.com",
+    "entrance": null,
+    "firstName": "Test",
+    "floor": null,
+    "id": 30368,
+    "lastName": "Test",
+    "mobile": "1234567890",
+    "name": null,
+    "organizationName": null,
+    "organizationNumber": null,
+    "phone": null,
+    "postalCode": "1234"
+  },
+  "serviceLocation": {
+    "externalData": null,
+    "id": 2,
+    "name": "På plats reparation"
+  },
+  "serviceLocationId": 2,
+  "servicePartner": {
+    "id": 1,
+    "name": "Partner name"
+  },
+  "serviceProvider": {
+    "id": 1,
+    "name": "Workshop"
+  },
+  "serviceProviderDepartment": {
+    "externalData": null,
+    "id": 1,
+    "name": "Workshop name"
+  },
+  "serviceProviderDepartmentId": 1,
+  "serviceProviderId": 1,
+  "serviceType": {
+    "externalData": null,
+    "id": 1,
+    "name": "In warranty",
+    "properties": {
+      "requirePurchaseDate": true
+    }
+  },
+  "serviceTypeId": 1,
+  "shippingMethod": null,
+  "shippingMethodId": null
+}
+```
+
+
+
+
+## POST /api/v2/case/update
 
 Modify Case.
 
-### Input:
+### Access
+
+Partner, Provider
+
+### Input
 
 | Name          | Type     | Description        |
 |---------------|----------|--------------------|
@@ -276,7 +513,7 @@ Modify Case.
 | pickupDst     | Object   | Modified fields    |
 | returnDst     | Object   | Modified fields    |
 
-### Example:
+### Example
 
 ```
 {
@@ -288,7 +525,7 @@ Modify Case.
 }
 ```
 
-### Output:
+### Output
 
 ```
 {
@@ -296,18 +533,46 @@ Modify Case.
 }
 ```
 
-## POST /api/v1/case/status
+## POST /api/v2/case/finish
+
+In some case partner doesn't want to send case to provider just after creation. 
+In this case you can initiate this process by demand using this endpoint.
+
+### Access
+
+Partner
+
+### Input
+
+| Name     | Type     | Description                             |
+|----------|----------|-----------------------------------------|
+| guid\*   | GUID     | Case's GUID                             |
+
+### Output
+
+```
+{
+  "result": true
+}
+```
+
+
+## POST /api/v2/case/status
 
 Add status to case.
 
-### Input:
+### Access
+
+Provider
+
+### Input
 
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
 | guid\*             | GUID          | Guid of the case           |
 | key\*              | String        | Status key                 |
 
-### Example:
+### Example
 
 ```
 {
@@ -316,7 +581,7 @@ Add status to case.
 }
 ```
   
-### Output:
+### Output
 
 ```
 {
@@ -331,18 +596,22 @@ Add status to case.
 }
 ```
 
-## POST /api/v1/case/files
+## POST /api/v2/case/files
 
 Add files to case. Accepts guid and array of file objects.
 
-### Input:
+### Access
+
+Partner, Provider
+
+### Input
 
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
 | guid\*             | GUID          | Guid of the case           |
 | files\*            | Array         | File objects to save       |
 
-### File object:
+### File object
 
 | Name               | Type          | Description                     |
 |--------------------|---------------|---------------------------------|
@@ -353,7 +622,7 @@ Add files to case. Accepts guid and array of file objects.
 
 Fields *url* and *data* are mutually exclusive.
 
-### Example:
+### Example
 
 ```
 {

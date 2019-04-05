@@ -1,4 +1,4 @@
-Title: Data types and structures
+# Data types and structures
 
 There are some special data types used in our API.
 

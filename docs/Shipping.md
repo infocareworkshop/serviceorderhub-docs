@@ -1,17 +1,21 @@
-Title: Shipping
+# Shipping
 
-## GET /api/v1/shipping/label
+## GET /api/v2/shipping/label
 
 Get shipping label (Base64 encoded PDF file).
 
-### Input:
+### Access
+
+Partner, Provider
+
+### Input
 
 | Name   | Type   | Description   |
 |--------|--------|---------------|
 | guid   | GUID   | Case's GUID   |
 
 
-### Output:
+### Output
 
 *(Shown with wrapper object)*
 

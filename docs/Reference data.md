@@ -1,10 +1,14 @@
-Title: Reference data
+# Reference data
 
-## GET /api/v1/manufacturers
+## GET /api/v2/manufacturers
 
 Get manufacturers (brands).
 
-### Input:
+## Access
+
+Partner
+
+### Input
 
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
@@ -15,7 +19,7 @@ Get manufacturers (brands).
 | productType        | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
 
-### Output:
+### Output
 
 ```
 [
@@ -32,9 +36,13 @@ Get manufacturers (brands).
 ]
 ```
 
-## GET /api/v1/service-types
+## GET /api/v2/service-types
 
 Get service types.
+
+## Access
+
+Partner
 
 ### Input:
 
@@ -47,7 +55,7 @@ Get service types.
 | productType        | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
 
-### Output:
+### Output
 
 ```
 [
@@ -72,11 +80,15 @@ Get service types.
 
 Field `properties` contains info about required fields
 
-## GET /api/v1/product-types
+## GET /api/v2/product-types
 
 Get product types.
 
-### Input:
+## Access
+
+Partner
+
+### Input
 
 
 | Name               | Type          | Description                |
@@ -89,7 +101,7 @@ Get product types.
 | clientPostalCode   | String        |                            |
 
 
-### Output:
+### Output
 
 ```
 [
@@ -116,11 +128,15 @@ Get product types.
 
 Field `properties` contains info about required fields.
 
-## GET /api/v1/service-locations
+## GET /api/v2/service-locations
 
 Get service locations.
 
-### Input:
+## Access
+
+Partner
+
+### Input
 
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
@@ -132,7 +148,7 @@ Get service locations.
 | clientPostalCode   | String        |                            |
 
 
-### Output:
+### Output
 
 ```
 [
@@ -149,18 +165,22 @@ Get service locations.
 ]
 ```
 
-## GET /api/v1/accessory
+## GET /api/v2/accessory
 
 Get accessory.
 
-### Input:
+## Access
+
+Partner
+
+### Input
 
 | Name            | Type   | Description       |
 |-----------------|--------|-------------------|
 | productType\*   | Int    | Product type Id   |
 
 
-### Output:
+### Output
 
 ```
 [
@@ -179,11 +199,15 @@ Get accessory.
 ]
 ```
 
-## GET /api/v1/shipping-methods
+## GET /api/v2/shipping-methods
 
 Get allowed shipping methods.
 
-### Input:
+## Access
+
+Partner
+
+### Input
 
 | Name                | Type          | Description                |
 |---------------------|---------------|----------------------------|
@@ -195,7 +219,7 @@ Get allowed shipping methods.
 | serviceLocation\*   | Int           | Service location Id        |
 
 
-### Output:
+### Output
 
 ```
   [
@@ -220,13 +244,17 @@ Get allowed shipping methods.
 
 If `requirePickupDate` of the `properties` object is not `false`, the parameter `order.pickupDate` becomes mandatory for case/create and case/validate endpoints!
 
-If `goodsTypeList` `of the `properties` object is not `null`, the parameter `order.goodsType` becomes mandatory for case/create and case/validate endpoints!
+If `goodsTypeList` of the `properties` object is not `null`, the parameter `order.goodsType` becomes mandatory for case/create and case/validate endpoints!
 
-## GET /api/v1/shipping/pickup-dates
+## GET /api/v2/shipping/pickup-dates
 
 Get allowed pickup dates for this shipping methods.
 
-### Input:
+## Access
+
+Partner
+
+### Input
 
 
 | Name               | Type     | Description                                 |
@@ -248,12 +276,15 @@ Get allowed pickup dates for this shipping methods.
 ]
 ```
 
-## GET /api/v1/shipping/pickup-dates-extended
+## GET /api/v2/shipping/pickup-dates-extended
 
 Get allowed pickup dates with eventual comments for each date. Usually it includes info about pick up time
 
-### Input:
+## Access
 
+Partner
+
+### Input
 
 | Name               | Type     | Description                                 |
 |--------------------|----------|---------------------------------------------|
@@ -261,18 +292,103 @@ Get allowed pickup dates with eventual comments for each date. Usually it includ
 | postalCode\*       | String   | Postal code (3-10) chars                    |
 
 
-### Output:
+### Output
+
+```
+[
+  {
+    "date": "2019-02-01",
+    "comment": "Mondays/Tuesdays between 12-16, Thursdays/Wednesdays/Fridays between 8-12"
+  },
+  {
+    "date": "2019-02-04",
+    "comment": "Mondays/Tuesdays between 12-16, Thursdays/Wednesdays/Fridays between 8-12"
+  }
+]
+```
+
+## GET /api/v2/partner
+
+Get partner by id
+
+## Access
+
+Any
+
+### Input
+
+| Name               | Type     | Description                                 |
+|--------------------|----------|---------------------------------------------|
+| id\*               | Int      | Id                                          |
+
+### Output
 
 ```
 {
-  "data": [
-    {
-      "date": "2019-02-01",
-      "comment": "Mondays/Tuesdays between 12-16, Thursdays/Wednesdays/Fridays between 8-12"
-    },
-    {
-      "date": "2019-02-04",
-      "comment": "Mondays/Tuesdays between 12-16, Thursdays/Wednesdays/Fridays between 8-12"
-    }
+  "id": 1,
+  "name": "Workshop",
+  "contactData": {
+    "id": 30347,
+    "name": null,
+    "firstName": null,
+    "lastName": null,
+    "organizationName": "Workshop",
+    "organizationNumber": null,
+    "addName": null,
+    "address": "Teststreet, 123",
+    "postalCode": "123 45",
+    "city": "Testcity",
+    "countryCode": null,
+    "phone": "1234567890",
+    "mobile": null,
+    "email": "test@example.com",
+    "floor": null,
+    "entrance": null,
+    "doorCode": null,
+    "createdAt": "2017-08-01T14:01:24.083Z"
+  }
+}
+```
+
+## GET /api/v2/provider
+
+Get provider by id
+
+## Access
+
+Any
+
+### Input
+
+| Name               | Type     | Description                                 |
+|--------------------|----------|---------------------------------------------|
+| id\*               | Int      | Id                                          |
+
+### Output
+
+```
+{
+  "id": 1003,
+  "name": "Provider",
+  "contactData": {
+    "id": 30348,
+    "name": null,
+    "firstName": "John",
+    "lastName": "Smith",
+    "organizationName": Provider",
+    "organizationNumber": 123456-1234",
+    "addName": null,
+    "address": "Teststreet, 42",
+    "postalCode": "12345",
+    "city": "Testcity",
+    "countryCode": "SE",
+    "phone": "0123456789",
+    "mobile": "0123456789",
+    "email": "test@example.com",
+    "floor": null,
+    "entrance": null,
+    "doorCode": null,
+    "createdAt": "2017-08-01T14:02:57.172Z"
+  }
 }
 ```

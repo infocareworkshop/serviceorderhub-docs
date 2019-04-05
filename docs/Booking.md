@@ -1,6 +1,6 @@
-Title: Booking
+# Booking
 
-## POST /api/v1/case/validate
+## POST /api/v2/case/validate
 
 Validate Case. All parameters are same as in `case/create` endpoint.
 In case of validation errors status will be "ok" and debug info will be
@@ -10,7 +10,15 @@ passed through `data` field.
 we can't guarantee that shipment will be created for the Case passed
 this validation.
 
-### Output:
+### Access
+
+Partner
+
+### Input
+
+See `/api/v2/case/create`
+
+### Output
 
 When data is correct:
 
@@ -41,11 +49,15 @@ When data is incorrect:
 }
 ```
 
-## POST /api/v1/case/create
+## POST /api/v2/case/create
 
 Create a new Case.
 
-### Input:
+### Access
+
+Partner
+
+### Input
 
 | Name                           | Type          | Description                                              |
 |--------------------------------|---------------|----------------------------------------------------------|
@@ -80,10 +92,10 @@ method id was sent.
 
 <sup>5</sup> Enabled when returnDestination ≠ `consumer`. If returnDestination is not sent, we use `returnDestination: "consumer"` by default
 
-### Example:
+### Example
 
 ```
-POST /api/v1/case/create?accessToken-my_key HTTP/1.1
+POST /api/v2/case/create?accessToken-my_key HTTP/1.1
 HOST: serviceorderhub.com
 accept: application/json
 content-length: 728
@@ -145,7 +157,7 @@ content-type: application/json
 }
 ```
 
-### Output:
+### Output
 
 ```
 {
