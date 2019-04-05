@@ -14,7 +14,7 @@ Every date will be converted to UTC.
 ## Originator 
 
 Describes what kind of user initiates the service order. Must be either
-`private`, `registered` or `helpdesk`.
+`private`, `registered` or `helpdesk`;
 
 `private` - the case originator is a person or an organization which
 doesn’t have any contracts or other ties with the partner; 
@@ -31,13 +31,13 @@ The business rules may be different depending on the originator.
 
 Possible values:
 
-`companyToCompany` - when one company makes a transaction with another
+`companyToCompany` - when one company makes a transaction with another;
 
-`companyToPrivate` - when a company makes a transaction with a private
+`companyToPrivate` - when a company makes a transaction with a private;
 person
 
 `privateToPrivate` - when a private person makes a transaction for
-themself or with another private person
+themself or with another private person.
 
 ## Dimensions
 

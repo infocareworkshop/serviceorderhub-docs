@@ -4,7 +4,7 @@
 This part of API allows partners to get cost proposals and approve them.
 Service providers can create or update cost proposals for cases.
 
-## Cost proposal concept:
+## Cost proposal concept
 
 Cost proposals in the Service Order Hub can have two states, either they are approved or not. There is no such state as "rejected". Instead it can be many cost proposals with "id" as a unique key. If the partner doesn't want to approve a certain cost proposal they should contact the provider using the messages endpoints of this API, so the provider may issue another one.
 

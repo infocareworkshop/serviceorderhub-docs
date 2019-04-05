@@ -4,7 +4,7 @@
 
 Get manufacturers (brands).
 
-## Access
+### Access
 
 Partner
 
@@ -40,7 +40,7 @@ Partner
 
 Get service types.
 
-## Access
+### Access
 
 Partner
 
@@ -84,7 +84,7 @@ Field `properties` contains info about required fields
 
 Get product types.
 
-## Access
+### Access
 
 Partner
 
@@ -132,7 +132,7 @@ Field `properties` contains info about required fields.
 
 Get service locations.
 
-## Access
+### Access
 
 Partner
 
@@ -169,7 +169,7 @@ Partner
 
 Get accessory.
 
-## Access
+### Access
 
 Partner
 
@@ -203,7 +203,7 @@ Partner
 
 Get allowed shipping methods.
 
-## Access
+### Access
 
 Partner
 
@@ -250,7 +250,7 @@ If `goodsTypeList` of the `properties` object is not `null`, the parameter `orde
 
 Get allowed pickup dates for this shipping methods.
 
-## Access
+### Access
 
 Partner
 
@@ -280,7 +280,7 @@ Partner
 
 Get allowed pickup dates with eventual comments for each date. Usually it includes info about pick up time
 
-## Access
+### Access
 
 Partner
 
@@ -311,7 +311,7 @@ Partner
 
 Get partner by id
 
-## Access
+### Access
 
 Any
 
@@ -354,7 +354,7 @@ Any
 
 Get provider by id
 
-## Access
+### Access
 
 Any
 

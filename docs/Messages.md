@@ -1,4 +1,4 @@
-Title: Messages API
+# Messages API
 
 Service partners can attach messages to cases that can be viewed by
 Service provider and exported to their internal systems.
