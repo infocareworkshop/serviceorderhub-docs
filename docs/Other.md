@@ -123,7 +123,7 @@ All parameters are optional by default, but when provided data is not enough the
 }
 ```
     
-### Outut when data is not enough (status code 400)
+### Output when data is not enough (status code 400)
 
 ```
 {
@@ -136,3 +136,39 @@ All parameters are optional by default, but when provided data is not enough the
   }
 }
 ```
+
+## POST /api/v2/requests/log
+
+Save external request to log
+
+### Input
+
+| Name               | Type          | Description                |
+|--------------------|---------------|----------------------------|
+| type\*             | String        |                            |
+| status\*           | String        | `success` | `error`        |
+| url                | Url           |                            |
+| meta\*             | Object        |                            |
+| meta.caseId\*      | Int           | Id of the linked case      |
+| request            | String        |                            |
+| response           | String        |                            |
+| message            | String        |                            |
+
+### Example
+
+```
+{
+  "type": "testRequest",
+  "status": "success",
+  "url": "https://umbarov.com/",
+  "meta": {
+    "caseId": 7680
+  },
+  "request": "{}",
+  "response": "Some cool content"
+}
+```
+
+### Output
+
+External request
