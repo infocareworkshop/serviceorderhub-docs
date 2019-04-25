@@ -225,9 +225,11 @@ Provider
 
 ### Input
 
-| Name     | Type     | Description                             |
-|----------|----------|-----------------------------------------|
-| guid\*   | GUID     | Case's GUID                             |
+| Name      | Type     | Description                             |
+|-----------|----------|-----------------------------------------|
+| guid\*    | GUID     | Case's GUID                             |
+| orderData | Object   |                                         |
+| status    | Boolean  | True by default                         |
 
 ### Example
 

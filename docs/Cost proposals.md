@@ -173,7 +173,7 @@ Partner, Provider
 | id\*             | Integer   | Id of Cost Proposal                    |
 | name\*           | String    | Who perfoms this operation             |
 | reaction\*       | String    | `approved` or `rejected`               |
-| comment\*        | String    | Explanation                            |
+| comment          | String    | Explanation                            |
 
 ### Output
 
