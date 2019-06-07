@@ -562,6 +562,8 @@ Partner
 
 Add status to case.
 
+Re-sending the same status as current will be ignored.
+
 ### Access
 
 Provider

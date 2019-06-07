@@ -95,7 +95,7 @@ Partner
 |--------------------|---------------|----------------------------|
 | originatorType\*   | Originator    | Originator type            |
 | bookingType\*      | BookingType   |                            |
-| serviceType\*      | Int           | Service type Id            |
+| serviceType        | Int           | Service type Id            |
 | manufacturer\*     | Int\|String   | Manufacturer Id or alias   |
 | productType        | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
@@ -141,7 +141,7 @@ Partner
 | Name               | Type          | Description                |
 |--------------------|---------------|----------------------------|
 | originatorType\*   | Originator    | Originator type            |
-| bookingType\*      | BookingType   |                            |
+| bookingType\*      | BookingType   | Booking type               |
 | serviceType\*      | Int           | Service type Id            |
 | manufacturer\*     | Int\|String   | Manufacturer Id or alias   |
 | productType\*      | Int\|String   | Product type Id or alias   |
@@ -212,6 +212,7 @@ Partner
 | Name                | Type          | Description                |
 |---------------------|---------------|----------------------------|
 | originatorType\*    | Originator    | Originator type            |
+| bookingType\*       | BookingType   | Booking type               |
 | serviceType\*       | Int           | Service type Id            |
 | manufacturer\*      | Int\|String   | Manufacturer Id or alias   |
 | productType\*       | Int\|String   | Product type Id or alias   |
@@ -392,3 +393,151 @@ Any
   }
 }
 ```
+
+## GET /api/v2/routing
+
+Find service provider, shipping methods and business rules by case parameters
+
+### Access
+
+Partner
+
+### Input
+
+| Name                | Type          | Description                |
+|---------------------|---------------|----------------------------|
+| originatorType      | Originator    | Originator type            |
+| bookingType         | Originator    | Originator type            |
+| serviceType         | Int           | Service type Id            |
+| manufacturer        | Int\|String   | Manufacturer Id or alias   |
+| productType         | Int\|String   | Product type Id or alias   |
+| clientPostalCode    | String        |                            |
+| serviceLocation     | Int           | Service location Id        |
+| model               | String        | Model name                 |
+
+### Output
+
+```
+
+{
+  "servicePartner": {
+    "id": 1,
+    "name": "Partner"
+  },
+  "servicePartnerCompetence": {
+    // Any specific data extracted from partner's business rules
+  },
+  "serviceProvider": {
+    "contactData": {
+      "addName": null,
+      "address": "Teststreet 1",
+      "city": "Testcity",
+      "countryCode": "SE",
+      "createdAt": "2017-08-01T14:02:57.172Z",
+      "doorCode": null,
+      "email": "test@test.com",
+      "entrance": null,
+      "firstName": "John",
+      "floor": null,
+      "id": 30348,
+      "lastName": "Smith",
+      "mobile": "1234567890",
+      "name": null,
+      "organizationName": "Workshop",
+      "organizationNumber": "123456",
+      "phone": "1234567890",
+      "postalCode": "1234"
+    },
+    "id": 1,
+    "name": "Workshop"
+  },
+  "serviceProviderCompetence": {
+    // Any specific data extracted from service provider's business rules
+  },
+  "shippingMethods": [
+    // All available shipment methods
+  ]
+}
+
+```
+
+## GET /api/v2/models
+
+Find models
+
+### Access
+
+any
+
+### Input
+
+| Name                | Type          | Description                       |
+|---------------------|---------------|-----------------------------------|
+| manufacturer        | Int\|String   | Manufacturer Id or alias          |
+| productType         | Int\|String   | Product type Id or alias          |
+| model\*             | String        | Model name                        |
+| limit               | Int           | Number of results (10 by default) |
+
+
+### Example
+
+`/api/v2/models?manufacturer=acer&model=aspire&limit=1`
+
+### Output
+
+```
+[
+  {
+    "createdAt": "2019-05-21T09:45:04.000Z",
+    "id": 845,
+    "manufacturer": {
+      "externalData": null,
+      "id": 1006,
+      "name": "Acer"
+    },
+    "manufacturerId": 1006,
+    "name": "aspire",
+    "productType": {
+      "externalData": null,
+      "id": 1004,
+      "name": "Notebook",
+      "properties": {
+        "allowPassword": true,
+        "requireSerial": true
+      }
+    },
+    "productTypeId": 1004,
+    "tags": [],
+    "updatedAt": "2019-05-21T09:45:04.000Z"
+  }
+]
+```
+
+## POST /api/v2/models
+
+Update models
+
+### Access
+
+any
+
+### Input
+
+Array of model objects:
+
+| Name                | Type          | Description                       |
+|---------------------|---------------|-----------------------------------|
+| manufacturer\*      | Int\|String   | Manufacturer Id or alias          |
+| productType\*       | Int\|String   | Product type Id or alias          |
+| name\*              | String        | Model name                        |
+| id                  | Int           | Id in the model registry          |
+| tags                | Array<Int>    | Assigned tags                     |
+
+If you omit "id" key then the model from the request will be matched with all existing models 
+and created new record if necessary.
+
+To change name you should always pass "id" key.
+
+### Output
+
+List of modified models

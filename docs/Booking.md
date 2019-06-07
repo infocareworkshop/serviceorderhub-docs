@@ -82,7 +82,7 @@ Partner
 
 <sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if
 shipping is required according to the business rules, but no shipping
-method id was sent.
+method id was sent. If more than one method is available, the first one by name will be selected.
 
 <sup>2</sup> Enabled when originatorType - `helpdesk`
 
