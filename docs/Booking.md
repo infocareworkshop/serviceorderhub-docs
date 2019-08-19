@@ -8,8 +8,8 @@ Data quality is the cornerstone of the serviceorderhub. Thus it's important for 
 1. `product.password` is mandatory only if you book service for `productType` where password protection is common (mobile phone, laptop, PC, etc). Contact support for the complete list of such categories, but usually they can be guessed based on the common sense (no password protection for dish washers, right?). Even if you book such `productType` which is covered by there is a workaround to bypass the valdation. If you send the property `noPassword: true` it will force the validation to accept the order even if `product.password` is empty or missing.
 2. `product.imei` is mandatory when you book service for mobile phones.
 3. `product.serial` is mandatory for all non-lowcost home electronics products except mobile phones (it's enough to send only `product.imei` for them, but it's higly recommended to send `product.serial` too). A complete list of `productType` ids requiring `product.serial` can be provided upon request, but can be also guessed based on the common sense.
-5. `*.firstName` and `*.lastName` are mandatory for [contact data](Data%20types%20and%20structures.md/#contactdata) objects with `"type": 0` (private persons).
-6. Similarly, `*.organizationName` and `*.organizationNumber` are mandatory when the [contact data](Data%20types%20and%20structures.md/#contactdata) object has `"type: 1` (company).
+5. `*.firstName` and `*.lastName` are mandatory for [contact data](Data%20types%20and%20structures/#contactdata) objects with `"type": 0` (private persons).
+6. Similarly, `*.organizationName` and `*.organizationNumber` are mandatory when the [contact data](Data%20types%20and%20structures/#contactdata) object has `"type: 1` (company).
 7. `product.purchaseDate` and non-empty `attachedFiles` are mandatory if you book a warranty repair (it depends on your `serviceType` settings in the integration).
 8. `product.insuranceNumber` and `product.insuranceCompany` are mandatory if you book an insurance repair
 9. `acceptConditions` is non-mandatory if you send a non-empty `consents` object.
@@ -191,4 +191,4 @@ content-type: application/json
 
 ## Attach files
 
-You can use [`case/files`](Working%20with%20cases.md/#post-apiv2casefiles) to upload files after the case is created.
+You can use [`case/files`](Working%20with%20cases/#post-apiv2casefiles) to upload files after the case is created.

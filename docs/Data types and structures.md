@@ -77,11 +77,11 @@ Contains info about service order.
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
-`/api/v1/shipping-methods` for more details. [Read more](Booking.md/#conditional-validation) about conditional validation.
+`/api/v1/shipping-methods` for more details. [Read more](Booking/#conditional-validation) about conditional validation.
 
 <sup>2</sup> `pickupDate` is mandatory only if the corresponding shipping method
 has **not** `null` for `properties.goodsTypeList`. Check the API ref for
-`/api/v1/shipping-methods` for more details and [read more](Booking.md/#conditional-validation) about conditional validation.
+`/api/v1/shipping-methods` for more details and [read more](Booking/#conditional-validation) about conditional validation.
 
 <sup>3</sup> `mail` is mandatory if `emballage: true`
 
@@ -136,7 +136,7 @@ Contains info about the product.
 | weight                 | Number        | Product's weight (in kg)
 | volume                 | Dimensions    | Width, height, depth
 
-\*\* These fields may become mandatory in some conditions. [Read more](Booking.md/#conditional-validation) about conditional validation.
+\*\* These fields may become mandatory in some conditions. [Read more](Booking/#conditional-validation) about conditional validation.
 
 ## ContactData
 
@@ -162,7 +162,7 @@ Contains info about person or company.
 
 <sup>2</sup> Allowed only when user is a company
 
-[Read more](Booking.md/#conditional-validation) about conditional validation.
+[Read more](Booking/#conditional-validation) about conditional validation.
 
 ## Consents
 
