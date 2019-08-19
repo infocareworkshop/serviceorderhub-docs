@@ -134,8 +134,10 @@ content-type: application/json
     },
     "infocareSesamOriginator": "OtherSE",
     "partnerSpecific": {
-      "testPartner": {
-        "testParam1": "text"
+      "acme": {
+        "acmeUniqueStringProperty": "text",
+        "acmeUniqueFloatProperty": 5.1,
+        "acmeUniqueBoolProperty": true
       }
     }
   },
@@ -148,7 +150,7 @@ content-type: application/json
       "1096": false,
       "2501": false
     },
-    "otherAccessory": "desc",
+    "otherAccessory": "Accessory(ies) without ID in free text",
     "password": "1345",
     "problemText": "Picture/sound problems / Bad picture. Is periodic or constant?: Periodic"
   },
@@ -174,10 +176,7 @@ content-type: application/json
   },
   "originatorType": "private",
   "bookingType": "companyToPrivate",
-  "clientPostalCode": "1145",
-  "other": {
-    "test": 1
-  }
+  "clientPostalCode": "1145"
 }
 ```
 

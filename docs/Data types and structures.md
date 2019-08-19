@@ -129,8 +129,8 @@ Contains info about the product.
 | serial\*\*             | String        | Product's Serial number (40 chars)
 | insuranceCompany\*\*   | String        | Insurance company name (50 chars)
 | insuranceNumber\*\*    | String        | Insurance number
-| accessory              | Array         | List of accessory Ids
-| otherAccessory         | String        | Names of additional accessory
+| accessory              | Array         | List of accessory IDs
+| otherAccessory         | String        | List of additional accessories in free text
 | problemText\*          | String        | Problem description
 | password               | String        | Product's password (if applicable)
 | weight                 | Number        | Product's weight (in kg)
