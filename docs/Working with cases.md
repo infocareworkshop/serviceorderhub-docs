@@ -625,6 +625,8 @@ Partner, Provider
 
 Fields *url* and *data* are mutually exclusive.
 
+Allowed file extensions: 'jpg', 'png', 'txt', 'pdf', 'doc', 'docx', 'jpeg', 'odt', 'xls', 'xlsx', 'avi', 'mp4', 'm4v', 'mov', 'wmv', 'mpg', 'mpeg', 'm2v', 'gif', 'mkv', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', '3gp'
+
 ### Example
 
 ```

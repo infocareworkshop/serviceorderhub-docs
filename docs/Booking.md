@@ -1,14 +1,29 @@
 # Booking
 
+## Conditional validation
+Data quality is the cornerstone of the serviceorderhub. Thus it's important for service partners to send all data required on each step of service order fulfillment. The set of required data can be different under different circumstances. Consequently, some properties can be either mandatory or non-mandatory in different cases depending on values of the other properties and the settings of your integration.
+
+**List of properties involved in conditional validation**
+
+1. `product.password` is mandatory only if you book service for `productType` where password protection is common (mobile phone, laptop, PC, etc). Contact support for the complete list of such categories, but usually they can be guessed based on the common sense (no password protection for dish washers, right?). Even if you book such `productType` which is covered by there is a workaround to bypass the valdation. If you send the property `noPassword: true` it will force the validation to accept the order even if `product.password` is empty or missing.
+2. `product.imei` is mandatory when you book service for mobile phones.
+3. `product.serial` is mandatory for all non-lowcost home electronics products except mobile phones (it's enough to send only `product.imei` for them, but it's higly recommended to send `product.serial` too). A complete list of `productType` ids requiring `product.serial` can be provided upon request, but can be also guessed based on the common sense.
+5. `*.firstName` and `*.lastName` are mandatory for [contact data](Data%20types%20and%20structures/#contactdata) objects with `"type": 0` (private persons).
+6. Similarly, `*.organizationName` and `*.organizationNumber` are mandatory when the [contact data](Data%20types%20and%20structures/#contactdata) object has `"type: 1` (company).
+7. `product.purchaseDate` and non-empty `attachedFiles` are mandatory if you book a warranty repair (it depends on your `serviceType` settings in the integration).
+8. `product.insuranceNumber` and `product.insuranceCompany` are mandatory if you book an insurance repair
+9. `acceptConditions` is non-mandatory if you send a non-empty `consents` object.
+10. `order.pickupDate` (a date of desired pickup) is mandatory only when you book shipping by certain carriers along with a service order. Please ask support if it's relevant for your integration.
+11. `product.weight` and / or `product.volume` are mandatory only when you book shipping by certain carriers along with a service order. Please ask support if it's relevant for your integration.
+12. `order.goodsType` (type of goods in terminology of the carrier) is mandatory only when you book shipping by certain carriers along with a service order. Please ask support if it's relevant for your integration.
+13. `order.mail` is mandatory if your integration support package materials ordering and you also send `order.emballage: true`
+
 ## POST /api/v2/case/validate
 
-Validate Case. All parameters are same as in `case/create` endpoint.
-In case of validation errors status will be "ok" and debug info will be
-passed through `data` field.
+Validate Case. Accepts the same input as the `case/create` endpoint.
+In case of validation errors the `400` http status will be returned and debug info will be passed through the `error.details` object.
 
-**Note** Currently we don't have a possibility to validate shipments and
-we can't guarantee that shipment will be created for the Case passed
-this validation.
+**Note** Currently we don't have a possibility to validate shipments and we can't guarantee that shipping will be successfully booked for a case passing the validation.
 
 ### Access
 
@@ -24,7 +39,9 @@ When data is correct:
 
 ```
 {
-  "result": true
+  "data": {
+    "result": true
+  }
 }
 ```
 
@@ -32,19 +49,23 @@ When data is incorrect:
 
 ```
 {
-  "result": false,
-  "message": "Fields validation failed",
-  "validation": {
-    "location": [
-      "Value is not present in possible options"
-    ],
-    "consumer.postalCode": [
-      "Wrong format",
-      "Some other error"
-    ],
-    "acceptConditions": [
-      "Field must be equal to true"
-    ],
+  "error": {
+    "message": "Fields validation failed",
+    "details": {
+      "product.password": [
+        "Field is required"
+      ],
+      "location": [
+        "Value is not present in possible options"
+      ],
+      "consumer.postalCode": [
+        "Wrong format",
+        "Some other error"
+      ],
+      "acceptConditions": [
+        "Field must be equal to true"
+      ]
+    }
   }
 }
 ```
@@ -59,38 +80,37 @@ Partner
 
 ### Input
 
-| Name                           | Type          | Description                                              |
-|--------------------------------|---------------|----------------------------------------------------------|
-| serviceType\*                  | Int           | Id from `service-types`                                  |
-| manufacturer\*                 | Int\|String   | Id or alias from `manufacturers`                         |
-| productType\*                  | Int\|String   | Id or alias from `product-types`                         |
-| shipping<sup>1</sup>           | Int           | Id from `shipping-methods`                               |
-| location\*                     | Int           | Id from `service-locations`                              |
-| order\*                        | OrderData     | Order data                                               |
-| product\*                      | ProductData   | Product data                                             |
-| pickupDestination<sup>2</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         |
-| returnDestination<sup>2</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         |
-| clientPostalCode\*             | String        |                                                          |
-| customer\*                     | ContactData   | Info about user who books this order                     |
-| consumer<sup>3</sup>           | ContactData   | Info about end user                                      |
-| pickupDst<sup>4</sup>          | ContactData   | Where shipment will be picked up or sent from            |
-| returnDst<sup>5</sup>          | ContactData   | Where shipment should be delivered after repair          |
-| originatorType\*               | Originator    | Originator type                                          |
-| bookingType\*                  | BookingType   | Booking type                                             |
-| acceptConditions\*             | Boolean       | Terms and condition acceptance. Should be `true`         |
-| noPassword                     | Boolean       | Make `product.password` optional                         |
+| Name                           | Type          | Description                                              
+|--------------------------------|---------------|------------------------------------------------------------------------------------
+| serviceType\*                  | Int           | Id from `service-types`                                  
+| manufacturer\*                 | Int\|String   | Id or alias from `manufacturers`                         
+| productType\*                  | Int\|String   | Id or alias from `product-types`                         
+| shipping<sup>1</sup>           | Int           | Id from `shipping-methods`                               
+| location\*                     | Int           | Id from `service-locations`                              
+| order\*                        | OrderData     | Order data                                               
+| product\*                      | ProductData   | Product data                                             
+| pickupDestination<sup>2</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         
+| returnDestination<sup>2</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         
+| clientPostalCode\*             | String        |                                                          
+| customer\*                     | ContactData   | Info about user who books this order                     
+| consumer<sup>3</sup>           | ContactData   | Info about end user                                      
+| pickupDst<sup>4</sup>          | ContactData   | Where shipment will be picked up or sent from            
+| returnDst<sup>5</sup>          | ContactData   | Where shipment should be delivered after repair          
+| originatorType\*               | Originator    | Originator type                                          
+| bookingType\*                  | BookingType   | Booking type                                             
+| acceptConditions\*             | Boolean       | Terms and condition acceptance. Must be `true` if no `order.consents` sent
+| noPassword                     | Boolean       | Make `product.password` optional                         
 
-<sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if
-shipping is required according to the business rules, but no shipping
-method id was sent. If more than one method is available, the first one by name will be selected.
+<sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required according to the business rules (your integration setup), but no shipping method id was sent. If more than one method is available, the first one by name (alphabetically) will be selected.
 
 <sup>2</sup> Enabled when originatorType - `helpdesk`
 
-<sup>3</sup>  Enabled when bookingType ≠ `privateToPrivate`
+<sup>3</sup> Enabled when bookingType ≠ `privateToPrivate`
 
 <sup>4</sup> Enabled when pickupDestination ≠ `consumer`. If pickupDestination is not sent, we use `pickupDestination: "consumer"` by default
 
 <sup>5</sup> Enabled when returnDestination ≠ `consumer`. If returnDestination is not sent, we use `returnDestination: "consumer"` by default
+
 
 ### Example
 
@@ -107,10 +127,17 @@ content-type: application/json
   "productType": 1001,
   "location": 3,
   "order": {
+    "consents": {
+      "ConsentTerms": true,
+      "ConsentRepair": true,
+      "ConsentOffers": false
+    },
     "infocareSesamOriginator": "OtherSE",
     "partnerSpecific": {
-      "testPartner": {
-        "testParam1": "text"
+      "acme": {
+        "acmeUniqueStringProperty": "text",
+        "acmeUniqueFloatProperty": 5.1,
+        "acmeUniqueBoolProperty": true
       }
     }
   },
@@ -123,7 +150,7 @@ content-type: application/json
       "1096": false,
       "2501": false
     },
-    "otherAccessory": "desc",
+    "otherAccessory": "Accessory(ies) without ID in free text",
     "password": "1345",
     "problemText": "Picture/sound problems / Bad picture. Is periodic or constant?: Periodic"
   },
@@ -149,11 +176,7 @@ content-type: application/json
   },
   "originatorType": "private",
   "bookingType": "companyToPrivate",
-  "clientPostalCode": "1145",
-  "acceptConditions": true,
-  "other": {
-    "test": 1
-  }
+  "clientPostalCode": "1145"
 }
 ```
 
@@ -165,3 +188,7 @@ content-type: application/json
   "guid": "69b0e17f-eeb9-4834-b809-60b015054c0d" // Case's GUID
 }
 ```
+
+## Attach files
+
+You can use [`case/files`](Working%20with%20cases/#post-apiv2casefiles) to upload files after the case is created.

@@ -66,24 +66,26 @@ Contains info about service order.
 | goodsType<sup>1</sup>           | String    | Data from `shipping-methods`
 |                                 |           | goodsTypeList
 | pickupDate<sup>2</sup>          | String    | Date from `pickup-dates`
-| partnerSpecific<sup>3</sup>     | Object    | Custom parameters specific for a certain
-|                                 |           | partner
-| providerSpecific<sup>4</sup>    | Object    | Same as partnerSpecific but for service
-|                                 |           | provider
-| packaging                       | Boolean   | Does customer wants to request packing
+| emballage                       | Boolean   | Does customer wants to request packing
 |                                 |           | materials
-| mail                            | String    | Used for some specific cases
-| consents                        | Object    | List of consents
+| mail*<sup>3</sup>               | String    | Address of where the packaging should be delivered
+| partnerSpecific<sup>4</sup>     | Object    | Custom parameters specific for a certain
+|                                 |           | partner
+| providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service
+|                                 |           | provider
+| consents\*                      | Object    | Consents. Read more [here](#consents) 
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
-`/api/v1/shipping-methods` for more detailes.
+`/api/v1/shipping-methods` for more details. [Read more](Booking/#conditional-validation) about conditional validation.
 
 <sup>2</sup> `pickupDate` is mandatory only if the corresponding shipping method
 has **not** `null` for `properties.goodsTypeList`. Check the API ref for
-`/api/v1/shipping-methods` for more detailes.
+`/api/v1/shipping-methods` for more details and [read more](Booking/#conditional-validation) about conditional validation.
 
-<sup>3</sup> `partnerSpecific` is an optional object for custom parameters
+<sup>3</sup> `mail` is mandatory if `emballage: true`
+
+<sup>4</sup> `partnerSpecific` is an optional object for custom parameters
 specific for a certain ingegration with partner. Parameter's names
 should be added to the serviceorderhub config before you can use it.
 Please contact support for that.
@@ -127,14 +129,14 @@ Contains info about the product.
 | serial\*\*             | String        | Product's Serial number (40 chars)
 | insuranceCompany\*\*   | String        | Insurance company name (50 chars)
 | insuranceNumber\*\*    | String        | Insurance number
-| accessory              | Array         | List of accessory Ids
-| otherAccessory         | String        | Names of additional accessory
+| accessory              | Array         | List of accessory IDs
+| otherAccessory         | String        | List of additional accessories in free text
 | problemText\*          | String        | Problem description
 | password               | String        | Product's password (if applicable)
 | weight                 | Number        | Product's weight (in kg)
 | volume                 | Dimensions    | Width, height, depth
 
-\*\* These fields may become mandatory in some conditions.
+\*\* These fields may become mandatory in some conditions. [Read more](Booking/#conditional-validation) about conditional validation.
 
 ## ContactData
 
@@ -159,3 +161,33 @@ Contains info about person or company.
 <sup>1</sup> Allowed only when user is a private person
 
 <sup>2</sup> Allowed only when user is a company
+
+[Read more](Booking/#conditional-validation) about conditional validation.
+
+## Consents
+
+Contains data regarding user's consents in compliance with [GDPR](https://gdpr.eu). Certain consents can be mandatory, so the validation will fail if they're `false` or missing. Please ask support for a list of mandatory consents for your integration.
+
+| Name                             | Type          | Description                     |
+|----------------------------------|---------------|---------------------------------|
+| Consent name from the settings\* | Boolean       | Consent name from the settings  |
+
+The set of possible consents may vary, but the most common are these three:
+
+| Name                             | Description
+| -------------------------------- | ---------------------------------------------------------------------------
+| ConsentTerms\*                   | User accepts terms and conditions of the service
+| ConsentRepair\*                  | User allows personal data processing required for the service
+| ConsentOffers                    | User allows to get contacted with additional offers related to the service
+
+<sup>*</sup> - mandatory consents
+
+**Example**
+
+```
+{
+    "ConsentTerms": true,
+    "ConsentRepair": true,
+    "ConsentOffers": false
+}
+```
