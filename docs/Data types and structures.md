@@ -166,18 +166,21 @@ Contains info about person or company.
 
 ## Consents
 
-Contains data regarding user's consents in compliance with [GDPR](https://gdpr.eu). 
+Contains data regarding user's consents in compliance with [GDPR](https://gdpr.eu). Certain consents can be mandatory, so the validation will fail if they're `false` or missing. Please ask support for a list of mandatory consents for your integration.
 
 | Name                             | Type          | Description                     |
 |----------------------------------|---------------|---------------------------------|
 | Consent name from the settings\* | Boolean       | Consent name from the settings  |
 
 The set of possible consents may vary, but the most common are these three:
+
 | Name                             | Description
 | -------------------------------- | ---------------------------------------------------------------------------
-| ConsentTerms                     | User accepts terms and conditions of the service
-| ConsentRepair                    | User allows personal data processing required for the service
+| ConsentTerms\*                   | User accepts terms and conditions of the service
+| ConsentRepair\*                  | User allows personal data processing required for the service
 | ConsentOffers                    | User allows to get contacted with additional offers related to the service
+
+<sup>*</sup> - mandatory consents
 
 **Example**
 

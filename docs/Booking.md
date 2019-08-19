@@ -127,6 +127,11 @@ content-type: application/json
   "productType": 1001,
   "location": 3,
   "order": {
+    "consents": {
+      "ConsentTerms": true,
+      "ConsentRepair": true,
+      "ConsentOffers": false
+    },
     "infocareSesamOriginator": "OtherSE",
     "partnerSpecific": {
       "testPartner": {
@@ -170,7 +175,6 @@ content-type: application/json
   "originatorType": "private",
   "bookingType": "companyToPrivate",
   "clientPostalCode": "1145",
-  "acceptConditions": true,
   "other": {
     "test": 1
   }
