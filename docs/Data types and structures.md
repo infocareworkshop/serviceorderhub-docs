@@ -68,8 +68,8 @@ Contains info about service order.
 | pickupDate<sup>2</sup>          | String    | Date from `pickup-dates`
 | emballage                       | Boolean   | Does customer wants to request packing
 |                                 |           | materials
-| mail<sup>4</sup>                | String    | Address of where the packaging should be delivered
-| partnerSpecific<sup>3</sup>     | Object    | Custom parameters specific for a certain
+| mail*<sup>3</sup>                | String    | Address of where the packaging should be delivered
+| partnerSpecific<sup>4</sup>     | Object    | Custom parameters specific for a certain
 |                                 |           | partner
 | providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service
 |                                 |           | provider
@@ -83,7 +83,9 @@ has `properties.requirePickupDate: true`. Check the API ref for
 has **not** `null` for `properties.goodsTypeList`. Check the API ref for
 `/api/v1/shipping-methods` for more details and [read more](/en/latest/Booking/#conditional-validation) about conditional validation.
 
-<sup>3</sup> `partnerSpecific` is an optional object for custom parameters
+<sup>3</sup> `mail` is mandatory if `emballage: true`
+
+<sup>4</sup> `partnerSpecific` is an optional object for custom parameters
 specific for a certain ingegration with partner. Parameter's names
 should be added to the serviceorderhub config before you can use it.
 Please contact support for that.
