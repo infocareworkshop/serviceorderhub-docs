@@ -16,7 +16,7 @@ Data quality is the cornerstone of the serviceorderhub. Thus it's important for 
 10. `order.pickupDate` (a date of desired pickup) is mandatory only when you book shipping by certain carriers along with a service order. Please ask support if it's relevant for your integration.
 11. `product.weight` and / or `product.volume` are mandatory only when you book shipping by certain carriers along with a service order. Please ask support if it's relevant for your integration.
 12. `order.goodsType` (type of goods in terminology of the carrier) is mandatory only when you book shipping by certain carriers along with a service order. Please ask support if it's relevant for your integration.
-13. `order.mail` is mandatory if your intgration support package materials ordering and you also send `order.emballage: true`
+13. `order.mail` is mandatory if your integration support package materials ordering and you also send `order.emballage: true`
 
 ## POST /api/v2/case/validate
 
