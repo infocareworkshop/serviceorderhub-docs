@@ -77,11 +77,11 @@ Contains info about service order.
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
-`/api/v1/shipping-methods` for more detailes. [Read more](/en/latest/Booking/#conditional-validation) about conditional validation.
+`/api/v1/shipping-methods` for more details. [Read more](/en/latest/Booking/#conditional-validation) about conditional validation.
 
 <sup>2</sup> `pickupDate` is mandatory only if the corresponding shipping method
 has **not** `null` for `properties.goodsTypeList`. Check the API ref for
-`/api/v1/shipping-methods` for more detailes and [read more](/en/latest/Booking/#conditional-validation) about conditional validation.
+`/api/v1/shipping-methods` for more details and [read more](/en/latest/Booking/#conditional-validation) about conditional validation.
 
 <sup>3</sup> `partnerSpecific` is an optional object for custom parameters
 specific for a certain ingegration with partner. Parameter's names
