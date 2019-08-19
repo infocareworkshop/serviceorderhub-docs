@@ -66,22 +66,22 @@ Contains info about service order.
 | goodsType<sup>1</sup>           | String    | Data from `shipping-methods`
 |                                 |           | goodsTypeList
 | pickupDate<sup>2</sup>          | String    | Date from `pickup-dates`
+| emballage                       | Boolean   | Does customer wants to request packing
+|                                 |           | materials
+| mail<sup>4</sup>                | String    | Address of where the packaging should be delivered
 | partnerSpecific<sup>3</sup>     | Object    | Custom parameters specific for a certain
 |                                 |           | partner
-| providerSpecific<sup>4</sup>    | Object    | Same as partnerSpecific but for service
+| providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service
 |                                 |           | provider
-| packaging                       | Boolean   | Does customer wants to request packing
-|                                 |           | materials
-| mail                            | String    | Used for some specific cases
-| consents                        | Object    | List of consents
+| consents\*                      | Object    | Consents. Read more [here](#consents) 
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
-`/api/v1/shipping-methods` for more detailes.
+`/api/v1/shipping-methods` for more detailes. [Read more](/en/latest/Booking/#conditional-validation) about conditional validation.
 
 <sup>2</sup> `pickupDate` is mandatory only if the corresponding shipping method
 has **not** `null` for `properties.goodsTypeList`. Check the API ref for
-`/api/v1/shipping-methods` for more detailes.
+`/api/v1/shipping-methods` for more detailes and [read more](/en/latest/Booking/#conditional-validation) about conditional validation.
 
 <sup>3</sup> `partnerSpecific` is an optional object for custom parameters
 specific for a certain ingegration with partner. Parameter's names
@@ -134,7 +134,7 @@ Contains info about the product.
 | weight                 | Number        | Product's weight (in kg)
 | volume                 | Dimensions    | Width, height, depth
 
-\*\* These fields may become mandatory in some conditions.
+\*\* These fields may become mandatory in some conditions. [Read more](/en/latest/Booking/#conditional-validation) about conditional validation.
 
 ## ContactData
 
@@ -159,3 +159,30 @@ Contains info about person or company.
 <sup>1</sup> Allowed only when user is a private person
 
 <sup>2</sup> Allowed only when user is a company
+
+[Read more](/en/latest/Booking/#conditional-validation) about conditional validation.
+
+## Consents
+
+Contains data regarding user's consents in compliance with [GDPR](https://gdpr.eu). 
+
+| Name                             | Type          | Description                     |
+|----------------------------------|---------------|---------------------------------|
+| Consent name from the settings\* | Boolean       | Consent name from the settings  |
+
+The set of possible consents may vary, but the most common are these three:
+| Name                             | Description
+| -------------------------------- | ---------------------------------------------------------------------------
+| ConsentTerms                     | User accepts terms and conditions of the service
+| ConsentRepair                    | User allows personal data processing required for the service
+| ConsentOffers                    | User allows to get contacted with additional offers related to the service
+
+**Example**
+
+```
+{
+    "ConsentTerms": true,
+    "ConsentRepair": true,
+    "ConsentOffers": false
+}
+```
