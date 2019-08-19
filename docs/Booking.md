@@ -98,7 +98,7 @@ Partner
 | returnDst<sup>5</sup>          | ContactData   | Where shipment should be delivered after repair          
 | originatorType\*               | Originator    | Originator type                                          
 | bookingType\*                  | BookingType   | Booking type                                             
-| acceptConditions\*             | Boolean       | Terms and condition acceptance. Must be `true` if no consents sent
+| acceptConditions\*             | Boolean       | Terms and condition acceptance. Must be `true` if no `order.consents` sent
 | noPassword                     | Boolean       | Make `product.password` optional                         
 
 <sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required according to the business rules (your integration setup), but no shipping method id was sent. If more than one method is available, the first one by name (alphabetically) will be selected.
