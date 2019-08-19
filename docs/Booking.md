@@ -191,8 +191,5 @@ content-type: application/json
 ```
 
 ## Attach files
-You can send files as `multipart/form-data` together with the order.
 
-Allowed file extensions: 'jpg', 'png', 'txt', 'pdf', 'doc', 'docx', 'jpeg', 'odt', 'xls', 'xlsx', 'avi', 'mp4', 'm4v', 'mov', 'wmv', 'mpg', 'mpeg', 'm2v', 'gif', 'mkv', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', '3gp'
-
-It's not recommended to attach files in this way due to time-outs caused by file size. Instead it's recommended to use [`case/files`](/en/latest/Working%20with%20cases/#post-apiv2casefiles) to upload files after the case is created.
+You can use [`case/files`](/en/latest/Working%20with%20cases/#post-apiv2casefiles) to upload files after the case is created.
