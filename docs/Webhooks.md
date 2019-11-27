@@ -29,7 +29,7 @@ Example:
   "id": 25532, // unique cost proposal id
   "guid": "f5afa004-f48c-4380-9f9b-cafaea0dd7de", // case id
   "externalId": null,
-  "name": "RUR",
+  "name": "RUR", //most common values are "Repair", "RUR" (Return UnRepaired), "Scrap"
   "priceNet": 280,
   "currency": "SEK",
   "isActive": true,
