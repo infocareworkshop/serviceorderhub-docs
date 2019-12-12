@@ -88,20 +88,20 @@ Example:
 ```
 ## Case updated
 
-The webhook body is similar to the input of [POST /api/v2/case/update](Working%20with%20cases/#post-apiv2caseupdate)
+The webhook's body is similar to the input of [POST /api/v2/case/update](Working%20with%20cases/#post-apiv2caseupdate)
 
-If some key was removed, we send it with `null` value.
+If any key was removed, we send it with `null` value.
 
-If some key wasn't changed, we don't send it.
+Unchanged keys are not being sent in the webhook.
 
-If some key has a new value, we send the new value assigned to that key.
+If a key has a new value, we send the new value assigned to that key.
 
-Array considered as a single value.
+Array is considered as a single value.
 
-The webhok body will always contain `guid` field. Also it can have some top-level keys: `orderData`, `productData`, `customer`, `consumer`, `pickupDst`, `returnDst`.
+The webhook's body will always contain the `guid` field. Also it can have some top-level keys: `orderData`, `productData`, `customer`, `consumer`, `pickupDst`, `returnDst`.
 
-The webhook will only trigger if the user who sent the request doesn't belong to any of service providers.
-Also it could be triggered both by API request and Web interface.
+The webhook will only be triggered if the user who sent the update request is not a service provider.
+Also it can be triggered both by an API request and using the Web interface.
 
 Example:
 ```
