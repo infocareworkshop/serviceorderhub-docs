@@ -175,13 +175,19 @@ Partner, Provider
 | reaction\*       | String    | `approved` or `rejected`               |
 | comment          | String    | Explanation                            |
 
-### Output
-
+### Example
 ```
 {
-  "data": Cost Proposal v2
+	"id": 8600,
+	"name": "John Smith",
+	"reaction": "approved",
+	"comment": "Optional comment"
 }
 ```
+
+### Output
+
+Same as [here](Cost%20proposals/#get-apiv2cost-proposals)
 
 
 ## GET /api/v1/cost-proposals – Deprecated
