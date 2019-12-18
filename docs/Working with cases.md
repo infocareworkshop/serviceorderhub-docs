@@ -621,11 +621,15 @@ Partner, Provider
 | name\*             | String        | Name of the file with extension |
 | url                | String        | URL                             |
 | data               | String        | Base64 encoded content          |
+| type               | String        | Type of file                    |
 
 
 Fields *url* and *data* are mutually exclusive.
 
 Allowed file extensions: 'jpg', 'png', 'txt', 'pdf', 'doc', 'docx', 'jpeg', 'odt', 'xls', 'xlsx', 'avi', 'mp4', 'm4v', 'mov', 'wmv', 'mpg', 'mpeg', 'm2v', 'gif', 'mkv', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', '3gp'
+
+Allowed file types: 'proofOfPurchase', 'transportDamage', 'claim', 'other', 'report', 'shipmentLabel'. If another sent (or not sent at all) the 'other' type will be assigned automatically.
+
 
 ### Example
 
@@ -635,6 +639,7 @@ Allowed file extensions: 'jpg', 'png', 'txt', 'pdf', 'doc', 'docx', 'jpeg', 'odt
     "files": {
         {
              "name": "cat.jpg",
+             "type": "proofOfDamage",
              "url": "http://example.com/cat-image"
         },
         {
