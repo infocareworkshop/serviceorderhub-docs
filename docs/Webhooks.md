@@ -86,4 +86,47 @@ Example:
   ]
 }
 ```
+## Case updated
+
+The webhook's body is similar to the input of [POST /api/v2/case/update](Working%20with%20cases/#post-apiv2caseupdate)
+
+If any key was removed, we send it with `null` value.
+
+Unchanged keys are not being sent in the webhook.
+
+If a key has a new value, we send the new value assigned to that key.
+
+Array is considered as a single value.
+
+The webhook's body will always contain the `guid` field. Also it can have some top-level keys: `orderData`, `productData`, `customer`, `consumer`, `pickupDst`, `returnDst`.
+
+The webhook will only be triggered if the user who sent the update request is not a service provider.
+Also it can be triggered both by an API request and using the Web interface.
+
+Example:
+```
+{
+  "guid": "989d0f73-f87a-4dfe-98eb-554a44233cef",
+  "orderData": {
+    "refNo": "REF",
+    "serial": null
+  },
+  "productData": {
+    "model": "Tesla Cybertruck",
+    "accessory": [
+      "1180"
+    ]
+  },
+  "consumer": {
+    "firstName": "Elon",
+    "lastName": "Musk"
+  },
+  "sender": {
+    "address": "Somestreet, 123"
+  }
+}
+```
+
+
+
 
