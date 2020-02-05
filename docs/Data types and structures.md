@@ -74,6 +74,7 @@ Contains info about service order.
 | providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service
 |                                 |           | provider
 | consents\*                      | Object    | Consents. Read more [here](#consents) 
+| solution                        | String    | Description of what has been done to solve the problem
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
