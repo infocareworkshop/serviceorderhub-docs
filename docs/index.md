@@ -9,7 +9,7 @@ All endpoints are named with following schema:
 `https://serviceorderhub.com/api/version/action` or
 `https://serviceorderhub.com/api/version/entity/action`
 
-Currently `v1` and `v2` are valid `version`. Words inside path string
+Currently `v1`, `v2` and `v3` are valid `version`. Words inside path string
 must be separated with `-` sign. By default all endpoints of previous versions are
 allowed in next.  
 
