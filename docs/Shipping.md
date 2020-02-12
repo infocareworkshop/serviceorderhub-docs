@@ -1,6 +1,6 @@
 # Shipping
 
-## GET /api/v2/shipping/label
+## GET /api/v3/shipping/label
 
 Get shipping label (Base64 encoded PDF file).
 

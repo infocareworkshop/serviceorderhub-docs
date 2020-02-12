@@ -1,6 +1,6 @@
 # Reference data
 
-## GET /api/v2/manufacturers
+## GET /api/v3/manufacturers
 
 Get manufacturers (brands).
 
@@ -36,7 +36,7 @@ Partner
 ]
 ```
 
-## GET /api/v2/service-types
+## GET /api/v3/service-types
 
 Get service types.
 
@@ -80,7 +80,7 @@ Partner
 
 Field `properties` contains info about required fields
 
-## GET /api/v2/product-types
+## GET /api/v3/product-types
 
 Get product types.
 
@@ -128,7 +128,7 @@ Partner
 
 Field `properties` contains info about required fields.
 
-## GET /api/v2/service-locations
+## GET /api/v3/service-locations
 
 Get service locations.
 
@@ -165,7 +165,7 @@ Partner
 ]
 ```
 
-## GET /api/v2/accessory
+## GET /api/v3/accessory
 
 Get accessory.
 
@@ -199,7 +199,7 @@ Partner
 ]
 ```
 
-## GET /api/v2/shipping-methods
+## GET /api/v3/shipping-methods
 
 Get allowed shipping methods.
 
@@ -247,7 +247,7 @@ If `requirePickupDate` of the `properties` object is not `false`, the parameter 
 
 If `goodsTypeList` of the `properties` object is not `null`, the parameter `order.goodsType` becomes mandatory for case/create and case/validate endpoints!
 
-## GET /api/v2/shipping/pickup-dates
+## GET /api/v3/shipping/pickup-dates
 
 Get allowed pickup dates for this shipping methods.
 
@@ -277,7 +277,7 @@ Partner
 ]
 ```
 
-## GET /api/v2/shipping/pickup-dates-extended
+## GET /api/v3/shipping/pickup-dates-extended
 
 Get allowed pickup dates with eventual comments for each date. Usually it includes info about pick up time
 
@@ -308,7 +308,7 @@ Partner
 ]
 ```
 
-## GET /api/v2/partner
+## GET /api/v3/partner
 
 Get partner by id
 
@@ -351,7 +351,7 @@ Any
 }
 ```
 
-## GET /api/v2/provider
+## GET /api/v3/provider
 
 Get provider by id
 
@@ -394,7 +394,7 @@ Any
 }
 ```
 
-## GET /api/v2/routing
+## GET /api/v3/routing
 
 Find service provider, shipping methods and business rules by case parameters
 
@@ -461,7 +461,7 @@ Partner
 
 ```
 
-## GET /api/v2/models
+## GET /api/v3/models
 
 Find models
 
@@ -481,7 +481,7 @@ any
 
 ### Example
 
-`/api/v2/models?manufacturer=acer&model=aspire&limit=1`
+`/api/v3/models?manufacturer=acer&model=aspire&limit=1`
 
 ### Output
 
@@ -513,7 +513,7 @@ any
 ]
 ```
 
-## POST /api/v2/models
+## POST /api/v3/models
 
 Update models
 

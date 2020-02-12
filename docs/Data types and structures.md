@@ -75,6 +75,10 @@ Contains info about service order.
 |                                 |           | provider
 | consents\*                      | Object    | Consents. Read more [here](#consents) 
 | solution                        | String    | Description of what has been done to solve the problem
+| partnerOrderReference           | String    | Custom reference assigned by partner
+| providerOrderReference          | String    | Custom reference assigned by provider
+| partnerSpecific.*               | any       | Custom data defined by partner
+| providerSpecific.*              | any       | Custom data defined by provider
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
@@ -136,6 +140,7 @@ Contains info about the product.
 | password               | String        | Product's password (if applicable)
 | weight                 | Number        | Product's weight (in kg)
 | volume                 | Dimensions    | Width, height, depth
+| damage                 | String        | Damage description
 
 \*\* These fields may become mandatory in some conditions. [Read more](Booking/#conditional-validation) about conditional validation.
 
@@ -192,3 +197,13 @@ The set of possible consents may vary, but the most common are these three:
     "ConsentOffers": false
 }
 ```
+
+## FileType
+Allowed values:
+- proofOfPurchase
+- proofOfDamage
+- transportDamage
+- claim
+- report
+- shipmentLabel
+- other (default value)

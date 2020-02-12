@@ -1,6 +1,6 @@
 # Working with cases
 
-## GET /api/v2/case
+## GET /api/v3/case
 
 Get all info about a certain Case.
 
@@ -138,7 +138,7 @@ If you want to see all requests to external systems performed for this case you 
 }
 ```
 
-## POST /api/v2/search-cases
+## POST /api/v3/search-cases
 
 Get list of cases
 
@@ -214,7 +214,7 @@ Service providers can view all data from all service partners whose cases they "
 }
 ```
 
-## POST /api/v2/case/accept
+## POST /api/v3/case/accept
 
 Endpoint for the service provider to confirm that the case was accepted
 for repair and imported to their production system.
@@ -239,7 +239,7 @@ Provider
 }
 ```
 
-## POST /api/v2/case/cancel
+## POST /api/v3/case/cancel
 
 Endpoint for the service provider to notify ServiceOrderHub that the
 case import was canceled and the provider revokes the acceptance to
@@ -274,7 +274,7 @@ Provider
 }
 ```
 
-## POST /api/v2/unexported-cases
+## POST /api/v3/unexported-cases
 
 Get a list of cases unaccepted by the Service Provider.
 
@@ -285,7 +285,7 @@ The request has the same body structure, parameters and output as [/api/v2/searc
 Provider
 
 
-## GET /api/v2/case/export
+## GET /api/v3/case/export
 
 Get case with all additional info 
 
@@ -494,7 +494,7 @@ Provider
 
 
 
-## POST /api/v2/case/update
+## POST /api/v3/case/update
 
 Modify Case.
 
@@ -534,7 +534,7 @@ Partner, Provider
 }
 ```
 
-## POST /api/v2/case/finish
+## POST /api/v3/case/finish
 
 In some case partner doesn't want to send case to provider just after creation. 
 In this case you can initiate this process by demand using this endpoint.
@@ -558,11 +558,15 @@ Partner
 ```
 
 
-## POST /api/v2/case/status
+## POST /api/v3/case/status
 
 Add status to case.
 
 Re-sending the same status as current will be ignored.
+
+Status key is typically defined by Service provider and could be meaningless for Service partner.
+So we can translate them from the provider notation to the partner using special mapping or even hide them.
+Partners will receive statuses in webhooks after mapping and see only those statuses they can process.
 
 ### Access
 
@@ -599,7 +603,11 @@ Provider
 }
 ```
 
-## POST /api/v2/case/files
+**New in V3**
+
+We always convert `key` to lower case. 
+
+## POST /api/v3/case/files
 
 Add files to case. Accepts guid and array of file objects.
 
@@ -628,7 +636,7 @@ Fields *url* and *data* are mutually exclusive.
 
 Allowed file extensions: 'jpg', 'png', 'txt', 'pdf', 'doc', 'docx', 'jpeg', 'odt', 'xls', 'xlsx', 'avi', 'mp4', 'm4v', 'mov', 'wmv', 'mpg', 'mpeg', 'm2v', 'gif', 'mkv', 'mpg', 'mp2', 'mpeg', 'mpe', 'mpv', '3gp'
 
-Allowed file types: 'proofOfPurchase', 'proofOfDamage', 'transportDamage', 'claim', 'other', 'report', 'shipmentLabel'. If another sent (or not sent at all) the 'other' type will be assigned automatically.
+Allowed file types: [read here](Data%20types%20and%20structures/#FileType). If another sent (or not sent at all) the 'other' type will be assigned automatically.
 
 
 ### Example

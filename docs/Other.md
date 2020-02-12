@@ -2,7 +2,7 @@
 
 **Note** Mandatory parameters are marked with \* sign.
 
-## POST /api/v2/case/send-completed-email
+## POST /api/v3/case/send-completed-email
 
 Resend final email to customers.
 
@@ -40,7 +40,7 @@ If `email` is empty then fields of the case will be used.
 
 If email cant't be sent then a string with message will be returned in `result` field (Sometimes emails are disabled in settings).
 
-## GET /api/v2/routing
+## GET /api/v3/routing
 
 Determine which workshop will be used to process a case with specific parameters. 
 This method also returns competence data.
@@ -137,7 +137,7 @@ All parameters are optional by default, but when provided data is not enough the
 }
 ```
 
-## POST /api/v2/requests/log
+## POST /api/v3/requests/log
 
 Save external request to log
 

@@ -33,7 +33,7 @@ Cost proposals can contain an array with details for storing cost specification.
 
 **New in V2** In v2 you can also reject cost proposals.
 
-## GET /api/v2/cost-proposals
+## GET /api/v3/cost-proposals
 
 Get all cost proposals attached to specific *Case*.
 
@@ -52,7 +52,7 @@ Partner, Provider
 ### Example
 
 ```
-/api/v2/cost-proposals?accessToken=key&guid=3ebad3cc-61d3-479a-bd92-510e8774ce5a&active=true
+/api/v3/cost-proposals?accessToken=key&guid=3ebad3cc-61d3-479a-bd92-510e8774ce5a&active=true
 ```
 
 ### Output
@@ -108,7 +108,7 @@ Partner, Provider
 ```
 
 
-## POST api/v2/cost-proposals
+## POST api/v3/cost-proposals
 
 Add or modify multiple *Cost Proposals*.
 
@@ -152,13 +152,13 @@ Provider
 
 ```
 {
-  "data": [/* List of created Cost Proposals v2 */]
+  "data": [/* List of created Cost Proposals v3 */]
 }
 ```
 
 If the same pair (externalId, name) passes second time, then an update will be performed.
 
-## POST /api/v2/cost-proposals/feedback
+## POST /api/v3/cost-proposals/feedback
 
 Reject or approve single cost proposal
 
@@ -187,7 +187,7 @@ Partner, Provider
 
 ### Output
 
-Same as [here](Cost%20proposals/#get-apiv2cost-proposals)
+Same as [here](Cost%20proposals/#get-apiv3cost-proposals)
 
 
 ## GET /api/v1/cost-proposals – Deprecated

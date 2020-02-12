@@ -1,6 +1,6 @@
 # Invoices
 
-## POST /api/v2/invoices
+## POST /api/v3/invoices
 
 Add or update invoices
 
@@ -159,7 +159,7 @@ Array of Invoices
 ]
 ```
 
-## POST /api/v2/invoices/find
+## POST /api/v3/invoices/find
 
 Find invoices
 
