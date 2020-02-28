@@ -10,6 +10,18 @@ We can set up for each webhook which version of API will be used to generate bod
 
 By default we use `v1`.
 
+### Request Id
+
+Since v3 we add a field with GUID to track requests. When HTTP transport is used we add a custom header `x-request-id`. For AMQP transport we add `_requestId`field straight to the message body. They are unique per webhook event, not per request call. I.e. you can receive more then one request with the same requestId, but all of them will have the same body and the same event-trigger.
+
+### Replying to webhooks
+
+To improve stability we introduced a special replying logic. Receivers of webhooks should send a notification to Hub to confirm that they received that message and processed it correctly (or not). If no notification received we mark request failed and can perform some steps to recover it. We can enable this workflow for any webhook on demand. Also we can set up custom reaction timeout.
+
+### Failover policy
+
+We can set up request repetition for any webhook. If we failed to send it, or failed to get a reply, we can resend it. If the data is completely wrong and there is no chanses that it will be restored, the client can stop repetition by sending a special reply status. See `POST /api/v3/requests/log` for more details
+
 ## New status
 
 For more information about statuses [read here](Working%20with%20cases/#post-apiv3casestatus)
@@ -91,6 +103,14 @@ Example:
 }
 ```
 
+## Cost proposal reacted
+
+Two different webhooks for accepted and rejected cost proposals. The body is same as in "New cost proposal".
+
+## Cost proposal changed
+
+Triggers after cost proposal was changed including acceptance/rejection.
+
 ## New message
 
 For more information about messages [read here](Messages/)
@@ -127,6 +147,11 @@ Example:
 }
 ```
 For more information about file types [read here](Data%20types%20and%20structures/#FileType)
+
+## Case created
+
+The body is similar to `GET /api/v3/case/export`
+
 ## Case updated
 
 The webhook's body is similar to the input of [POST /api/v2/case/update](Working%20with%20cases/#post-apiv2caseupdate)
@@ -168,6 +193,8 @@ Example:
 }
 ```
 
+## Case was accepted by Service Provider
 
+Triggered after the provider sents a request to `case/accept`. The body is similar to `GET /api/v3/case/export`. Can be triggered multiple times, after each request from the provider.
 
 
