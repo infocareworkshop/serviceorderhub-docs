@@ -20,7 +20,16 @@ To improve stability we introduced a special replying logic. Receivers of webhoo
 
 ### Failover policy
 
-We can set up request repetition for any webhook. If we failed to send it, or failed to get a reply, we can resend it. If the data is completely wrong and there is no chanses that it will be restored, the client can stop repetition by sending a special reply status. See `POST /api/v3/requests/log` for more details
+We can set up request repetition for any webhook. If we failed to send it, or failed to get a reply, we can resend it. If the data is completely wrong and there is no chance that it will be restored, the client can stop repetition by sending a special reply status. See `POST /api/v3/requests/log` for more details.
+
+We resend failed reqiests in non-linear time intervals depending on reply timeout using the formula:
+
+```
+timeout = (failedAttempts + 1) * (failedAttempts + 2) * replyTimeout * 0.5
+```
+
+For 30s timeout the request will be sent after 00:00:30, then 00:01:30, 00:03:00, 00:05:00, 00:07:30, 00:10:30 and so on.
+
 
 ## New status
 
