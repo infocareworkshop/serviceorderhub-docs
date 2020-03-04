@@ -644,7 +644,7 @@ Allowed file types: [read here](Data%20types%20and%20structures/#FileType). If a
 ```
 {
     "guid": "e3df4d74-f559-4e65-b57d-37b5360fb46d",
-    "files": {
+    "files": [
         {
              "name": "cat.jpg",
              "type": "proofOfDamage",
@@ -654,7 +654,7 @@ Allowed file types: [read here](Data%20types%20and%20structures/#FileType). If a
             "name": "doge.jpg",
             "data": "base64 encoded content"
         }
-    }
+    ]
 }
 ```
 
