@@ -141,7 +141,7 @@ Array is considered as a single value.
 
 The webhook's body will always contain the `guid` field. Also it can have some top-level keys: `orderData`, `productData`, `customer`, `consumer`, `pickupDst`, `returnDst`.
 
-The webhook will only be triggered if the user who sent the update request is not a service provider.
+This webhook can be sent either to a partner or to a provider. It depends on the role of the user who submitted the update request.
 Also it can be triggered both by an API request and using the Web interface.
 
 Example:
