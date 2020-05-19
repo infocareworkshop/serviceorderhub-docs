@@ -103,7 +103,8 @@ Partner
 | originatorType\*               | Originator    | Originator type                                          
 | bookingType\*                  | BookingType   | Booking type                                             
 | acceptConditions\*             | Boolean       | Terms and condition acceptance. Must be `true` if no `orderData.consents` sent
-| noPassword                     | Boolean       | Make `productData.password` optional                         
+| noPassword                     | Boolean       | Make `productData.password` optional
+| trackingId<sup>6</sup>         | String        | Store this requests and mark it with special value
 
 <sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required according to the business rules (your integration setup), but no shipping method id was sent. If more than one method is available, the first one by name (alphabetically) will be selected.
 
@@ -115,6 +116,7 @@ Partner
 
 <sup>5</sup> Enabled when returnDestination ≠ `consumer`. If returnDestination is not sent, we use `returnDestination: "consumer"` by default
 
+<sup>6</sup> If presented we will store this request as external request with type "caseCreated" and assign trackingId as meeta field. This is very helpful in debugging and troubleshootiing, because this external request will contain all info about validation errors and all fields, even removed by validation. You can search requests by trackingId using `/requests/find` endpoint.
 
 ### Example
 
