@@ -121,6 +121,12 @@ Partner
 
 <sup>7</sup> Sometimes our routing rules are incomplete or we have an exceptional case. In some emergency situation we allow to get around all rules and send the order to some provider in imperative mode. This is not a normal flow and should be avoided in 99.9% cases.
 
+### ⚠️ Warning
+
+We don't accept `orderData.files` here. We have a dedicated enpoint to assign files.
+
+__All unexpected fields will be discarded without any validation errors.__
+
 ### Example
 
 ```
