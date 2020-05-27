@@ -21,6 +21,9 @@ Partner, Provider
 | guid\*          | Guid         | Guid of the case                           |
 | content         | String       | Message text                               |
 | type\*          | String(32)   | Message type (always `serviceComment`)     |
+| declaredAt<sup>1</sup> | Date      | Actual time when the status was added |
+
+<sup>1</sup> If empty, the current time will be used.
 
 ### Example
 
@@ -28,7 +31,8 @@ Partner, Provider
 {
   "guid": "1e0abcb7-b94c-4072-a9c0-37072a1ef015",
   "content": "Test message",
-  "type": "serviceComment"
+  "type": "serviceComment",
+  "declaredAt": "2017-07-25T10:12:54.003Z"
 }
 ```
 
@@ -43,7 +47,8 @@ Partner, Provider
   "content": "Test message",
   "type": "serviceComment",
   "createdAt": "2017-07-26T14:02:02.170Z",
-  "updatedAt": "2017-07-26T14:02:02.170Z"
+  "updatedAt": "2017-07-26T14:02:02.170Z",
+  "declaredAt": "2017-07-25T10:12:54.003Z"
 }
 ```
 
@@ -83,7 +88,8 @@ Partner, Provider
     "content": "Hello!",
     "type": "serviceComment",
     "createdAt": "2017-07-26T13:43:44.512Z",
-    "updatedAt": "2017-07-26T13:43:44.512Z"
+    "updatedAt": "2017-07-26T13:43:44.512Z",
+    "declaredAt": "2017-07-26T13:43:44.512Z"
   },
   {
     "id": 2,
@@ -93,7 +99,8 @@ Partner, Provider
     "content": "Test comemnt",
     "type": "serviceComment",
     "createdAt": "2017-07-26T13:54:53.058Z",
-    "updatedAt": "2017-07-26T13:54:53.058Z"
+    "updatedAt": "2017-07-26T13:54:53.058Z",
+    "declaredAt": "2017-07-26T13:54:53.058Z"
   }
 ]
 ```
