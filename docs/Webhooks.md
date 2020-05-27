@@ -21,7 +21,8 @@ Example:
   "name": "Repair finished",
   "key": "final",
   "createdAt": "2019-01-22T11:29:38.258Z",
-  "updatedAt": "2019-01-22T11:29:38.258Z"
+  "updatedAt": "2019-01-22T11:29:38.258Z",
+  "declaredAt": "2019-01-22T11:27:34.233Z"
 }
 ```
 
@@ -44,6 +45,7 @@ The webhook body will be almost the same as for new status, but with addition of
   "prevKey": "arrived", // Previous status key
   "createdAt": "2019-01-22T11:29:38.258Z",
   "updatedAt": "2019-01-22T11:29:38.258Z",
+  "declaredAt": "2019-01-22T11:27:34.233Z",
   "case": {
     // Case data
   }

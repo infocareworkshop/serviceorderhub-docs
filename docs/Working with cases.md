@@ -578,13 +578,15 @@ Provider
 |--------------------|---------------|----------------------------|
 | guid\*             | GUID          | Guid of the case           |
 | key\*              | String        | Status key                 |
+| declaredAt\*       | Date          | Actual time when the status was added |
 
 ### Example
 
 ```
 {
   "guid": "a7180ff9-7c6e-4d0e-b756-16b49531382f",
-  "key": "final" 
+  "key": "final",
+  "declaredAt": "2019-01-22T10:12:54.003Z"
 }
 ```
   
@@ -598,7 +600,8 @@ Provider
     "guid": "a7180ff9-7c6e-4d0e-b756-16b49531382f", // Case guid
     "key": "final",
     "createdAt": "2019-01-22T11:29:38.258Z",
-    "updatedAt": "2019-01-22T11:29:38.258Z"
+    "updatedAt": "2019-01-22T11:29:38.258Z",
+    "declaredAt": "2019-01-22T10:12:54.003Z"
   }
 }
 ```
