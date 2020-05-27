@@ -578,7 +578,9 @@ Provider
 |--------------------|---------------|----------------------------|
 | guid\*             | GUID          | Guid of the case           |
 | key\*              | String        | Status key                 |
-| declaredAt\*       | Date          | Actual time when the status was added |
+| declaredAt<sup>1</sup> | Date      | Actual time when the status was added |
+
+<sup>1</sup> If empty, the current time will be used.
 
 ### Example
 
