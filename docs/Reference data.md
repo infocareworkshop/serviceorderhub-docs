@@ -394,6 +394,53 @@ Any
 }
 ```
 
+## GET /api/v3/providers
+
+Get list of providers, optionally filtered by list of ids
+
+### Access
+
+Any
+
+### Input
+
+| Name               | Type     | Description                                 |
+|--------------------|----------|---------------------------------------------|
+| ids                | String   | Comma separated list of id                  |
+
+### Example
+
+/api/v2/providers?ids=1001,1002,1003
+
+### Output
+
+```
+[{
+  "id": 1003,
+  "name": "Provider",
+  "contactData": {
+    "id": 30348,
+    "name": null,
+    "firstName": "John",
+    "lastName": "Smith",
+    "organizationName": Provider",
+    "organizationNumber": 123456-1234",
+    "addName": null,
+    "address": "Teststreet, 42",
+    "postalCode": "12345",
+    "city": "Testcity",
+    "countryCode": "SE",
+    "phone": "0123456789",
+    "mobile": "0123456789",
+    "email": "test@example.com",
+    "floor": null,
+    "entrance": null,
+    "doorCode": null,
+    "createdAt": "2017-08-01T14:02:57.172Z"
+  }
+}]
+```
+
 ## GET /api/v3/routing
 
 Find service provider, shipping methods and business rules by case parameters
