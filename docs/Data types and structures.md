@@ -137,7 +137,7 @@ Contains info about the product.
 | accessory              | Array         | List of accessory IDs
 | otherAccessory         | String        | List of additional accessories in free text
 | problemText\*          | String        | Problem description
-| password               | String        | Product's password (if applicable)
+| password\*\*           | String        | Product's password (if applicable)
 | weight                 | Number        | Product's weight (in kg)
 | volume                 | Dimensions    | Width, height, depth
 | damage                 | String        | Damage description
