@@ -2,9 +2,9 @@
 
 ## Introduction
 
-Service Order Hub is a system connecting customers who order different services with providers who perform those services allowing the customers to book service and establish electronic document exchange between the parties, so the provider can keep the customer updated on service's status (and much more). The service flows are being handled based on business rules unique for each setup. The sustem provides a modern REST API both for customers and service providers, so it can be completely integrated into their business-systems.
+Service Order Hub is a system connecting customers who order different services with providers who perform those services allowing the customers to book service and establish electronic document exchange between the parties, so the provider can keep the customer updated on service's status (and much more). The service flows are being handled based on business rules unique for each setup. The system provides a modern REST API both for customers and service providers, so it can be completely integrated into their business-systems.
 
-# API basics
+## API basics
 
 ## Naming convention
 
