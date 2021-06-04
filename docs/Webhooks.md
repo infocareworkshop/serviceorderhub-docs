@@ -89,7 +89,8 @@ Example:
     }
   ],
   "createdAt": "2019-11-25T11:30:29.000Z",
-  "updatedAt": "2019-11-25T10:43:20.523Z"
+  "updatedAt": "2019-11-25T10:43:20.523Z",
+  "serviceProviderId": 1
 }
 ```
 
