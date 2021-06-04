@@ -81,7 +81,8 @@ Partner, Provider
     "reaction": "approved",
     "reactionDate": "2019-03-28 00:00:00.000",
     "reactionName": "John Smith",
-    "timeStamp": "2019-03-28 00:00:00.000"
+    "timeStamp": "2019-03-28 00:00:00.000",
+    "serviceProviderId": 1
   },
   {
     "currency": "SEK",
@@ -102,7 +103,8 @@ Partner, Provider
     "isActive": true,
     "name": "Repair",
     "priceNet": 1000,
-    "timeStamp": "2019-03-28 00:00:00.000"
+    "timeStamp": "2019-03-28 00:00:00.000",
+    "serviceProviderId": 1
   }
 ]
 ```
@@ -241,7 +243,8 @@ Partner, Provider
         "priceNet": 100,
         "quantity": 1
       }
-    ]
+    ],
+    "serviceProviderId": 1
   },
   {
     "id": 5,
@@ -254,7 +257,8 @@ Partner, Provider
     "approverName": "Somebody",
     "details": null,
     "createdAt": "2017-07-12T10:14:13.037Z",
-    "updatedAt": "2017-07-14T15:54:09.613Z"
+    "updatedAt": "2017-07-14T15:54:09.613Z",
+    "serviceProviderId": 1
   }
 ]
 ```
