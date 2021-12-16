@@ -151,6 +151,7 @@ Partner, Provider
 | Name                | Type     | Description               |
 |---------------------|----------|---------------------------|
 | filters             | Object   | Search query              |
+| filters.commonSearch| String   | Search by substring       |
 | pagination          | Object   | Pagination settings       |
 | pagination.offset   | Int      | Default - 0               |
 | pagination.limit    | Int      | Default - 10, max - 100   |
@@ -191,13 +192,32 @@ id, guid, partnerId, serviceProviderId, manufacturerId, currentStatus,
 productData.\*, orderData.\*, serviceTypeId, serviceLocationId,
 productTypeId, createdAt
 
-All Partner and Service provider specific data is stored in
+All Partner and Service provider specific data are stored in
 `orderData.partnerSpecific.<urlSlug>` and
 `orderData.providerSpecific.<urlSlug>` objects.
 
 Service partners can view only partnerSpecific data they own.
 
 Service providers can view all data from all service partners whose cases they "own".
+
+*filters.commonSearch*
+
+Searches for a substring across multiple fields (case insensitive). Allowed fields: 
+
+- `orderData.*` (except `files`, `consents`, `webhooks`)
+- `productData.*` (except `problemText`, `accessory`, `purchaseDate`, `otherAccessory`, `password`)
+- `ServiceType.name`
+- `ProductType.name`
+- `Manufacturer.name`
+- All related contact data including `firstName`, `lastName`, `organizationName`, `organizationNumber`, `postalCode`, `city`, `phone`, `mobile`, `email`
+
+```
+{
+  "filters": { 
+    "commonSearch": "johnny"
+  }
+}
+```
 
 ### Output
 
