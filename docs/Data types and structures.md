@@ -217,4 +217,38 @@ Allowed values:
 | packageNumber | String | Package number |
 | shippingMethod | Int | Id of the shipping method |
 
-*This object may change unpredictably depending on which shipping service was used.*
+*This object may change unpredictably depending on which shipping service was used. All fields are optional, extra fields are allowed.*
+
+**Example**
+
+```
+{
+  "guid": "1231d25f-4313-48d4-a48b-************",
+  "service": "senderella",
+  "serviceId": "1045",
+  "packageNumber": "JJFI6027730000017****",
+  "senderAddress": {
+    "city": "Joensuu",
+    "name": "**",
+    "email": "***",
+    "address": "***",
+    "attention": null,
+    "postalCode": "00000",
+    "countryCode": "FI",
+    "phoneNumber": "010 000 0000",
+    "mobilePhoneNumber": "010 000 0000"
+  },
+  "shipmentNumber": "JJFI6027730000017****",
+  "receiverAddress": {
+    "city": "Vantaa",
+    "name": "***",
+    "email": "***",
+    "address": "***",
+    "attention": "",
+    "postalCode": "123456",
+    "countryCode": "FI",
+    "phoneNumber": "010 000 0000",
+    "mobilePhoneNumber": "010 000 0000"
+  }
+}
+```
