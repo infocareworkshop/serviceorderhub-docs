@@ -152,6 +152,7 @@ Partner, Provider
 |---------------------|----------|---------------------------|
 | filters             | Object   | Search query              |
 | filters.commonSearch| String   | Search by substring       |
+| filters.tags        | Array\<string\> | Search by tags       |
 | pagination          | Object   | Pagination settings       |
 | pagination.offset   | Int      | Default - 0               |
 | pagination.limit    | Int      | Default - 10, max - 100   |
@@ -190,7 +191,7 @@ conditions
 
 id, guid, partnerId, serviceProviderId, manufacturerId, currentStatus,
 productData.\*, orderData.\*, serviceTypeId, serviceLocationId,
-productTypeId, createdAt
+productTypeId, createdAt, tags
 
 All Partner and Service provider specific data are stored in
 `orderData.partnerSpecific.<urlSlug>` and
@@ -218,6 +219,19 @@ Searches for a substring across multiple fields (case insensitive). Allowed fiel
   }
 }
 ```
+  
+*filters.tags*
+
+Search cases which have at least all requested tags. You should use names of the tags, not ids! Names are case-sensitive.
+  
+```
+{
+  "filters": { 
+    "tags": ["Lowcost", "onsite"]
+  }
+}
+```
+
 
 ### Output
 
@@ -533,6 +547,7 @@ Partner, Provider
 | consumer      | Object   | Modified fields    |
 | pickupDst     | Object   | Modified fields    |
 | returnDst     | Object   | Modified fields    |
+| tags          | Array\<Int\> | Current tags   |
 
 ### Example
 
@@ -553,6 +568,22 @@ Partner, Provider
   "result": true
 }
 ```
+
+*Note about tags*
+
+You can modify tags, but you must provide a list of all ids (not names!) of tags that are currently assigned to the case. For example, if the case has these tags:
+```
+tags: [
+  { id: 3, name: "Lowcost" }
+  { id: 4, name: "onside" }
+],
+```
+And you want to remove "Lowcost" and add "Premium" which has id 5, you should send: 
+
+```
+tags: [4, 5]
+```
+Sending an empty array will unassign all tags.
 
 ## POST /api/v3/case/finish
 
