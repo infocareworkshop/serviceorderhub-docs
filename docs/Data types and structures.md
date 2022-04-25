@@ -63,22 +63,20 @@ Contains info about service order.
 | ------------------------------- | --------- | ----------------------------------------
 | chain                           | String    | Special code of the chain
 | refNo                           | String    | External ID, use any string (64 chars)
-| goodsType<sup>1</sup>           | String    | Data from `shipping-methods`
-|                                 |           | goodsTypeList
+| goodsType<sup>1</sup>           | String    | Data from `shipping-methods` goodsTypeList
 | pickupDate<sup>2</sup>          | String    | Date from `pickup-dates`
-| emballage                       | Boolean   | Does customer wants to request packing
-|                                 |           | materials
+| emballage                       | Boolean   | Does customer wants to request packing materials
 | mail*<sup>3</sup>               | String    | Address of where the packaging should be delivered
-| partnerSpecific<sup>4</sup>     | Object    | Custom parameters specific for a certain
-|                                 |           | partner
-| providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service
-|                                 |           | provider
+| partnerSpecific<sup>4</sup>     | Object    | Custom parameters specific for a certain partner
+| providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service provider
 | consents\*                      | Object    | Consents. Read more [here](#consents) 
 | solution                        | String    | Description of what has been done to solve the problem
 | partnerOrderReference           | String    | Custom reference assigned by partner
 | providerOrderReference          | String    | Custom reference assigned by provider
 | partnerSpecific.*               | any       | Custom data defined by partner
 | providerSpecific.*              | any       | Custom data defined by provider
+| shipmentData                    | ShipmentData | Inbound shipment data
+| \*ShipmentData<sup>6</sup>      | ShipmentData | Additional shipment data
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
@@ -106,7 +104,7 @@ Please contact support for that.
 }
 ```
 
-<sup>4</sup> `providerSpecific` is an optional object for custom parameters
+<sup>5</sup> `providerSpecific` is an optional object for custom parameters
 specific for a certain ingegration with service provider. Parameter's
 names should be added to the serviceorderhub config before you can use
 it. Please contact support for that.
@@ -121,6 +119,8 @@ it. Please contact support for that.
     }
 }
 ```
+
+<sup>6</sup> Cases can have addiional shipment data, for example *exportShipmentData*, *forwardingShipmentData* etc.
 
 ## ProductData
 
@@ -207,3 +207,14 @@ Allowed values:
 - report
 - shipmentLabel
 - other (default value)
+
+## ShipmentData
+
+| Name                             | Type          | Description                     |
+|----------------------------------|---------------|---------------------------------|
+| guid | Guid       | guid |
+| shipmentNumber | String | Shipment number |
+| packageNumber | String | Package number |
+| shippingMethod | Int | Id of the shipping method |
+
+*This object may change unpredictably depending on which shipping service was used.*
