@@ -22,6 +22,7 @@ Partner, Provider
 | content         | String       | Message text                               |
 | type\*          | String(32)   | Message type (always `serviceComment`)     |
 | declaredAt<sup>1</sup> | Date      | Actual time when the status was added |
+| externalId | String(512) | Message Id in the sender's system |
 
 <sup>1</sup> If empty, the current time will be used.
 
@@ -32,7 +33,8 @@ Partner, Provider
   "guid": "1e0abcb7-b94c-4072-a9c0-37072a1ef015",
   "content": "Test message",
   "type": "serviceComment",
-  "declaredAt": "2017-07-25T10:12:54.003Z"
+  "declaredAt": "2017-07-25T10:12:54.003Z",
+  "externalId": "test-42"
 }
 ```
 
@@ -46,6 +48,8 @@ Partner, Provider
   "senderAccountId": 1009,
   "content": "Test message",
   "type": "serviceComment",
+  "externalId": "test-42",
+  "confirmedAt": null,
   "createdAt": "2017-07-26T14:02:02.170Z",
   "updatedAt": "2017-07-26T14:02:02.170Z",
   "declaredAt": "2017-07-25T10:12:54.003Z"
@@ -55,6 +59,8 @@ Partner, Provider
 **New in V3**
 
 We changed `messageType` to `type` to make naming more consistent.
+
+We added `externalId` to keep track of messages across different systems.
 
 ## GET /api/v3/case-messages
 
@@ -87,6 +93,8 @@ Partner, Provider
     "senderAccountId": 1009,
     "content": "Hello!",
     "type": "serviceComment",
+    "externalId": "test-42",
+    "confirmedAt": null,
     "createdAt": "2017-07-26T13:43:44.512Z",
     "updatedAt": "2017-07-26T13:43:44.512Z",
     "declaredAt": "2017-07-26T13:43:44.512Z"
@@ -98,6 +106,8 @@ Partner, Provider
     "senderAccountId": 1009,
     "content": "Test comemnt",
     "type": "serviceComment",
+    "externalId": null,
+    "confirmedAt": null,
     "createdAt": "2017-07-26T13:54:53.058Z",
     "updatedAt": "2017-07-26T13:54:53.058Z",
     "declaredAt": "2017-07-26T13:54:53.058Z"
@@ -108,3 +118,54 @@ Partner, Provider
 **New in V3**
 
 We changed `messageType` to `type` to make naming more consistent.
+
+We added `externalId` and `confirmedAt`.
+
+## POST /api/v3/case-messages/confirm
+
+Confirm messages
+
+### Access
+
+Partner, Provider
+
+### Input (request body)
+
+Array of message Ids to confirm (not externalId!)
+
+### Example
+
+```
+[1, 2, 3, 4]
+```
+
+### Output
+
+```
+{
+  "success": true,
+  "errors": [],
+  "data": {}
+}
+```
+
+**Error handling**
+
+This endpoint will return success even if some messages weren't confirmed due to an error, so you should check the "errors" section to make sure everything was processed. Example error:
+
+```
+{
+  "success": true,
+  "errors": [
+    {
+      "id": 11,
+      "message": "Not found" // This message most likely was deleted
+    },
+    {
+      "id": 22,
+      "message": "No access" // You don't have access to this case, or use wrong credentials
+    }
+  ],
+  "data": {}
+}
+```
