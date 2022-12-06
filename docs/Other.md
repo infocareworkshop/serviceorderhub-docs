@@ -172,3 +172,17 @@ Save external request to log
 ### Output
 
 External request
+
+## POST /api/v3/requests/reply
+
+Send a reply to webhook.
+
+| Name               | Type          | Description                |
+|--------------------|---------------|----------------------------|
+| guid\*             | GUID          | Request ID                 |
+| status\*           | string        | Status of the reques       |
+| message            | string        | Short description          |
+
+Valid values for `status` are `success`, `error` of `toRetry`.
+
+Send `status` or `error` to disable repetition. `toRetry` will resend this request later if there are some attempts left.
