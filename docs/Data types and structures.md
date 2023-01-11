@@ -59,24 +59,29 @@ OR
 
 Contains info about service order.
 
-| Name                            | Type      | Description
-| ------------------------------- | --------- | ----------------------------------------
-| chain                           | String    | Special code of the chain
-| refNo                           | String    | External ID, use any string (64 chars)
-| goodsType<sup>1</sup>           | String    | Data from `shipping-methods` goodsTypeList
-| pickupDate<sup>2</sup>          | String    | Date from `pickup-dates`
-| emballage                       | Boolean   | Does customer wants to request packing materials
-| mail*<sup>3</sup>               | String    | Address of where the packaging should be delivered
-| partnerSpecific<sup>4</sup>     | Object    | Custom parameters specific for a certain partner
-| providerSpecific<sup>5</sup>    | Object    | Same as partnerSpecific but for service provider
-| consents\*                      | Object    | Consents. Read more [here](#consents) 
-| solution                        | String    | Description of what has been done to solve the problem
-| partnerOrderReference           | String    | Custom reference assigned by partner
-| providerOrderReference          | String    | Custom reference assigned by provider
-| partnerSpecific.*               | any       | Custom data defined by partner
-| providerSpecific.*              | any       | Custom data defined by provider
-| shipmentData                    | ShipmentData | Inbound shipment data
-| \*ShipmentData<sup>6</sup>      | ShipmentData | Additional shipment data
+| Name                                 | Type      | Description
+| ------------------------------------ | --------- | ----------------------------------------
+| chain                                | String    | Special code of the chain
+| refNo                                | String    | External ID, use any string (64 chars)
+| goodsType<sup>1</sup>                | String    | Data from `shipping-methods` goodsTypeList
+| pickupDate<sup>2</sup>               | String    | Date from `pickup-dates`
+| emballage                            | Boolean   | Does customer wants to request packing materials
+| mail*<sup>3</sup>                    | String    | Address of where the packaging should be delivered
+| partnerSpecific<sup>4</sup>          | Object    | Custom parameters specific for a certain partner
+| providerSpecific<sup>5</sup>         | Object    | Same as partnerSpecific but for service provider
+| consents\*                           | Object    | Consents. Read more [here](#consents) 
+| solution                             | String    | Description of what has been done to solve the problem
+| partnerOrderReference                | String    | Custom reference assigned by partner
+| providerOrderReference               | String    | Custom reference assigned by provider
+| maxRepairPrice                       | String    | Limit amount for beyond economic repair
+| deductible                           | String    | Insurance deductible
+| proofOfPurchaseReference             | String    | Proof of purchase reference
+| skipCostProposalAndRepairForAnyPrice | Boolean   | Accept any cost for repair without a cost proposal
+| contactPerson                        | String    | Contact person for eventual communications regarding the order
+| partnerSpecific.*                    | any       | Custom data defined by partner
+| providerSpecific.*                   | any       | Custom data defined by provider
+| shipmentData                         | ShipmentData | Inbound shipment data
+| \*ShipmentData<sup>6</sup>           | ShipmentData | Additional shipment data
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
