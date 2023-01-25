@@ -171,6 +171,152 @@ Example:
 }
 ```
 
+## Invoice created/updated
+
+This webhook is being sent only to partners, since it contains the entity originated at service provider's side. 
+
+For more information about invoices [read here](Invoices).
+
+Webhook is connected to Invoice statuses in ServiceOrderHub's service provider settings. A status triggering invoice webhooks must have the "Send to client" flag checked. Status is being sent by the provider upon creating an invoice.
+
+Example:
+```
+{
+    "id": 7,
+    "case":
+    {
+        "id": 1290485,
+        "guid": "68ea1505-a44f-4434-be5a-dcc959be250e",
+        "tags":
+        [],
+        "sender": null,
+        "country": null,
+        "consumer": null,
+        "customer": null,
+        "receiver": null,
+        "createdAt": "2023-01-10T10:22:14.558Z",
+        "orderData":
+        {
+            "files":
+            [
+                {
+                    "url": "https://ecample.com/1.jpeg",
+                    "name": "0f3ddaa937235e916b0076cca3d79c09-2.jpeg",
+                    "type": "other"
+                }
+            ],
+            "refNo": "10-1862",
+            "consents":
+            [
+                "ConsentTerms",
+                "ConsentRepair"
+            ],
+            "bookingType": "companyToPrivate",
+            "activityNumber": "6378304",
+            "customerNumber": "123456",
+            "originatorType": "helpdesk",
+            "clientPostalCode": "4370",
+            "pickupDestination": "pickupDst",
+            "returnDestination": "returnDst",
+            "integrationsFinished": true,
+            "serviceProviderExportStatus": true
+        },
+        "partnerId": 1413,
+        "pickupDst": null,
+        "returnDst": null,
+        "spareParts":
+        [],
+        "productData":
+        {
+            "model": "TESTTEST",
+            "serial": "5557779900",
+            "problemText": "Please FIX ASAP. Broken pixels. TEST",
+            "otherAccessory": "Power cable, TV stand."
+        },
+        "productType": null,
+        "serviceType": null,
+        "caseStatuses":
+        [],
+        "manufacturer": null,
+        "currentStatus": "estsent",
+        "productTypeId": 1001,
+        "serviceTypeId": 6254,
+        "manufacturerId": 1012,
+        "servicePartner":
+        {
+            "id": 1413,
+            "name": "Partner's name"
+        },
+        "serviceLocation": null,
+        "serviceProvider":
+        {
+            "id": 1004,
+            "name": "Service Provider Name"
+        },
+        "freightTrackings":
+        [],
+        "serviceLocationId": 5000,
+        "serviceProviderId": 1004,
+        "serviceProviderDepartment": null,
+        "serviceProviderDepartmentId": 3
+    },
+    "guid": "68ea1505-12345-4434-be5a-dcc959be250e",
+    "type": "invoice",
+    "isPaid": false,
+    "isSent": false,
+    "status": "ready",
+    "details":
+    [
+        {
+            "name": "Labour, Mon 23-29\"",
+            "count": 1,
+            "vatRate": 0.25,
+            "vatAmount": 162.5,
+            "priceExclVat": 650,
+            "priceInclVat": 812.5,
+            "totalAmountExclVat": 650,
+            "totalAmountInclVat": 812.5
+        },
+        {
+            "name": "2-way freight, Mon 23-29\"",
+            "count": 1,
+            "vatRate": 0.25,
+            "vatAmount": 82.5,
+            "priceExclVat": 330,
+            "priceInclVat": 412.5,
+            "totalAmountExclVat": 330,
+            "totalAmountInclVat": 412.5
+        },
+        {
+            "name": "Labour 2, Mon 23-29\"",
+            "count": 1,
+            "vatRate": 0.25,
+            "vatAmount": 25,
+            "priceExclVat": 100,
+            "priceInclVat": 125,
+            "totalAmountExclVat": 100,
+            "totalAmountInclVat": 125
+        }
+    ],
+    "dueDate": "2023-03-01T00:00:00.000Z",
+    "currency": "NOK",
+    "isActive": null,
+    "priceNet": 1080,
+    "createdAt": "2023-01-25T13:11:18.000Z",
+    "updatedAt": "2023-01-25T13:11:18.000Z",
+    "customData":
+    {
+        "arnr1": "234234",
+        "arnr2": "534324",
+        "sesamDb": "Sesam16",
+        "activityNumber": "6378304",
+        "customerNumber": "31343"
+    },
+    "externalId": "100006",
+    "linkedInvoice": null
+}
+```
+
 
 
 
