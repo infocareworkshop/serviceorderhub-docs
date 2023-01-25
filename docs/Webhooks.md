@@ -179,6 +179,9 @@ For more information about invoices [read here](Invoices).
 
 Webhook is connected to Invoice statuses in ServiceOrderHub's service provider settings. A status triggering invoice webhooks must have the "Send to client" flag checked. Status is being sent by the provider upon creating an invoice.
 
+The webhook's body will always contain the `guid` field. Also it has some case information including case's core data, `orderData`, and `productData`.
+
+
 Example:
 ```
 {
