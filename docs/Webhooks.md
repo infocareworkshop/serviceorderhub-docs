@@ -98,17 +98,37 @@ Example:
 
 For more information about messages [read here](Messages/)
 
-This webhook can't be send to the party who actually sent the message, only to the party receieving it
+This webhook can't be send to the party who actually sent the message, only to the party receieving it.
 
 Example:
 ```
 {
   "id": 59076, // message's unique id
+  "externalId": "42", // Unique Id assigned by the creator
   "guid": "f5afa004-f48c-4380-9f9b-cc9afa0dd7de", // case guid
   "content": "The external workshop updated the status to Product received.",
   "type": "serviceComment",
   "createdAt": "2019-11-25T10:33:54.283Z",
-  "updatedAt": "2019-11-25T10:33:54.283Z"
+  "updatedAt": "2019-11-25T10:33:54.283Z",
+   "confirmedAt": null
+}
+```
+
+## Message was confirmed
+
+This webhook can't be send to the party who received the message, only to the party who created it.
+
+Example:
+```
+{
+  "id": 59076,
+  "externalId": "42",
+  "guid": "f5afa004-f48c-4380-9f9b-cc9afa0dd7de", // case guid
+  "content": "The external workshop updated the status to Product received.",
+  "type": "serviceComment",
+  "createdAt": "2019-11-25T10:33:54.283Z",
+  "updatedAt": "2019-11-25T10:33:54.283Z",
+  "confirmedAt": "2022-05-27T01:23:45.789Z" // Date when it was confirmed
 }
 ```
 
