@@ -110,7 +110,7 @@ Example:
   "type": "serviceComment",
   "createdAt": "2019-11-25T10:33:54.283Z",
   "updatedAt": "2019-11-25T10:33:54.283Z",
-   "confirmedAt": null
+  "confirmedAt": null
 }
 ```
 
