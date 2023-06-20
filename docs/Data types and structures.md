@@ -70,7 +70,6 @@ Contains info about service order.
 | partnerSpecific<sup>4</sup>          | Object    | Custom parameters specific for a certain partner
 | providerSpecific<sup>5</sup>         | Object    | Same as partnerSpecific but for service provider
 | consents\*                           | Object    | Consents. Read more [here](#consents) 
-| solution                             | String    | Description of what has been done to solve the problem
 | partnerOrderReference                | String    | Custom reference assigned by partner
 | providerOrderReference               | String    | Custom reference assigned by provider
 | maxRepairPrice                       | String    | Limit amount for beyond economic repair
@@ -142,6 +141,7 @@ Contains info about the product.
 | accessory              | Array         | List of accessory IDs
 | otherAccessory         | String        | List of additional accessories in free text
 | problemText\*          | String        | Problem description
+| solution               | String        | Description of what has been done to solve the problem
 | password\*\*           | String        | Product's password (if applicable)
 | weight                 | Number        | Product's weight (in kg)
 | volume                 | Dimensions    | Width, height, depth
