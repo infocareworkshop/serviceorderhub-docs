@@ -530,7 +530,7 @@ Provider
 
 ## POST /api/v3/case/update
 
-Modify Case.
+Modify Case. This method completetely overwrites the content according to the input sent. No merge is being done.
 
 ### Access
 
@@ -584,6 +584,11 @@ And you want to remove "Lowcost" and add "Premium" which has id 5, you should se
 tags: [4, 5]
 ```
 Sending an empty array will unassign all tags.
+
+## POST /api/v3/case/append
+
+This method works similarly to /update. However it appends input to the existing case object leaving the rest of data unchanged.
+
 
 ## POST /api/v3/case/finish
 
