@@ -6,8 +6,7 @@ There are some special data types used in our API.
 
 ## Date 
 
-**ISO 8601** compatible string that contains date, time and timezone.
-Every date will be converted to UTC.
+Date string in the format `yyyy-MM-ddTHH:mm:ss.SSSZ` (One of the **ISO 8601** standard's variations, that must contain date, time and timezone). Every date will be converted to UTC.
 
 `2012-04-23T18:25:43.511Z`
 
