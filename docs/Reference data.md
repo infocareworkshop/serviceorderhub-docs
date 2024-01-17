@@ -569,13 +569,22 @@ any
 |---------------------|---------------|-----------------------------------|
 | manufacturer        | Int\|String   | Manufacturer Id or alias          |
 | productType         | Int\|String   | Product type Id or alias          |
-| model\*             | String        | Model name                        |
+| model<sup>1</sup>             | String        | Model name              |
+| mpn<sup>2</sup>               | String        | Manufacturer part name  |
 | limit               | Int           | Number of results (10 by default) |
 
+<sup>1</sup> For non-strict search using name, mpn and aliases.
+
+<sup>2</sup> For strict search using mpn only.
+
+If no filters specified, we will return an empty list.
 
 ### Example
 
 `/api/v3/models?manufacturer=acer&model=aspire&limit=1`
+
+`/api/v3/models?mpn=XYZ1234`
+
 
 ### Output
 
@@ -591,6 +600,8 @@ any
     },
     "manufacturerId": 1006,
     "name": "aspire",
+    "aliases": ["abcd"],
+    "mpn": "XYZ1234",
     "productType": {
       "externalData": null,
       "id": 1004,
@@ -602,6 +613,12 @@ any
     },
     "productTypeId": 1004,
     "tags": [],
+    "countryOfOrigin": null,
+    "value": "1234.00",
+    "weight": "20.00",
+    "taricSE": "ABC12",
+    "taricNO": "XYZ12",
+    "createdAt": "2019-05-21T09:26:31.000Z",
     "updatedAt": "2019-05-21T09:45:04.000Z"
   }
 ]
@@ -624,11 +641,23 @@ Array of model objects:
 | manufacturer\*      | Int\|String   | Manufacturer Id or alias          |
 | productType\*       | Int\|String   | Product type Id or alias          |
 | name\*              | String        | Model name                        |
+| mpn\*               | String        | Manufacturer part name            |
 | id                  | Int           | Id in the model registry          |
 | tags                | Array<Int>    | Assigned tags                     |
+| countryOfOrigin     | String        | Country name (e.g. China)         |
+| taricSE        | String        | taricSE     |
+| taricNO        | String        | taricNO     |
+| value        | Decimal (#.##)        | Price in EUR, converted to string     |
+| weight        | Decimal (#.##)        | Weight in kg, converted to string     |
+| aliases                | Array<String>    | List of alias names                    |
 
-If you omit "id" key then the model from the request will be matched with all existing models 
-and created new record if necessary.
+
+If you omit "id" key then the model from the request will be matched with all existing models using the name field
+and a new record will be created if necessary.
+
+Any combination of name and manufacturer must be unique as well as the combination of mpn and manufacturer, otherwise a validation error will be triggered.
+
+We don't currently enforce uniqueness of aliases
 
 To change name you should always pass "id" key.
 
