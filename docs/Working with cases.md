@@ -585,6 +585,19 @@ tags: [4, 5]
 ```
 Sending an empty array will unassign all tags.
 
+### Example with notifications
+```
+{
+    "guid": "<GUID>",
+    "orderData": {
+        "notifications": {
+            "arr": { "sms": true, "email": false },
+            "rec": { "sms": false, "email": true }
+        }
+    }
+}
+```
+
 ## POST /api/v3/case/append
 
 This method works similarly to /update. However it appends input to the existing case object leaving the rest of data unchanged.
@@ -726,5 +739,55 @@ Allowed file types: [read here](Data%20types%20and%20structures/#FileType). If a
   "data": {
      "result": true
   }
+}
+```
+
+## GET /api/v3/case/notifications
+
+Get possible statuses allowed for notifications with their descriptions
+
+### Access
+
+Partner, Provider
+
+### Input
+
+| Name               | Type          | Description                |
+|--------------------|---------------|----------------------------|
+| guid\*             | GUID          | Guid of the case           |
+
+### Example
+
+```
+{
+  "data": [
+    {
+      "key": "rec",
+      "name": "Rec",
+      "description": null,
+      "smsNotificationAvailable": false, // Depends on the partner's settings
+      "emailNotificationAvailable": false, // Depends on the partner's settings
+      "smsNotificationEnabled": true, // Controlled individually per case using orderData.notifications
+      "emailNotificationEnabled": true // Controlled individually per case using orderData.notifications
+    },
+    {
+      "key": "arr",
+      "name": "Arr",
+      "description": "Arrived",
+      "smsNotificationAvailable": false, // Depends on the partner's settings
+      "emailNotificationAvailable": false, // Depends on the partner's settings
+      "smsNotificationEnabled": false, // Controlled individually per case using orderData.notifications
+      "emailNotificationEnabled": false // Controlled individually per case using orderData.notifications
+    },
+    {
+      "key": "dea",
+      "name": dea",
+      "description": "Deactivated",
+      "smsNotificationAvailable": true, // Depends on the partner's settings
+      "emailNotificationAvailable": true, // Depends on the partner's settings
+      "smsNotificationEnabled": false, // Controlled individually per case using orderData.notifications
+      "emailNotificationEnabled": false // Controlled individually per case using orderData.notifications
+    }
+  ]
 }
 ```
