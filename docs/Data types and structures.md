@@ -80,6 +80,7 @@ Contains info about service order.
 | providerSpecific.*                   | any       | Custom data defined by provider
 | shipmentData                         | ShipmentData | Inbound shipment data
 | \*ShipmentData<sup>6</sup>           | ShipmentData | Additional shipment data
+| notifications<sup>7</sup>            | Dictionary<string, Notification> | Dictionary for storing statuses that should be notified to the client
 
 <sup>1</sup> `goodsType` is mandatory only if the corresponding shipping method
 has `properties.requirePickupDate: true`. Check the API ref for
@@ -124,6 +125,31 @@ it. Please contact support for that.
 ```
 
 <sup>6</sup> Cases can have addiional shipment data, for example *exportShipmentData*, *forwardingShipmentData* etc.
+
+<sup>7</sup> Notifications is a dictionary, and each key should represent a status of the service partner. 
+Each value is an object that has the following structure:
+
+| Name                   | Type          | Description
+| ---------------------- | ------------- | -----------------------------------
+| email\*                | Boolean        | Should we send an email to the client or not
+| sms\*           | Boolean          | Should we send an sms to the client or not
+
+By default, we assume that all notifications are allowed.
+
+**Example with notifications**
+
+```
+{
+    "guid": "<GUID>",
+    "orderData": {
+        "notifications": {
+            "arr": { "sms": true, "email": false },
+            "rec": { "sms": false, "email": true }
+        }
+    }
+}
+```
+
 
 ## ProductData
 
