@@ -16,13 +16,16 @@ Partner, Provider
 ### Input (request body)
 
 
-| Name            | Type         | Description                                |
-|-----------------|--------------|--------------------------------------------|
-| guid\*          | Guid         | Guid of the case                           |
-| content         | String       | Message text                               |
-| type\*          | String(32)   | Message type (always `serviceComment`)     |
-| declaredAt<sup>1</sup> | Date      | Actual time when the status was added |
-| externalId | String(512) | Message Id in the sender's system |
+| Name                   | Type         | Description                                |
+|------------------------|--------------|--------------------------------------------|
+| guid\*                 | Guid         | Guid of the case                           |
+| content                | String       | Message text                               |
+| type\*                 | String(32)   | Message type (always `serviceComment`)     |
+| declaredAt<sup>1</sup> | Date         | Actual time when the status was added      |
+| externalId             | String(512)  | Reference to the message in another system |
+| parentMessageId        | Int          | Our messageId of the message to reply on   |
+| userEmail              | String(512)  | Email of the person who wrote the message  |
+| userName               | String(512)  | Name of the person who wrote the message   |
 
 <sup>1</sup> If empty, the current time will be used.
 
