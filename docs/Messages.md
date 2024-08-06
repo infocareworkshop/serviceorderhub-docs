@@ -126,7 +126,7 @@ We added `externalId` and `confirmedAt`.
 
 ## POST /api/v3/case-messages/confirm
 
-Confirm messages
+Confirm messages is used to confirm, that the message has been delivered and read by a person responsible of reading it.
 
 ### Access
 
