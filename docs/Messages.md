@@ -49,6 +49,7 @@ Partner, Provider
   "caseId": 7748,
   "guid": "1e0abcb7-b94c-4072-a9c0-37072a1ef015",
   "senderAccountId": 1009,
+  "senderType": "partner",
   "content": "Test message",
   "type": "serviceComment",
   "externalId": "test-42",
@@ -96,6 +97,7 @@ Partner, Provider
     "senderAccountId": 1009,
     "content": "Hello!",
     "type": "serviceComment",
+    "senderType": "provider",
     "externalId": "test-42",
     "confirmedAt": null,
     "createdAt": "2017-07-26T13:43:44.512Z",
@@ -109,6 +111,7 @@ Partner, Provider
     "senderAccountId": 1009,
     "content": "Test comemnt",
     "type": "serviceComment",
+    "senderType": "provider",
     "externalId": null,
     "confirmedAt": null,
     "createdAt": "2017-07-26T13:54:53.058Z",
@@ -123,6 +126,8 @@ Partner, Provider
 We changed `messageType` to `type` to make naming more consistent.
 
 We added `externalId` and `confirmedAt`.
+
+We added `senderType` that can be `"partner"`, `"provider"` or `null`
 
 ## POST /api/v3/case-messages/confirm
 
