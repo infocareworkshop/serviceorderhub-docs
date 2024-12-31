@@ -189,7 +189,7 @@ Partner, Provider
 
 ### Output
 
-Same as [here](Cost%20proposals/#get-apiv3cost-proposals)
+Same as [here](#get-apiv3cost-proposals)
 
 ## POST /api/v3/cost-proposals/delete
 
