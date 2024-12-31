@@ -191,6 +191,31 @@ Partner, Provider
 
 Same as [here](Cost%20proposals/#get-apiv3cost-proposals)
 
+## POST /api/v3/cost-proposals/delete
+
+Deletes a single cost proposal
+
+### Access
+
+Partner, Provider
+
+### Input (request body)
+
+| Name             | Type      | Description                            |
+|------------------|-----------|----------------------------------------|
+| id\*             | Integer   | Id of Cost Proposal                    |
+
+### Example
+```
+{
+	"id": 8600
+}
+```
+
+### Output
+
+Same as [here](#get-apiv3cost-proposals)
+
 
 ## GET /api/v1/cost-proposals – Deprecated
 
