@@ -6,27 +6,33 @@ On certain events we send webhooks. Today we support two transports for them: HT
 
 For HTTP transport we support GET/POST/PUT/PATH/DELETE methods and any custom constant headers.
 
-We can set up for each webhook which version of API will be used to generate body (Except Status transition where only `v3` is available).
+All webhooks should use V3 API, other versions are deprecated.
 
-By default we use `v1`.
+Each webhook type can have different URLs.
 
 ## New status
 
 For more information about statuses [read here](Working%20with%20cases/#post-apiv3casestatus)
 
+This webhook triggers every time a status was added to the casee. One case can have more than one status with the same key, and this webhook will be triggered every time unless the previous status and the current one are the same.
+
 Example:
 ```
 {
+  "id": 123456, // Unique Id for each record
+  "caseId": 32242432, // Id of the case
   "guid": "a7afaf9-7c6e-4d0e-b756-16b4afa1382f", // Case guid
-  "name": "Repair finished",
-  "key": "final",
-  "createdAt": "2019-01-22T11:29:38.258Z",
-  "updatedAt": "2019-01-22T11:29:38.258Z",
-  "declaredAt": "2019-01-22T11:27:34.233Z"
+  "name": "Repair finished", // Name of the status
+  "key": "final", // Status key (from a predefined set of possible statuses)
+  "createdAt": "2019-01-22T11:29:38.258Z", // Timestamp when this record was created in Service Order Hub
+  "updatedAt": "2019-01-22T11:29:38.258Z", // Timestamp of the latest update (usually the same as createdAt)
+  "declaredAt": "2019-01-22T11:27:34.233Z" // Timestamp when this record was created in a third-party system
 }
 ```
 
 ## Status transition
+
+This webhook is useful when you need notifications about transitions from one specific status to another.
 
 We can set up webhooks to send them conditionally:
 
@@ -39,6 +45,7 @@ The webhook body will be almost the same as for new status, but with addition of
 ```
 {
   "id": 123,
+  "caseId": 32242432, // Id of the case
   "guid": "a7afaf9-7c6e-4d0e-b756-16b4afa1382f", // Case guid
   "name": "Repair finished",
   "key": "final", // Current status key
@@ -103,13 +110,19 @@ This webhook can't be send to the party who actually sent the message, only to t
 Example:
 ```
 {
-  "id": 59076, // message's unique id
+  "id": 59076, // Unique Id of the message assigned by Service Order Hub
   "externalId": "42", // Unique Id assigned by the creator
-  "guid": "f5afa004-f48c-4380-9f9b-cc9afa0dd7de", // case guid
+  "guid": "f5afa004-f48c-4380-9f9b-cc9afa0dd7de", // Case guid
   "content": "The external workshop updated the status to Product received.",
-  "type": "serviceComment",
+  "userName": "John",
+  "userEmail": "john@johanson.com",
+  "type": "serviceComment", // Value from a predefined set
+  "senderType": "provider", // Either partner or provider
+  "parentMessageId": null, // Contains message Id if it was a reply
+  "senderAccountId": 1010, // Internal account Id
   "createdAt": "2019-11-25T10:33:54.283Z",
   "updatedAt": "2019-11-25T10:33:54.283Z",
+  "declaredAt": "2019-06-16T07:18:25.000Z",
   "confirmedAt": null
 }
 ```
@@ -121,14 +134,20 @@ This webhook can't be send to the party who received the message, only to the pa
 Example:
 ```
 {
-  "id": 59076,
-  "externalId": "42",
-  "guid": "f5afa004-f48c-4380-9f9b-cc9afa0dd7de", // case guid
+  "id": 59076, // Unique Id of the message assigned by Service Order Hub
+  "externalId": "42", // Unique Id assigned by the creator
+  "guid": "f5afa004-f48c-4380-9f9b-cc9afa0dd7de", // Case guid
   "content": "The external workshop updated the status to Product received.",
-  "type": "serviceComment",
+  "userName": "John",
+  "userEmail": "john@johanson.com",
+  "type": "serviceComment", // Value from a predefined set
+  "senderType": "provider", // Either partner or provider
+  "parentMessageId": null, // Contains message Id if it was a reply
+  "senderAccountId": 1010, // Internal account Id
   "createdAt": "2019-11-25T10:33:54.283Z",
   "updatedAt": "2019-11-25T10:33:54.283Z",
-  "confirmedAt": "2022-05-27T01:23:45.789Z" // Date when it was confirmed
+  "declaredAt": "2019-06-16T07:18:25.000Z",
+  "confirmedAt": null
 }
 ```
 
