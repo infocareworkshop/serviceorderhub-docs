@@ -7,7 +7,9 @@ Service provider and exported to their internal systems.
 
 ## POST /api/v3/case-messages/create
 
-Add a new message to specific *Case*.
+Add a new message to specific *Case*. 
+
+Users can reply to other messages using `parentMessageId`.
 
 ### Access
 
@@ -20,14 +22,16 @@ Partner, Provider
 |------------------------|--------------|--------------------------------------------|
 | guid\*                 | Guid         | Guid of the case                           |
 | content                | String       | Message text                               |
-| type\*                 | String(32)   | Message type (always `serviceComment`)     |
-| declaredAt<sup>1</sup> | Date         | Actual time when the status was added      |
+| type\*<sup>1</sup>     | String(32)   | Message type                               |
+| declaredAt<sup>2</sup> | Date         | Actual time when the status was added      |
 | externalId             | String(512)  | Reference to the message in another system |
 | parentMessageId        | Int          | Our messageId of the message to reply on   |
 | userEmail              | String(512)  | Email of the person who wrote the message  |
 | userName               | String(512)  | Name of the person who wrote the message   |
 
-<sup>1</sup> If empty, the current time will be used.
+<sup>1</sup> Possible values are: `serviceComment`, `customerCenterReply`, `costProposalRejectRur`, `costProposalRejectScrap`, `statusRequest`, `spareParts`, `reminder`, `costProposal`, `shipment`, `forwarding`
+
+<sup>2</sup> If empty, the current time will be used.
 
 ### Example
 
