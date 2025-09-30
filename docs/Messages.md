@@ -64,6 +64,16 @@ Partner, Provider
 }
 ```
 
+### Error message
+
+```
+{
+  "error": {
+    "message": "child \"guid\" fails because [\"guid\" is required]"
+  }
+}
+```
+
 **New in V3**
 
 We changed `messageType` to `type` to make naming more consistent.
@@ -135,7 +145,8 @@ We added `senderType` that can be `"partner"`, `"provider"` or `null`
 
 ## POST /api/v3/case-messages/confirm
 
-Confirm messages is used to confirm, that the message has been delivered and read by a person responsible of reading it.
+Confirm messages is used to confirm, that the message has been delivered and read by a person responsible of reading it. 
+This endpoint will attempt to process as many ids as possible and report any identifiers it was unable to process. **No rollback** will be performed in case of an error.
 
 ### Access
 
@@ -148,7 +159,7 @@ Array of message Ids to confirm (not externalId!)
 ### Example
 
 ```
-[1, 2, 3, 4]
+[4377, 4378, 4379, 4380]
 ```
 
 ### Output
@@ -161,9 +172,11 @@ Array of message Ids to confirm (not externalId!)
 }
 ```
 
-**Error handling**
+### Error handling
 
-This endpoint will return success even if some messages weren't confirmed due to an error, so you should check the "errors" section to make sure everything was processed. Example error:
+**Partial success**
+
+This endpoint will return **success** (200 code) even if some messages weren't confirmed due to an error, so you should check the "errors" section to make sure everything was processed. Example error:
 
 ```
 {
@@ -179,5 +192,17 @@ This endpoint will return success even if some messages weren't confirmed due to
     }
   ],
   "data": {}
+}
+```
+
+**Invalid format**
+
+If the request is invalid, a standard error message and the corresponding error code will be sent:
+
+```
+{
+  "error": {
+    "message": "\"value\" at position 0 fails because [\"0\" must be a number]"
+  }
 }
 ```
