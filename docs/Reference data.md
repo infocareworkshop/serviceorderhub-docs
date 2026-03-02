@@ -216,8 +216,12 @@ Partner
 | serviceType\*       | Int           | Service type Id            |
 | manufacturer\*      | Int\|String   | Manufacturer Id or alias   |
 | productType\*       | Int\|String   | Product type Id or alias   |
-| clientPostalCode    | String        |                            |
 | serviceLocation\*   | Int           | Service location Id        |
+| clientPostalCode    | String        |                            |
+| tags                | String        | Tags (comma-separated)     |
+| serviceProviderId   | Int           |                            |
+| departmentId        | Int           |                            |
+| actionType          | String        | "inbound" by default       |
 
 
 ### Output
@@ -501,13 +505,15 @@ Partner
 | Name                | Type          | Description                |
 |---------------------|---------------|----------------------------|
 | originatorType      | Originator    | Originator type            |
-| bookingType         | Originator    | Originator type            |
+| bookingType         | String        | Booking type               |
 | serviceType         | Int           | Service type Id            |
 | manufacturer        | Int\|String   | Manufacturer Id or alias   |
 | productType         | Int\|String   | Product type Id or alias   |
 | clientPostalCode    | String        |                            |
 | serviceLocation     | Int           | Service location Id        |
 | model               | String        | Model name                 |
+| actionType          | String        | "inbound" by default       |
+| tags                | String        | Comma-separated list       |
 
 ### Output
 
