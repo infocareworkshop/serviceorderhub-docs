@@ -28,10 +28,13 @@ Partner, Provider
 | parentMessageId        | Int          | Our messageId of the message to reply on   |
 | userEmail              | String(512)  | Email of the person who wrote the message  |
 | userName               | String(512)  | Name of the person who wrote the message   |
+| isInternal<sup>3</sup> | Boolean      | Should this message be visible for other parties or not |
 
 <sup>1</sup> Possible values are: `serviceComment`, `customerCenterReply`, `costProposalRejectRur`, `costProposalRejectScrap`, `statusRequest`, `spareParts`, `reminder`, `costProposal`, `shipment`, `forwarding`
 
 <sup>2</sup> If empty, the current time will be used.
+
+<sup>3</sup> False by default. Currently, internal messages don't trigger any webhooks and are invisible for partners in API. However, they still appear on the admin pages.
 
 ### Example
 
@@ -60,7 +63,8 @@ Partner, Provider
   "confirmedAt": null,
   "createdAt": "2017-07-26T14:02:02.170Z",
   "updatedAt": "2017-07-26T14:02:02.170Z",
-  "declaredAt": "2017-07-25T10:12:54.003Z"
+  "declaredAt": "2017-07-25T10:12:54.003Z",
+  "isInternal": false
 }
 ```
 
