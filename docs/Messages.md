@@ -30,7 +30,7 @@ Partner, Provider
 | userName               | String(512)  | Name of the person who wrote the message   |
 | isInternal<sup>3</sup> | Boolean      | Should this message be visible for other parties or not |
 
-<sup>1</sup> Possible values are: `serviceComment`, `customerCenterReply`, `costProposalRejectRur`, `costProposalRejectScrap`, `statusRequest`, `spareParts`, `reminder`, `costProposal`, `shipment`, `forwarding`
+<sup>1</sup> Possible values are: `serviceComment`, `customerCenterReply`, `costProposalRejectRur`, `costProposalRejectScrap`, `statusRequest`, `spareParts`, `reminder`, `costProposal`, `shipment`, `forwarding`, `internal`. See `allowed-message-types` endpoint for reference
 
 <sup>2</sup> If empty, the current time will be used.
 
