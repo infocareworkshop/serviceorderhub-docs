@@ -670,3 +670,96 @@ To change name you should always pass "id" key.
 ### Output
 
 List of modified models
+
+## GET /api/v3/allowed-file-extensions
+
+Get allowed file extensions for /case/files endpoint.
+
+### Access
+
+any
+
+### Input
+
+None
+
+### Output
+
+Array of allowed file extensions
+
+```
+{
+  "data": [
+    "jpg",
+    "jpeg",
+    "png",
+    "gif",
+    "bmp",
+    "txt",
+    "pdf",
+    "doc",
+    "docx",
+    "odt",
+    "xls",
+    "xlsx",
+    "ppt",
+    "pptx",
+    "zip",
+    "rar",
+    "avi",
+    "mp4",
+    "m4v",
+    "mov",
+    "wmv",
+    "mpg",
+    "mpeg",
+    "m2v",
+    "mkv",
+    "mp2",
+    "mpe",
+    "mpv",
+    "3gp",
+    "heic",
+    "webm",
+    "avif",
+    "tiff",
+    "webp"
+  ]
+}
+```
+
+## GET /api/v3/allowed-message-types
+
+Get allowed message types for /case-messages/create endpoint.
+
+### Access
+
+any
+
+### Input
+
+None
+
+### Output
+
+Array of allowed message types
+
+```
+{
+  "data": [
+    "serviceComment",
+    "customerCenterReply",
+    "costProposalRejectRur",
+    "costProposalRejectScrap",
+    "statusRequest",
+    "spareParts",
+    "reminder",
+    "costProposal",
+    "shipment",
+    "forwarding",
+    "repairByElcare",
+    "rfc",
+    "internal"
+  ]
+}
+```
