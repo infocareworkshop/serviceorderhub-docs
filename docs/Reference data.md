@@ -14,7 +14,7 @@ Partner
 |--------------------|---------------|----------------------------|
 | originatorType\*   | Originator    | Originator type            |
 | bookingType\*      | BookingType   |                            |
-| serviceType        | Int           | Service type Id            |
+| serviceType        | Int\|String   | Service type Id or alias   |
 | manufacturer       | Int\|String   | Manufacturer Id or alias   |
 | productType        | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
@@ -50,7 +50,7 @@ Partner
 |--------------------|---------------|----------------------------|
 | originatorType\*   | Originator    | Originator type            |
 | bookingType\*      | BookingType   |                            |
-| serviceType        | Int           | Service type Id            |
+| serviceType        | Int\|String   | Service type Id or alias   |
 | manufacturer       | Int\|String   | Manufacturer Id or alias   |
 | productType        | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
@@ -62,6 +62,7 @@ Partner
   {
     "id": 1,
     "name": "Garanti",
+    "workflowType": "inWarranty",
     "properties": {
       "requirePurchaseDate": true
     },
@@ -70,6 +71,7 @@ Partner
   {
     "id": 2,
     "name": "Försäkringsreparation",
+    "workflowType": "insurance",
     "properties": {
       "requireInsuranceNumber": true
     },
@@ -95,7 +97,7 @@ Partner
 |--------------------|---------------|----------------------------|
 | originatorType\*   | Originator    | Originator type            |
 | bookingType\*      | BookingType   |                            |
-| serviceType        | Int           | Service type Id            |
+| serviceType        | Int\|String   | Service type Id or alias   |
 | manufacturer\*     | Int\|String   | Manufacturer Id or alias   |
 | productType        | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
@@ -142,7 +144,7 @@ Partner
 |--------------------|---------------|----------------------------|
 | originatorType\*   | Originator    | Originator type            |
 | bookingType\*      | BookingType   | Booking type               |
-| serviceType\*      | Int           | Service type Id            |
+| serviceType\*      | Int\|String   | Service type Id or alias   |
 | manufacturer\*     | Int\|String   | Manufacturer Id or alias   |
 | productType\*      | Int\|String   | Product type Id or alias   |
 | clientPostalCode   | String        |                            |
@@ -213,10 +215,10 @@ Partner
 |---------------------|---------------|----------------------------|
 | originatorType\*    | Originator    | Originator type            |
 | bookingType\*       | BookingType   | Booking type               |
-| serviceType\*       | Int           | Service type Id            |
+| serviceType\*       | Int\|String   | Service type Id or alias   |
 | manufacturer\*      | Int\|String   | Manufacturer Id or alias   |
 | productType\*       | Int\|String   | Product type Id or alias   |
-| serviceLocation\*   | Int           | Service location Id        |
+| serviceLocation\*   | Int\|String   | Service location Id or alias |
 | clientPostalCode    | String        |                            |
 | tags                | String        | Tags (comma-separated)     |
 | serviceProviderId   | Int           |                            |
@@ -506,11 +508,11 @@ Partner
 |---------------------|---------------|----------------------------|
 | originatorType      | Originator    | Originator type            |
 | bookingType         | String        | Booking type               |
-| serviceType         | Int           | Service type Id            |
+| serviceType         | Int\|String   | Service type Id or alias   |
 | manufacturer        | Int\|String   | Manufacturer Id or alias   |
 | productType         | Int\|String   | Product type Id or alias   |
 | clientPostalCode    | String        |                            |
-| serviceLocation     | Int           | Service location Id        |
+| serviceLocation     | Int\|String   | Service location Id or alias |
 | model               | String        | Model name                 |
 | actionType          | String        | "inbound" by default       |
 | tags                | String        | Comma-separated list       |
