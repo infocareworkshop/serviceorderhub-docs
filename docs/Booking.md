@@ -86,40 +86,49 @@ Partner
 
 | Name                           | Type          | Description                                              
 |--------------------------------|---------------|------------------------------------------------------------------------------------
-| serviceType\*                  | Int           | Id from `service-types`                                  
+| serviceType\*<sup>1</sup>      | Int\|String   | Id or `workflowType` from `service-types`                                  
 | manufacturer\*                 | Int\|String   | Id or alias from `manufacturers`                         
-| productType\*                  | Int\|String   | Id or alias from `product-types`                         
-| shipping<sup>1</sup>           | Int           | Id from `shipping-methods`                               
-| location\*                     | Int           | Id from `service-locations`                              
+| productType\*                  | Int\|String   | Id or alias from `product-types`                        
+| location\*<sup>2</sup>         | Int\|String   | Id or `workflowType` from `service-locations`
+| shipping<sup>3</sup>           | Int           | Id from `shipping-methods`                              
 | orderData\*                    | OrderData     | Order data                                               
 | productData\*                  | ProductData   | Product data                                             
-| pickupDestination<sup>2</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         
-| returnDestination<sup>2</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         
+| pickupDestination<sup>4</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         
+| returnDestination<sup>4</sup>  | String        | `consumer` or `customCompany` or `customPrivate`         
 | clientPostalCode\*             | String        |                                                          
 | customer\*                     | ContactData   | Info about user who books this order                     
-| consumer<sup>3</sup>           | ContactData   | Info about end user                                      
-| pickupDst<sup>4</sup>          | ContactData   | Where shipment will be picked up or sent from            
-| returnDst<sup>5</sup>          | ContactData   | Where shipment should be delivered after repair          
+| consumer<sup>5</sup>           | ContactData   | Info about end user                                      
+| pickupDst<sup>6</sup>          | ContactData   | Where shipment will be picked up or sent from            
+| returnDst<sup>7</sup>          | ContactData   | Where shipment should be delivered after repair          
 | originatorType\*               | Originator    | Originator type                                          
 | bookingType\*                  | BookingType   | Booking type                                             
 | acceptConditions\*             | Boolean       | Terms and condition acceptance. Must be `true` if no `orderData.consents` sent
 | noPassword                     | Boolean       | Make `productData.password` optional
-| trackingId<sup>6</sup>         | String        | Store this requests and mark it with special value
-| forcedProvider<sup>7</sup>     | Int           | Bypass routing and send directly to this provider
+| trackingId<sup>8</sup>         | String        | Store this requests and mark it with special value
+| forcedProvider<sup>9</sup>     | Int           | Bypass routing and send directly to this provider
 
-<sup>1</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required according to the business rules (your integration setup), but no shipping method id was sent. If more than one method is available, the first one by name (alphabetically) will be selected.
+<sup>1</sup> Int values are interpreted as ids and strings as workflow types. Ids are always unique for the whole system but workflow types may be reused for many partners. 
+Allowed values for workflow types are: `inWarranty`, `outOfWarranty`, `insurance`, `reRepair`, `swap`, `other`. 
+If there are more than one matching service types (two or more service types of a partner have the same workflow type), a validation error will occur.
+In this case an id should be used instead, or the partner settings must be adjusted to avoid ambiguity.
 
-<sup>2</sup> Enabled when originatorType - `helpdesk`
+<sup>2</sup> Int values are interpreted as ids and strings as workflow types. This field works with workflow types in the same way as `serviceType`, but for providers.
+Allowed values or workflow types are: `workshop`, `onSite`, `other`.
+If a default location is specified for the target provider, this field can be omitted (In most cases the default location exists, so this field can be considered optional).
 
-<sup>3</sup> Enabled when bookingType ≠ `privateToPrivate`
+<sup>3</sup> `shipping` can be assigned automatically by the Service Order Hub if shipping is required according to the business rules (your integration setup), but no shipping method id was sent. If more than one method is available, the first one by name (alphabetically) will be selected.
 
-<sup>4</sup> Enabled when pickupDestination ≠ `consumer`. If pickupDestination is not sent, we use `pickupDestination: "consumer"` by default
+<sup>4</sup> Enabled when originatorType - `helpdesk`
 
-<sup>5</sup> Enabled when returnDestination ≠ `consumer`. If returnDestination is not sent, we use `returnDestination: "consumer"` by default
+<sup>5</sup> Enabled when bookingType ≠ `privateToPrivate`
 
-<sup>6</sup> If presented we will store this request as external request with type "caseCreated" and assign trackingId as meeta field. This is very helpful in debugging and troubleshootiing, because this external request will contain all info about validation errors and all fields, even removed by validation. You can search requests by trackingId using `/requests/find` endpoint.
+<sup>6</sup> Enabled when pickupDestination ≠ `consumer`. If pickupDestination is not sent, we use `pickupDestination: "consumer"` by default
 
-<sup>7</sup> Sometimes our routing rules are incomplete or we have an exceptional case. In some emergency situation we allow to get around all rules and send the order to some provider in imperative mode. This is not a normal flow and should be avoided in 99.9% cases.
+<sup>7</sup> Enabled when returnDestination ≠ `consumer`. If returnDestination is not sent, we use `returnDestination: "consumer"` by default
+
+<sup>8</sup> If presented we will store this request as external request with type "caseCreated" and assign trackingId as a meta field. This is very helpful in debugging and troubleshootiing, because this external request will contain all info about validation errors and all fields, even removed by validation. You can search requests by trackingId using `/requests/find` endpoint.
+
+<sup>9</sup> Sometimes our routing rules are incomplete or we have an exceptional case. In some emergency situation we allow to get around all rules and send the order to some provider in imperative mode. This is not a normal flow and should be avoided in 99.99% cases.
 
 ### ⚠️ Warning
 
