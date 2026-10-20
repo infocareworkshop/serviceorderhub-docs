@@ -94,6 +94,7 @@ If you want to see all requests to external systems performed for this case you 
   "serviceType": {
     "id": 1,
     "name": "Garanti",
+    "workflowType": "inWarranty",
     "properties": {
       "requirePurchaseDate": true
     },
@@ -115,6 +116,7 @@ If you want to see all requests to external systems performed for this case you 
   "serviceLocation": {
     "id": 1,
     "name": "Verkstadsreparation",
+    "workflowType": "workshop",
     "externalData": null
   },
   "serviceProvider": {
