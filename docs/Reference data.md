@@ -157,11 +157,13 @@ Partner
   {
     "id": 2,
     "name": "På plats reparation",
+    "workflowType": "onSite",
     "externalData": null
   },
   {
     "id": 1,
     "name": "Verkstadsreparation",
+    "workflowType": "workshop",
     "externalData": null
   }
 ]
