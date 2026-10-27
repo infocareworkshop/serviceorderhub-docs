@@ -13,10 +13,25 @@ Partner, Provider
 | Name   | Type   | Description   |
 |--------|--------|---------------|
 | guid\* | GUID   | Case's GUID   |
+| caseNumber\* | String   | Case number   |
 | includeRequests | Number  | 1   |
+| include | String (comma-separated list) | Additional entities to include into response |
+
+Fields `guid` and `caseNumber` are mutually exclusive.
 
 If you want to see all requests to external systems performed for this case you can pass
 `includeRequests` parameter. Requests will be stored in `externalRequests` field.
+
+It is possible to fetch extra data in a single request using `include` parameter. 
+Possible entities are: `Owner`, `FreightTracking`, `SparePart`, `CaseStatus`, `CostProposal`, `CaseMessage`, `serviceProviderData`, `Invoice` (case sensitive).
+
+For example, if we need cost proposals and invoices, the request would look like this:
+
+`/api/v3/case?accessToken=<token>&guid=5b411bdc-1a7e-46d5-b5de-77f33737b0f9&include=Invoice,CostProposal`
+
+By default (without `include` parameter) the following additional entities will be returned: `FreightTracking`, `SparePart`, `CaseStatus`.
+
+If `include` is present but empty, no extra entities will be fetched and the request will execute much faster.
 
 ### Output
 
@@ -158,6 +173,7 @@ Partner, Provider
 | pagination          | Object   | Pagination settings       |
 | pagination.offset   | Int      | Default - 0               |
 | pagination.limit    | Int      | Default - 10, max - 100   |
+| noCount             | Boolean  | Don't count the total number of rows, increases performance for heavy queries |
 
 
 ### Example
